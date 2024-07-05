@@ -1,0 +1,14 @@
+.menu-content {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-content.hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  
+  .menu-content.block {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
