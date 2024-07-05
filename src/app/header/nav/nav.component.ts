@@ -20,4 +20,8 @@ export class NavComponent {
       document.documentElement.classList.remove('dark');
     }
   }
+
+  toggleMenu() {
+
+  }
 }
