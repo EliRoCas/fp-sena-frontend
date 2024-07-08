@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 @font-face {
     font-family: 'Cormorant';
     src: url('/fonts/Cormorant_Infant/CormorantInfant-Bold.ttf');
@@ -15,6 +17,7 @@
     src: url('/fonts/Cormorant_Infant/CormorantInfant-SemiBold.ttf');
     src: url('/fonts/Cormorant_Infant/CormorantInfant-SemiBoldItalic.ttf');
 }
+
 @font-face {
     font-family: 'Wittgenstein';
     src: url('/fontsWittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf');
