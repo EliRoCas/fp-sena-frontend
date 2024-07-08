@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'CormorantInfant';
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-Bold.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-BoldItalic.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-Italic.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-Light.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-LightItalic.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-Medium.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-MediumItalic.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-Regular.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-SemiBold.ttf');
-    src: url('../assets/fonts/Cormorant_Infant/CormorantInfant-SemiBoldItalic.ttf');
+    font-family: 'Cormorant';
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-Bold.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-BoldItalic.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-Italic.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-Light.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-LightItalic.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-Medium.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-MediumItalic.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-Regular.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-SemiBold.ttf');
+    src: url('/fonts/Cormorant_Infant/CormorantInfant-SemiBoldItalic.ttf');
 }
 @font-face {
     font-family: 'Wittgenstein';
-    src: url('../assets/fonts/Wittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf');
-    src: url('../assets/fonts/Wittgenstein/Wittgenstein-VariableFont_wght.ttf');
+    src: url('/fontsWittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf');
+    src: url('/fontsWittgenstein/Wittgenstein-VariableFont_wght.ttf');
 }
 
 body {
