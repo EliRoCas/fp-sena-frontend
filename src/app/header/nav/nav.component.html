@@ -24,7 +24,10 @@
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex-shrink-0">
                     <!-- Texto del logotipo-->
-                    <div class="text-logo text-red-800 align-middle"> SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                    <a routerLink="/" routerLinkActive="router-link-active">
+                        <div class="text-logo text-red-800 align-middle"> SiGef <i
+                                class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                    </a>
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
@@ -43,10 +46,9 @@
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <!-- Botones de Login y Sign Up -->
-                <a href="#"
-                    class="rounded-xl border-2 border-red-800 text-white hover:bg-red-600 dark:text-white px-3 py-2 
+                <a routerLink="/login" routerLinkActive="router-link-active" class="rounded-xl border-2 border-red-800 text-white hover:bg-red-600 dark:text-white px-3 py-2 
                     rounded-md text-sm font-medium">Login</a>
-                <a href="#"
+                <a routerLink="/sign-up"
                     class="ml-4 bg-red-900 hover:bg-red-600 text-white px-3 py-2 rounded-xl text-sm font-medium">Sign
                     Up</a>
                 <!-- Botón de modo oscuro/claro -->

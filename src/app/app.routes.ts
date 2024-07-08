@@ -11,13 +11,14 @@ import { IncomesComponent } from './incomes/incomes.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { StockComponent } from './stock/stock.component';
 import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', component: DashboardComponent, pathMatch: 'full' },
     {path: 'login', component: LoginComponent}, 
     {path:'users', component: UsersAdminComponent},
     {path:'users', component: UserProfileComponent},
-    {path:'signUp', component: SignUpComponent},
+    {path:'sign-up', component: SignUpComponent},
     {path:'management', component: ManagementComponent},
     {path:'report', component: ReportComponent},
     {path:'incomes', component: IncomesComponent},
