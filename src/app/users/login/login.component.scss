@@ -1,15 +1,7 @@
-
-@media (max-width: 769px){
-    .hide-on-small {
-        display: none;
-    }
-    
+@media (max-width: 769px) {
 
     .responsive-button {
         font-size: 0.875rem;
     }
 
-    .responsive-button-facebook::after{
-        content: "Iniciar con Facebbo";
-    }
 }
