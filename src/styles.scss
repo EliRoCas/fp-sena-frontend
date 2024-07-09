@@ -28,6 +28,9 @@ body {
     font-family: 'Wittgenstein', 'Times New Roman', Times, serif;
 }
 
+main {
+    margin-top: -1rem;
+}
 
 .my-button {
     @apply text-black bg-white border-2 border-red-800 py-2 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2;
