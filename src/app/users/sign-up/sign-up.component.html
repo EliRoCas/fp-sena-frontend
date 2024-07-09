@@ -9,20 +9,25 @@
 
       <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 ">Registrarse</h2>
 
-      <div class="input-special">
-        <input type="text" id="name" name="name" placeholder="Nombres" aria-label="First Name">
+      <div class="input-special flex flex-col mb-4">
+        <label for="name" class="text-sm font-semibold text-gray-700">Nombre</label>
+        <input type="text" id="name" name="name" placeholder="Nombre" aria-label="First Name">
       </div>
-      <div class="input-special">
+      <div class="input-special flex flex-col mb-4">
+        <label for="lastname" class="text-sm font-semibold text-gray-700">Apellidos</label>
         <input type="text" id="lastname" name="lastname" placeholder="Apellidos" aria-label="Lastname">
       </div>
-      <div class="input-special">
-        <input type="email" id="email" name="email" placeholder="Correo" aria-label="Email">
+      <div class="input-special flex flex-col mb-4">
+        <label for="email" class="text-sm font-semibold text-gray-700">Correo</label>
+        <input type="email" id="email" name="email" placeholder="ejemplo@x.com" aria-label="Email">
       </div>
-      <div class="input-special">
+      <div class="input-special flex flex-col mb-4">
+        <label for="password" class="text-sm font-semibold text-gray-700">Contraseña</label>
         <input type="password" id="password" name="password" placeholder="Contraseña" aria-label="password">
 
       </div>
-      <div class="input-special">
+      <div class="input-special flex flex-col mb-4">
+        <label for="confirmPassword" class="text-sm font-semibold text-gray-700">Confirme la Contraseña</label>
         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme contraseña"
           aria-label="Comfirm password">
       </div>
