@@ -68,3 +68,7 @@ main {
 .label-style {
     @apply leading-7 text-sm text-gray-950
 }
+
+.card-style {
+    @apply h-full bg-red-300 bg-opacity-75 px-6 py-6 rounded-lg overflow-hidden text-center relative
+}
