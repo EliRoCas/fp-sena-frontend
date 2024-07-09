@@ -8,6 +8,10 @@ module.exports = {
       width: {
         '70': '16rem',
         '76': '19rem',
+      },
+      fontFamily:{
+        'titles': ['Cormorant'],
+        'body': ['Wittgenstein'],
       }
     },
   },

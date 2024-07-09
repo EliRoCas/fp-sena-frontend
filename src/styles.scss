@@ -32,8 +32,12 @@ main {
     margin-top: -1rem;
 }
 
-.my-button {
-    @apply text-black bg-white border-2 border-red-800 py-2 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2;
+.primary-button {
+    @apply text-white bg-red-800 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded-xl text-sm
+}
+
+.secundary-button {
+    @apply text-black bg-white border-2 border-red-800 py-1 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2;
 
 }
 
@@ -51,4 +55,16 @@ main {
     >input {
         @apply w-full h-11 bg-white rounded-r border-t border-r border-b border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-sm outline-none text-gray-700 pl-3 py-2 leading-8 transition-colors duration-200 ease-in-out;
     }
+}
+
+.input-form {
+    @apply w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-700 focus:bg-white focus:ring-2 focus:ring-red-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out
+}
+
+.font-primary {
+    @apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 font-['Cormorant']
+}
+
+.label-style {
+    @apply leading-7 text-sm text-gray-950
 }
