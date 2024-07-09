@@ -20,10 +20,31 @@
 
 @font-face {
     font-family: 'Wittgenstein';
-    src: url('/fontsWittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf');
-    src: url('/fontsWittgenstein/Wittgenstein-VariableFont_wght.ttf');
+    src: url('/fonts/Wittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf');
+    src: url('/fonts/Wittgenstein/Wittgenstein-VariableFont_wght.ttf');
 }
 
 body {
     font-family: 'Wittgenstein', 'Times New Roman', Times, serif;
+}
+
+
+.my-button {
+    @apply text-black bg-white border-2 border-red-800 py-2 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-lg mb-4;
+}
+
+.input-special {
+    @apply flex items-center mb-4 w-full;
+
+    >div {
+        @apply bg-gray-200 p-2 rounded-l border border-gray-300;
+
+        >i {
+            @apply text-black w-full;
+        }
+    }
+
+    >input {
+        @apply w-full h-11 bg-white rounded-r border-t border-r border-b border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 pl-3 py-2 leading-8 transition-colors duration-200 ease-in-out;
+    }
 }
