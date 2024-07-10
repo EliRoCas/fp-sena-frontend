@@ -70,5 +70,5 @@ main {
 }
 
 .card-style {
-    @apply h-full bg-red-300 bg-opacity-75 px-6 py-6 rounded-lg overflow-hidden text-center relative
+    @apply h-full bg-gradient-to-b from-red-300 to-red-600 px-6 py-6 rounded-lg overflow-hidden text-center relative
 }
