@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -14,5 +14,6 @@ export class CardComponent {
   text = input<string>();
   title = input<string>()
 
+  showHover= input<boolean>(false)
 }
 
