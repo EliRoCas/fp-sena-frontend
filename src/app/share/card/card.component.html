@@ -1,0 +1,17 @@
+<div class="p-4 w-full h-full hover-card">
+    <div class="h-full flex flex-col justify-between bg-white rounded overflow-hidden shadow-lg">
+        <div class="block relative h-48">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" [src]="src()">
+        </div>
+        <div class="p-6 flex-1">
+            <div class="mt-4 item">
+                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{title()}}</h3>
+                <p class="text-gray-900 text-medium font-medium">
+                    {{ text() }}
+                    <!-- <div class="flex justify-center">
+                    <a routerLink="/support"> <button class="secundary-button">Contáctenos</button></a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
