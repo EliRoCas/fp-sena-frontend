@@ -21,7 +21,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex-1 flex">
                 <div class="flex-shrink-0">
                     <!-- Texto del logotipo-->
                     <a routerLink="/" routerLinkActive="router-link-active">
@@ -39,8 +39,7 @@
                             class="text-gray-900 dark:text-white px-3 py-2 rounded-md text-sm font-medium navPage">Nuestros
                             Servicios</a>
                         <a routerLink="/support"
-                            class="text-gray-900 dark:text-white px-3 py-2 rounded-md text-sm font-medium navPage">Soporte
-                            Técnico</a>
+                            class="text-gray-900 dark:text-white px-3 py-2 rounded-md text-sm font-medium navPage">Contáctenos</a>
                     </div>
                 </div>
             </div>
@@ -59,15 +58,14 @@
     <!-- Menú móvil -->
     <div class="sm:hidden" id="mobile-menu" *ngIf="isOpen">
         <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="#"
+            <a routerLink="/services"
                 class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">Nuestros
                 Servicios</a>
-            <a href="#"
+            <a routerLink="/about-us"
                 class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">Sobre
                 Nosotros</a>
-            <a href="#"
-                class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">Soporte
-                Técnico</a>
+            <a routerLink="support"
+                class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">Contáctenos</a>
         </div>
     </div>
 </nav>

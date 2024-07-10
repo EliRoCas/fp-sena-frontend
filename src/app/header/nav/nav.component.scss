@@ -21,9 +21,17 @@ a.navPage {
 .text-logo {
   font-family: 'Cormorant', italic, 'Times New Roman', Times, serif;
   font-size: 2rem;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+  }
 }
 
 .active {
   font-weight: bold;
-  color: #ff0000; /* Cambia el color según tu diseño */
+  color: #ff0000;
+  
 }
