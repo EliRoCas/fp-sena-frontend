@@ -1,8 +1,8 @@
 <mat-list>
-    <div mat-subheader>SiGef</div>
+    <div mat-subheader>Acciones</div>
     @for (link of links; track link) {
     <mat-nav-list>
-        <a mat-list-item [routerLink]="link.url">
+        <a mat-list-item class="item-list" [routerLink]="link.url">
             <i matListItemIcon class="fa-solid" [ngClass]="link.icon"></i>
             <div matListItemTitle>{{link.title}}</div>
         </a>
@@ -11,7 +11,7 @@
     <mat-divider></mat-divider>
     <div mat-subheader>Recordatorios</div>
     @for (note of notes; track note) {
-    <mat-list-item>
+    <mat-list-item class="item-list">
         <mat-icon matListItemIcon>note</mat-icon>
         <div matListItemTitle>{{note.name}}</div>
         <div matListItemLine>{{note.updated | date}}</div>
