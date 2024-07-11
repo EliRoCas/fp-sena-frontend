@@ -17,6 +17,7 @@ import { SupportComponent } from './dashboard/support/support.component';
 import { OurServicesComponent } from './dashboard/our-services/our-services.component';
 import { FaqComponent } from './dashboard/faq/faq.component';
 import { PortalComponent } from './portal/portal.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent, pathMatch: 'full' },
@@ -30,14 +31,15 @@ export const routes: Routes = [
         path: 'portal', component: PortalComponent,
         children: [
 
-            { path: 'users', component: UsersAdminComponent },
-            { path: 'users', component: UserProfileComponent },
+            { path: 'user-admin', component: UsersAdminComponent },
+            { path: 'user-profile', component: UserProfileComponent },
             { path: 'sign-up', component: SignUpComponent },
             { path: 'management', component: ManagementComponent },
             { path: 'report', component: ReportComponent },
             { path: 'incomes', component: IncomesComponent },
             { path: 'expenses', component: ExpensesComponent },
             { path: 'stock', component: StockComponent },
+            { path: 'alert', component: NotificationsComponent },
         ]
 
     },
