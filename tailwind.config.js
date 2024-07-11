@@ -12,7 +12,13 @@ module.exports = {
       fontFamily:{
         'titles': ['Cormorant'],
         'body': ['Wittgenstein'],
+      },
+      backgroundImage: {
+        'white-rose': "url('/img/white-rose.jpg')",
+        'red-rose': "url('/img/red-rose.jpg')",
+        'roses': "url('/img/bouquet.jpg')",
       }
+
     },
   },
   plugins: [],

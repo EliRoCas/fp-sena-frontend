@@ -1,44 +1,31 @@
+<!-- https://codesandbox.io/s/github/rcbyr/keen-slider-sandboxes/tree/v6/navigation-controls/arrows-and-dots/angular?file=/src/app/app.component.css:0-1943 -->
+
 <div class="navigation-wrapper">
-    <div class="keen-slider keen-slider--vertical" #sliderRef>
-      <div class="keen-slider__slide number-slide1">1</div>
-      <div class="keen-slider__slide number-slide2">2</div>
-      <div class="keen-slider__slide number-slide3">3</div>
-      <div class="keen-slider__slide number-slide4">4</div>
-      <div class="keen-slider__slide number-slide5">5</div>
-      <div class="keen-slider__slide number-slide6">6</div>
+    <div class="keen-slider keen-slider--vertical font-['Cormorant'] text-2xl bg-img-text" #sliderRef>
+        <div class="keen-slider__slide number-slide1 bg-roses bg-no-repeat bg-center"><span>Cultivando finanzas, una
+                rosa a la vez</span></div>
+        <div class="keen-slider__slide number-slide2 bg-white-rose bg-no-repeat bg-center"><span>Elegancia y Pureza en
+                Cada Pétalo: Descubre la Rosa Mondial</span></div>
+        <div class="keen-slider__slide number-slide3 bg-red-rose bg-no-repeat bg-center"><span>Pasión y Amor Eterno:
+                Vive la Magia de la Rosa Roja</span></div>
+
     </div>
-    <svg
-      [ngClass]="
+
+    <svg [ngClass]="
         'arrow arrow--left ' + (currentSlide === 0 ? 'arrow--disabled' : '')
-      "
-      (click)="slider?.prev()"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
-      />
+      " (click)="slider?.prev()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
     </svg>
-    <svg
-      *ngIf="slider"
-      [ngClass]="
+    <svg *ngIf="slider" [ngClass]="
         'arrow arrow--right ' +
         (slider.track.details.slides.length - 1 === currentSlide
           ? 'arrow--disabled'
           : '')
-      "
-      (click)="slider.next()"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-    >
-      <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+      " (click)="slider.next()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
     </svg>
-  </div>
-  <div class="dots">
-    <button
-      (click)="slider?.moveToIdx(i)"
-      *ngFor="let slide of dotHelper; let i = index"
-      [class]="'dot ' + (i === currentSlide ? 'active' : '')"
-    ></button>
-  </div>
-  
+</div>
+<div class="dots">
+    <button (click)="slider?.moveToIdx(i)" *ngFor="let slide of dotHelper; let i = index"
+        [class]="'dot ' + (i === currentSlide ? 'active' : '')"></button>
+</div>
