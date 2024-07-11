@@ -3,11 +3,10 @@
 <div class="navigation-wrapper">
     <div class="keen-slider keen-slider--vertical font-['Cormorant'] text-2xl bg-img-text" #sliderRef>
         @for (slide of slides; track slider) {
-        <div class="keen-slider__slide" [ngClass]="slide.class" >
+        <div class="keen-slider__slide" [ngClass]="slide.class">
             <span>{{slide.text}}</span>
         </div>
         }
-
     </div>
 
     <svg [ngClass]="
