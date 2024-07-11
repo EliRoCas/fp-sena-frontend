@@ -1,15 +1,17 @@
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="over">
-
+<mat-drawer-container class="sidenav-container" autosize>
+    <mat-drawer #drawer class="sidenav-links" mode="over">
         <app-list></app-list>
     </mat-drawer>
 
-    <div class="example-sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()">
-            Toggle sidenav
-        </button>
+    <div class="sidenav-toggle">
+        <span>
 
-        <router-outlet></router-outlet>ks
+            <button type="button" mat-icon-button class="toggle-button" (click)="drawer.toggle()">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </span>
+
+        <router-outlet></router-outlet>
     </div>
 
 </mat-drawer-container>
