@@ -10,7 +10,7 @@
 .bg-img-text {
     >div {
         >span {
-            @apply bg-clip-content p-3 bg-gray-300 border-4 border-gray-300 ;
+            @apply bg-clip-content p-3 bg-gray-300 border-4 border-gray-300 bg-no-repeat bg-center ;
         }
     }
 }

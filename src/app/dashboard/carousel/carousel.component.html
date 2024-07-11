@@ -2,12 +2,11 @@
 
 <div class="navigation-wrapper">
     <div class="keen-slider keen-slider--vertical font-['Cormorant'] text-2xl bg-img-text" #sliderRef>
-        <div class="keen-slider__slide number-slide1 bg-roses bg-no-repeat bg-center"><span>Cultivando finanzas, una
-                rosa a la vez</span></div>
-        <div class="keen-slider__slide number-slide2 bg-white-rose bg-no-repeat bg-center"><span>Elegancia y Pureza en
-                Cada Pétalo: Descubre la Rosa Mondial</span></div>
-        <div class="keen-slider__slide number-slide3 bg-red-rose bg-no-repeat bg-center"><span>Pasión y Amor Eterno:
-                Vive la Magia de la Rosa Roja</span></div>
+        @for (slide of slides; track slider) {
+        <div class="keen-slider__slide" [ngClass]="slide.class" >
+            <span>{{slide.text}}</span>
+        </div>
+        }
 
     </div>
 

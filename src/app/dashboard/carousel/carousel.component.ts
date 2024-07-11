@@ -33,4 +33,19 @@ export class CarouselComponent {
   ngOnDestroy() {
     if (this.slider) this.slider.destroy()
   }
+
+  slides = [
+    {
+      class: "bg-roses number-slide bg-no-repeat bg-center",
+      text: "Estamos Cultivando Finanzas Una Rosa a la Vez.",
+    },
+    {
+      class: "bg-white-rose number-slide bg-no-repeat bg-center",
+      text: "Con la Elegancia y Pureza de La Rosa Mundial, Tus Finanzas a Otro Nivel.",
+    },
+    {
+      class: "bg-red-rose number-slide bg-no-repeat bg-center",
+      text: "Vive la Magia y Pasión de la Rosa Roja en Cada Transacción.",
+    },
+  ]
 }
