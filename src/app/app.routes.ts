@@ -15,12 +15,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutUsComponent } from './dashboard/about-us/about-us.component';
 import { SupportComponent } from './dashboard/support/support.component';
 import { OurServicesComponent } from './dashboard/our-services/our-services.component';
+import { FaqComponent } from './dashboard/faq/faq.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent, pathMatch: 'full' },
     { path: 'about-us', component: AboutUsComponent },
     { path: 'services', component: OurServicesComponent },
     { path: 'support', component: SupportComponent },
+    { path: 'faq', component: FaqComponent },
     { path: 'login', component: LoginComponent },
     { path: 'users', component: UsersAdminComponent },
     { path: 'users', component: UserProfileComponent },
