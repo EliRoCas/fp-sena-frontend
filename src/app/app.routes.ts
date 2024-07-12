@@ -41,6 +41,7 @@ export const routes: Routes = [
             { path: 'expenses', component: ExpensesComponent },
             { path: 'stock', component: StockComponent },
             { path: 'product', component: ProductComponent },
+            { path: 'product/:id', component: ProductComponent },
             { path: 'alert', component: NotificationsComponent },
         ]
 

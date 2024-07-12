@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
+import { RouterLink } from '@angular/router';
 
 export interface Products {
   productID: number;
@@ -24,7 +25,7 @@ const ELEMENT_DATA: Products[] = [
 @Component({
   selector: 'app-stock',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, RouterLink],
   templateUrl: './stock.component.html',
   styleUrl: './stock.component.scss'
 })
