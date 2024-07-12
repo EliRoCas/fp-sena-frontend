@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-user-form',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './user-form.component.scss'
 })
 export class UserFormComponent {
-
+  title = input('Registrar Usuario')
 }

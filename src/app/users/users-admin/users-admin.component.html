@@ -39,11 +39,11 @@
     <!-- Buttons Column -->
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Acciones</th>
-        <td mat-cell *matCellDef>
+        <td mat-cell *matCellDef="let element">
             <a routerLink="/portal/register-user" routerLinkActive="router-link-active">
                 <button class="text-green-700 px-2"><i class="fa-solid fa-user-plus"></i></button>
             </a>
-            <a routerLink="/portal/register-user" routerLinkActive="router-link-active">
+            <a  [routerLink]="['/portal/register-user', element.idNumber]" routerLinkActive="router-link-active">
                 <button class="text-blue-700 px-2 "><i class="fa-solid fa-user-pen"></i></button>
             </a>
             <a routerLink="/routePath" routerLinkActive="router-link-active">
