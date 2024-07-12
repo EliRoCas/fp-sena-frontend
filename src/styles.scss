@@ -73,8 +73,14 @@ main {
     @apply h-full bg-gradient-to-b from-red-300 to-red-600 px-6 py-6 rounded-lg overflow-hidden text-center relative
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 html,
 body,
@@ -89,4 +95,38 @@ app-root {
 router-outlet+* {
     width: 100%;
     height: 100%;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td,
+table th {
+    border: 1px solid #a72222;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+table td {
+    font-family: Wittgenstein;
+}
+
+.mat-mdc-header-cell {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #570f0f !important;
+    color: white;
+    font-family: Cormorant;
+    font-size: 1.2rem;
 }

@@ -29,11 +29,11 @@ export const routes: Routes = [
         path: 'portal', component: PortalComponent,
         children: [
 
+            { path: '', redirectTo: '/portal/report', pathMatch: 'full' },
             { path: 'user-admin', component: UsersAdminComponent },
             { path: 'user-profile', component: UserProfileComponent },
             { path: 'register-user', component: RegisterUserComponent },
             { path: 'management', component: ManagementComponent },
-            { path: '', redirectTo: '/portal/report', pathMatch: 'full' },
             { path: 'report', component: ReportComponent },
             { path: 'incomes', component: IncomesComponent },
             { path: 'expenses', component: ExpensesComponent },
