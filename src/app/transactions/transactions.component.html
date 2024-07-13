@@ -6,34 +6,63 @@
         <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
             <div class="flex flex-col justify-center">
                 <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
-                     Transacción
+                    Transacción
                 </h2>
                 <div class="input-special flex flex-col mb-4">
-                    <label for="description" class="text-sm font-semibold text-gray-700">Nombre</label>
-                    <input type="text" id="description" name="description" placeholder="Nombre del Producto"
-                        aria-label="description">
+                    <label for="transactionName" class="text-sm font-semibold text-gray-700">Movimiento</label>
+                    <input type="text" id="transactionName" name="transactionName" placeholder="Nombre del Movimiento"
+                        aria-label="transactionName">
                 </div>
                 <div class="input-special flex flex-row mb-4 select-id">
-                    <label for="prodcutType" class="text-sm font-semibold text-gray-700">Tipo de Producto</label>
-                    <select name="prodcutType" id="prodcutType" class="input-special py-3" required>
-                        <option value="gas" autofocus>Combustible</option>
-                        <option value="insecticida">Insecticida</option>
-                        <option value="pesticida">Pesticida</option>
-                        <option value="herbicida">Herbicida</option>
-                        <option value="fungicida">Fungicida</option>
-                        <option value="fertilizante">Fertilizante</option>
-                        <option value="abono">Abono</option>
-                        <option value="mallas">Mallas</option>
-                        <option value="tabacos">Tabacos</option>
+                    <label for="transactionType" class="text-sm font-semibold text-gray-700">Tipo </label>
+                    <select name="transactionType" id="transactionType" class="input-form p-1 ml-2 mt-1" required>
+                        <option value="income" autofocus>Ingreso</option>
+                        <option value="expense">Egreso</option>
                     </select>
-                    <div class="lg:w-42 md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
-                        <img src="img/spray.png" alt="Typing on laptop" class="grayscale w-1/2 h-auto">
+                    <label for="transactionDate" class="ml-2 text-sm font-semibold text-gray-700">Fecha</label>
+                    <input type="date" id="transactionDate" name="transactionDate" placeholder="Nombre del Movimiento"
+                        aria-label="transactionName" class="ml-2">
+                </div>
+
+                <div class="flex flex-row mb-4 select-id">
+                    <div class="input-special flex flex-col mb-4">
+                        <label for="transactionAmount" class="text-sm font-semibold text-gray-700">Valor</label>
+                        <input type="price" id="transactionAmount" name="transactionAmount" placeholder="Monto/Valor"
+                            aria-label="transactionAmount">
+                    </div>
+                    <div class="input-special flex flex-col mb-4">
+                        <label for="transactionRoseExport" class="text-sm font-semibold text-gray-700">¿De
+                            exportación?</label>
+                        <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
+                            aria-label="transactionRoseExport">
+                            <label for="optionYes" > Yes</label>
+                        <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
+                            aria-label="transactionRoseExport">
+                            <label for="optionNo">No</label>
+                    </div>
+                    <div class="input-special flex flex-col mb-4">
+                        <label for="transactionRoseType" class="text-sm font-semibold text-gray-700">Tipo de
+                            Rosa</label>
+                        <select id="transactionRoseType" name="transactionRoseType" placeholder="ej. Rosa Mondial"
+                            aria-label="transactionRoseType" class="input-form p-1 ml-2 mt-1">
+                            <option value="mondialRose">Rosa Mondial</option>
+                            <option value="redRose"> Rosa Roja</option>
+                        </select>
                     </div>
                 </div>
                 <div class="input-special flex flex-col mb-4">
-                    <label for="description" class="text-sm font-semibold text-gray-700">Descripción</label>
-                    <textarea id="description" name="description" class="input-form h-32 resize-none"></textarea>
+                    <label for="transactionCustomer" class="text-sm font-semibold text-gray-700">Comprador</label>
+                    <input type="text" id="transactionCustomer" name="transactionCustomer"
+                        placeholder="ej. Infinity SAS" aria-label="transactionCustomer">
                 </div>
+                <div class="input-special flex flex-col mb-4">
+                    <label for="transactionDescription" class="text-sm font-semibold text-gray-700">Descripción del
+                        Movimiento</label>
+                    <textarea id="transactionDescription" name="transactionDescription"
+                        placeholder="Breve descripción del movimiento" aria-label="transactionDescription"
+                        class="input-form h-32 resize-none"></textarea>
+                </div>
+
 
             </div>
         </div>
