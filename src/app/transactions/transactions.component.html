@@ -1,0 +1,42 @@
+<section class="text-gray-600 body-font ">
+    <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
+        <div class="hidden md:block lg:w-68 lg:h- md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
+            <img src="img/bank.png" alt="Typing on laptop" class="grayscale">
+        </div>
+        <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
+            <div class="flex flex-col justify-center">
+                <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
+                     Transacción
+                </h2>
+                <div class="input-special flex flex-col mb-4">
+                    <label for="description" class="text-sm font-semibold text-gray-700">Nombre</label>
+                    <input type="text" id="description" name="description" placeholder="Nombre del Producto"
+                        aria-label="description">
+                </div>
+                <div class="input-special flex flex-row mb-4 select-id">
+                    <label for="prodcutType" class="text-sm font-semibold text-gray-700">Tipo de Producto</label>
+                    <select name="prodcutType" id="prodcutType" class="input-special py-3" required>
+                        <option value="gas" autofocus>Combustible</option>
+                        <option value="insecticida">Insecticida</option>
+                        <option value="pesticida">Pesticida</option>
+                        <option value="herbicida">Herbicida</option>
+                        <option value="fungicida">Fungicida</option>
+                        <option value="fertilizante">Fertilizante</option>
+                        <option value="abono">Abono</option>
+                        <option value="mallas">Mallas</option>
+                        <option value="tabacos">Tabacos</option>
+                    </select>
+                    <div class="lg:w-42 md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
+                        <img src="img/spray.png" alt="Typing on laptop" class="grayscale w-1/2 h-auto">
+                    </div>
+                </div>
+                <div class="input-special flex flex-col mb-4">
+                    <label for="description" class="text-sm font-semibold text-gray-700">Descripción</label>
+                    <textarea id="description" name="description" class="input-form h-32 resize-none"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -17,6 +17,7 @@ import { PortalComponent } from './portal/portal.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { RegisterUserComponent } from './users/register-user/register-user.component';
 import { ProductComponent } from './stock/product/product.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent, pathMatch: 'full' },
@@ -37,8 +38,11 @@ export const routes: Routes = [
             { path: 'register-user/:id', component: RegisterUserComponent },
             { path: 'management', component: ManagementComponent },
             { path: 'report', component: ReportComponent },
+            { path: 'transaction', component: TransactionsComponent },
             { path: 'incomes', component: IncomesComponent },
+            { path: 'income/:id', component: TransactionsComponent },
             { path: 'expenses', component: ExpensesComponent },
+            { path: 'expense/:id', component: TransactionsComponent },
             { path: 'stock', component: StockComponent },
             { path: 'product', component: ProductComponent },
             { path: 'product/:id', component: ProductComponent },
