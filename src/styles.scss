@@ -45,7 +45,7 @@ main {
     @apply flex items-center mb-4 w-full;
 
     >div {
-        @apply bg-gray-200 p-2 rounded-l border border-gray-300;
+        @apply bg-white p-2 rounded border border-gray-300;
 
         >i {
             @apply text-black w-full;
@@ -53,7 +53,7 @@ main {
     }
 
     >input {
-        @apply w-full h-11 bg-white rounded-r border-t border-r border-b border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-sm outline-none text-gray-700 p-3 py-2 leading-8 transition-colors duration-200 ease-in-out;
+        @apply w-full h-11 bg-white rounded border-t border-l border-b border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-sm outline-none text-gray-700 p-3 py-2 leading-8 transition-colors duration-200 ease-in-out;
     }
 }
 

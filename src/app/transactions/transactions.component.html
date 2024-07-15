@@ -31,14 +31,16 @@
                             aria-label="transactionAmount">
                     </div>
                     <div class="input-special flex flex-col mb-4">
-                        <label for="transactionRoseExport" class="text-sm font-semibold text-gray-700">¿De
-                            exportación?</label>
-                        <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
-                            aria-label="transactionRoseExport">
-                            <label for="optionYes" > Yes</label>
-                        <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
-                            aria-label="transactionRoseExport">
+                        <label for="transactionRoseExport" class="text-sm font-semibold text-gray-700">
+                            ¿De exportación?</label>
+                        <div class="flex flex-row gap-2 bg-white">
+                            <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
+                                aria-label="transactionRoseExport">
+                            <label for="optionYes"> Yes</label>
+                            <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
+                                aria-label="transactionRoseExport">
                             <label for="optionNo">No</label>
+                        </div>
                     </div>
                     <div class="input-special flex flex-col mb-4">
                         <label for="transactionRoseType" class="text-sm font-semibold text-gray-700">Tipo de
@@ -47,6 +49,7 @@
                             aria-label="transactionRoseType" class="input-form p-1 ml-2 mt-1">
                             <option value="mondialRose">Rosa Mondial</option>
                             <option value="redRose"> Rosa Roja</option>
+                            <option value="redRose"> No aplica</option>
                         </select>
                     </div>
                 </div>
@@ -62,7 +65,9 @@
                         placeholder="Breve descripción del movimiento" aria-label="transactionDescription"
                         class="input-form h-32 resize-none"></textarea>
                 </div>
-
+                <button class="primary-button">
+                    Continuar
+                </button>
 
             </div>
         </div>
