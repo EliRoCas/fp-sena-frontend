@@ -20,35 +20,33 @@ import { ProductComponent } from './stock/product/product.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 
 export const routes: Routes = [
-    { path: '', component: DashboardComponent, pathMatch: 'full' },
-    { path: 'about-us', component: AboutUsComponent },
-    { path: 'services', component: OurServicesComponent },
-    { path: 'support', component: SupportComponent },
-    { path: 'faq', component: FaqComponent },
-    { path: 'login', component: LoginComponent },
+  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'services', component: OurServicesComponent },
+  { path: 'support', component: SupportComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'login', component: LoginComponent },
 
-    {
-        path: 'portal', component: PortalComponent,
-        children: [
-
-            { path: '', redirectTo: '/portal/report', pathMatch: 'full' },
-            { path: 'user-admin', component: UsersAdminComponent },
-            { path: 'user-profile', component: UserProfileComponent },
-            { path: 'register-user', component: RegisterUserComponent },
-            { path: 'register-user/:id', component: RegisterUserComponent },
-            { path: 'management', component: ManagementComponent },
-            { path: 'report', component: ReportComponent },
-            { path: 'transaction', component: TransactionsComponent },
-            { path: 'incomes', component: IncomesComponent },
-            { path: 'income/:id', component: TransactionsComponent },
-            { path: 'expenses', component: ExpensesComponent },
-            { path: 'expense/:id', component: TransactionsComponent },
-            { path: 'stock', component: StockComponent },
-            { path: 'product', component: ProductComponent },
-            { path: 'product/:id', component: ProductComponent },
-            { path: 'alert', component: NotificationsComponent },
-        ]
-
-    },
-
+  {
+    path: 'portal',
+    component: PortalComponent,
+    children: [
+      { path: '', redirectTo: '/portal/report', pathMatch: 'full' },
+      { path: 'user-admin', component: UsersAdminComponent },
+      { path: 'user-profile', component: UserProfileComponent },
+      { path: 'register-user', component: RegisterUserComponent },
+      { path: 'edit-user/:id', component: RegisterUserComponent },
+      { path: 'management', component: ManagementComponent },
+      { path: 'report', component: ReportComponent },
+      { path: 'transactions', component: TransactionsComponent },
+      { path: 'incomes', component: IncomesComponent },
+      { path: 'income/:id', component: TransactionsComponent },
+      { path: 'expenses', component: ExpensesComponent },
+      { path: 'expense/:id', component: TransactionsComponent },
+      { path: 'stock', component: StockComponent },
+      { path: 'register-product', component: ProductComponent },
+      { path: 'edit-product/:id', component: ProductComponent },
+      { path: 'alert', component: NotificationsComponent },
+    ],
+  },
 ];
