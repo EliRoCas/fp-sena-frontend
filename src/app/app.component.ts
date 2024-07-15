@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LayoutComponent} from '@control-ea/layout'
+import { LayoutComponent} from '@ea-controls/layout'
 
 @Component({
   selector: 'app-root',
