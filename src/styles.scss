@@ -65,6 +65,10 @@ main {
     @apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 font-['Cormorant']
 }
 
+.font-secundary {
+    @apply sm:text-lg font-light mb-2 font-['Wittgenstein']
+}
+
 .label-style {
     @apply leading-7 text-sm text-gray-950
 }
