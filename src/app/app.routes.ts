@@ -19,6 +19,7 @@ import { RegisterUserComponent } from './users/register-user/register-user.compo
 import { ProductComponent } from './stock/product/product.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { BalanceComponent } from './report/balance/balance.component';
+import { NetIncomeComponent } from './report/net-income/net-income.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' },
@@ -39,6 +40,8 @@ export const routes: Routes = [
       { path: 'edit-user/:id', component: RegisterUserComponent },
       { path: 'management', component: ManagementComponent },
       { path: 'report', component: ReportComponent },
+      { path: 'net-income', component: NetIncomeComponent },
+      { path: 'balance', component: BalanceComponent },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'incomes', component: IncomesComponent },
       { path: 'register-income', component: TransactionsComponent },
@@ -49,7 +52,6 @@ export const routes: Routes = [
       { path: 'stock', component: StockComponent },
       { path: 'register-product', component: ProductComponent },
       { path: 'edit-product/:id', component: ProductComponent },
-      { path: 'balance', component: BalanceComponent },
       { path: 'alert', component: NotificationsComponent },
     ],
   },

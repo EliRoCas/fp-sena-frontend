@@ -7,12 +7,12 @@ import {
   ApexDataLabels,
   ApexPlotOptions,
   ApexStroke,
-  ApexFill,
   ApexLegend,
   NgApexchartsModule,
 } from 'ng-apexcharts';
 
-export type ChartOptions = {
+
+export type TransactionsOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   labels: string[];
@@ -21,7 +21,7 @@ export type ChartOptions = {
   stroke: ApexStroke;
   plotOptions: ApexPlotOptions;
   legend: ApexLegend;
-  fill: ApexFill;
+
 };
 
 @Component({
@@ -32,17 +32,17 @@ export type ChartOptions = {
   styleUrl: './balance.component.scss',
 })
 export class BalanceComponent implements OnInit {
-  public chartOptions: ChartOptions;
+  public transactionsOptions: TransactionsOptions;
 
   constructor() {
-    this.chartOptions = {
-      series: [60, 40], // Ejemplo de datos de ingresos y egresos
+    this.transactionsOptions = {
+      series: [60, 40],
       chart: {
         type: 'pie',
         height: 420,
       },
       labels: ['Ingresos', 'Egresos'],
-      colors: ['#4CAF50', '#F44336'],
+      colors: ['#006400', '#8B0000'],
       dataLabels: {
         enabled: true,
         style: {
@@ -75,39 +75,27 @@ export class BalanceComponent implements OnInit {
                 show: true,
                 fontSize: '22px',
                 fontWeight: 'bold',
-                color: '#4CAF50',
+                color: '#ffffff',
               },
               value: {
                 show: true,
                 fontSize: '16px',
                 fontWeight: 'bold',
-                color: '#F44336',
+                color: '#ffffff',
               },
             },
           },
         },
       },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shade: 'dark',
-          type: 'vertical',
-          shadeIntensity: 0.5,
-          gradientToColors: ['#66BB6A', '#EF5350'], // Añadir los colores de gradiente
-          inverseColors: false,
-          opacityFrom: 0.85,
-          opacityTo: 0.85,
-          stops: [0, 90, 100],
-        },
-      },
+
       legend: {
         position: 'bottom',
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '16px',
+        fontFamily: 'Cormorant',
+        fontSize: '25rem',
         fontWeight: 'bold',
       },
     };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
