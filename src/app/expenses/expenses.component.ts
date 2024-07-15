@@ -4,59 +4,53 @@ import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 export interface expenseElement {
-  expenseID: number;
+  expenseId: number;
   expenseName: string;
   expenseDate: Date;
   expenseAmount: number;
   roseType: string;
-  roseCategory: boolean;
   supplier: string;
 }
 
 const ELEMENT_DATA: expenseElement[] = [
   {
-    expenseID: 1,
+    expenseId: 1,
     expenseName: 'Venta Modial',
     expenseDate: new Date('05/06/2015'),
     expenseAmount: 2500520,
     roseType: 'Mondual',
-    roseCategory: true,
     supplier: 'Paloquemado',
   },
   {
-    expenseID: 4,
+    expenseId: 4,
     expenseName: 'Venta Modial',
     expenseDate: new Date('05/06/2015'),
     expenseAmount: 2500520,
     roseType: 'Mondual',
-    roseCategory: true,
     supplier: 'Paloquemado',
   },
   {
-    expenseID: 3,
+    expenseId: 3,
     expenseName: 'Venta Modial',
     expenseDate: new Date('05/06/2015'),
     expenseAmount: 2500520,
     roseType: 'Mondual',
-    roseCategory: true,
     supplier: 'Paloquemado',
   },
   {
-    expenseID: 2,
+    expenseId: 2,
     expenseName: 'Venta Modial',
     expenseDate: new Date('05/06/2015'),
     expenseAmount: 2500520,
     roseType: 'Mondual',
-    roseCategory: true,
     supplier: 'Paloquemado',
   },
   {
-    expenseID: 5,
+    expenseId: 5,
     expenseName: 'Venta Modial',
     expenseDate: new Date('05/06/2015'),
     expenseAmount: 2500520,
     roseType: 'Mondual',
-    roseCategory: true,
     supplier: 'Paloquemado',
   },
 ];
@@ -70,13 +64,13 @@ const ELEMENT_DATA: expenseElement[] = [
 })
 export class ExpensesComponent {
   displayedColumns: string[] = [
-    'expenseID',
+    'expenseId',
     'expenseName',
     'expenseDate',
     'expenseAmount',
     'roseType',
-    'roseCategory',
     'supplier',
-    'expenseActions'];
+    'expenseActions',
+  ];
   dataSource = ELEMENT_DATA;
 }

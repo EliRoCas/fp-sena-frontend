@@ -8,12 +8,12 @@
                 <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
                     Transacción
                 </h2>
-                <div class="input-special flex flex-col mb-4">
+                <div class="input-special flex flex-col mb-4 font-secundary">
                     <label for="transactionName" class="text-sm font-semibold text-gray-700">Movimiento</label>
                     <input type="text" id="transactionName" name="transactionName" placeholder="Nombre del Movimiento"
                         aria-label="transactionName">
                 </div>
-                <div class="input-special flex flex-row mb-4 select-id">
+                <div class="input-special flex flex-row mb-4 select-id font-secundary">
                     <label for="transactionType" class="text-sm font-semibold text-gray-700">Tipo </label>
                     <select name="transactionType" id="transactionType" class="input-form p-1 ml-2 mt-1" required>
                         <option value="income" autofocus>Ingreso</option>
@@ -24,13 +24,13 @@
                         aria-label="transactionName" class="ml-2">
                 </div>
 
-                <div class="flex flex-row mb-4 select-id">
+                <div class="flex flex-row mb-4 select-id font-secundary">
                     <div class="input-special flex flex-col mb-4">
                         <label for="transactionAmount" class="text-sm font-semibold text-gray-700">Valor</label>
                         <input type="price" id="transactionAmount" name="transactionAmount" placeholder="Monto/Valor"
                             aria-label="transactionAmount">
                     </div>
-                    <div class="input-special flex flex-col mb-4">
+                    <div class="input-special flex flex-col mb-4 font-secundary">
                         <label for="transactionRoseExport" class="text-sm font-semibold text-gray-700">
                             ¿De exportación?</label>
                         <div class="flex flex-row gap-2 bg-white">
@@ -40,27 +40,33 @@
                             <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
                                 aria-label="transactionRoseExport">
                             <label for="optionNo">No</label>
+                            <input type="radio" id="transactionRoseExport" name="transactionRoseExport"
+                                aria-label="transactionRoseExport">
+                            <label for="optionNo">No Aplica</label>
                         </div>
                     </div>
-                    <div class="input-special flex flex-col mb-4">
-                        <label for="transactionRoseType" class="text-sm font-semibold text-gray-700">Tipo de
-                            Rosa</label>
+                    <div class="input-special flex flex-col mb-4 font-secundary">
+                        <label for="transactionRoseType" class="text-sm font-semibold text-gray-700">
+                            Objeto
+                        </label>
                         <select id="transactionRoseType" name="transactionRoseType" placeholder="ej. Rosa Mondial"
-                            aria-label="transactionRoseType" class="input-form p-1 ml-2 mt-1">
-                            <option value="mondialRose">Rosa Mondial</option>
-                            <option value="redRose"> Rosa Roja</option>
-                            <option value="redRose"> No aplica</option>
+                            aria-label="transactionRoseType" class="input-form text-sm p-1 ml-2 mt-1">
+                            @for (type of types; track type){
+                            <option value="object">{{type}}</option>
+                            }
+
                         </select>
                     </div>
                 </div>
-                <div class="input-special flex flex-col mb-4">
-                    <label for="transactionCustomer" class="text-sm font-semibold text-gray-700">Comprador</label>
+                <div class="input-special flex flex-col mb-4 font-secundary">
+                    <label for="transactionCustomer" class="text-sm font-semibold text-gray-700">Comprador o
+                        Proveedor</label>
                     <input type="text" id="transactionCustomer" name="transactionCustomer"
                         placeholder="ej. Infinity SAS" aria-label="transactionCustomer">
                 </div>
-                <div class="input-special flex flex-col mb-4">
-                    <label for="transactionDescription" class="text-sm font-semibold text-gray-700">Descripción del
-                        Movimiento</label>
+                <div class="input-special flex flex-col mb-4 font-secundary">
+                    <label for="transactionDescription" class="text-sm font-semibold text-gray-700">
+                        Descripción del Movimiento</label>
                     <textarea id="transactionDescription" name="transactionDescription"
                         placeholder="Breve descripción del movimiento" aria-label="transactionDescription"
                         class="input-form h-32 resize-none"></textarea>
