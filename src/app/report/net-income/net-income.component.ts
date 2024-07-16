@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { Component, OnInit, viewChild } from '@angular/core';
+import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -39,14 +40,14 @@ export type netIncomeOptions = {
 @Component({
   selector: 'app-net-income',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule, MatTableModule],
+  imports: [CommonModule, NgApexchartsModule, MatTableModule, MatButtonModule],
   templateUrl: './net-income.component.html',
   styleUrl: './net-income.component.scss'
 })
 export class NetIncomeComponent implements OnInit {
 
   displayedColumns: string[] = ['period', 'incomes', 'expenses', 'netIncome'];
-  dataSource = Element_Data;
+  dataSource = [...Element_Data];
 
   public netIncomeOptions: netIncomeOptions;
 
