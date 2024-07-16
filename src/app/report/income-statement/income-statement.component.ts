@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-income-statement',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: './income-statement.component.html',
   styleUrl: './income-statement.component.scss'
 })
 export class IncomeStatementComponent {
+
   incomeStatement = {
     totalIncome: 100000,
     cogs: 40000,

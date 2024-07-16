@@ -1,0 +1,150 @@
+<!-- src/app/income-statement/income-statement.component.html -->
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-2xl font-bold mb-4 font-primary">Reporte de Estados de Resultados</h2>
+
+    <table class="min-w-full bg-white">
+        <thead>
+            <tr>
+                <th class="table-th text-left">Descripción</th>
+                <th class="table-th text-right">Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Se utiliza la interpolación para traer los valores del objeto incomeStatement -->
+            <tr>
+                <td class="table-td">Ingresos Totales</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.totalIncome }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td">Costos de los Bienes Vendidos (COGS)</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.cogs }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ganancia Bruta</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ grossProfit }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td" colspan="2">Gastos Operativos</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Salarios</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.operatingExpenses.salaries}}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Alquiler</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.operatingExpenses.rent }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Suministros</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.operatingExpenses.supplies}}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Publicidad</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.operatingExpenses.advertising }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Otros</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.operatingExpenses.other }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Total de Gastos Operativos</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ totalOperatingExpenses }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ingreso Operativo (EBIT)</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ operatingIncome }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td" colspan="2">Otros Gastos</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Intereses</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.otherExpenses.interest }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Depreciación</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.otherExpenses.depreciation }}
+                    /td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Amortización</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.otherExpenses.amortization }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Total de Otros Gastos</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ totalOtherExpenses }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td" colspan="2">Otros Ingresos</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Ingresos por inversiones</td>
+                <td class="table-td text-right">
+                    ${{incomeStatement.otherIncomes.investmentIncome }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Ganancias no operativas</td>
+                <td class="table-td text-right">
+                    ${{incomeStatement.otherIncomes.nonOperatingGains }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Total de Otros Ingresos</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ totalOtherIncomes }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ingreso Antes de Impuestos</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ incomeBeforeTaxes }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td">Impuestos</td>
+                <td class="table-td text-right">
+                    ${{ incomeStatement.taxes }}
+                </td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ingreso Neto</td>
+                <td class="table-td text-right font-semibold">
+                    ${{ netIncome }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="flex justify-end">
+        <button class="secundary-button">
+            Imprimir
+        </button>
+    </div>
+</div>
