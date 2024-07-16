@@ -1,1 +1,102 @@
-<p>operating-budget works!</p>
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-2xl font-bold mb-4 font-primary">Presupuesto de Operación</h2>
+
+    <table class="min-w-full divide-y divide-gray-200">
+        <tbody>
+            <tr>
+                <td class="table-td font-semibold">Ingresos Totales</td>
+                <td class="table-td text-right">${{ operatingBudget.totalIncome }}</td>
+            </tr>
+            <tr>
+                <td class="table-td">Costos de los Bienes Vendidos (COGS)</td>
+                <td class="table-td text-right">${{ operatingBudget.cogs }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ganancia Bruta</td>
+                <td class="table-td text-right">${{ grossProfit }}</td>
+            </tr>
+            <tr>
+                <td class="table-td" colspan="2">Gastos Operativos</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Salarios</td>
+                <td class="table-td text-right">${{ operatingBudget.operatingExpenses.salaries }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Alquiler</td>
+                <td class="table-td text-right">${{ operatingBudget.operatingExpenses.rent }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Suministros</td>
+                <td class="table-td text-right">${{ operatingBudget.operatingExpenses.supplies }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Publicidad</td>
+                <td class="table-td text-right">${{ operatingBudget.operatingExpenses.advertising }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Otros</td>
+                <td class="table-td text-right">${{ operatingBudget.operatingExpenses.other }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Total de Gastos Operativos</td>
+                <td class="table-td text-right font-semibold">${{ totalOperatingExpenses }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ingreso Operativo (EBIT)</td>
+                <td class="table-td text-right font-semibold">${{ operatingIncome }}</td>
+            </tr>
+            <tr>
+                <td class="table-td" colspan="2">Otros Gastos</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Intereses</td>
+                <td class="table-td text-right">${{ operatingBudget.otherExpenses.interest }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Depreciación</td>
+                <td class="table-td text-right">${{ operatingBudget.otherExpenses.depreciation }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Amortización</td>
+                <td class="table-td text-right">${{ operatingBudget.otherExpenses.amortization }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Total de Otros Gastos</td>
+                <td class="table-td text-right font-semibold">${{ totalOtherExpenses }}</td>
+            </tr>
+            <tr>
+                <td class="table-td" colspan="2">Otros Ingresos</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Ingresos por inversiones</td>
+                <td class="table-td text-right">${{ operatingBudget.otherIncomes.investmentIncome }}</td>
+            </tr>
+            <tr>
+                <td class="table-td pl-8">Ganancias no operativas</td>
+                <td class="table-td text-right">${{ operatingBudget.otherIncomes.nonOperatingGains }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Total de Otros Ingresos</td>
+                <td class="table-td text-right font-semibold">${{ totalOtherIncomes }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ingreso Antes de Impuestos</td>
+                <td class="table-td text-right font-semibold">${{ incomeBeforeTaxes }}</td>
+            </tr>
+            <tr>
+                <td class="table-td">Impuestos</td>
+                <td class="table-td text-right">${{ operatingBudget.taxes }}</td>
+            </tr>
+            <tr>
+                <td class="table-td font-semibold">Ingreso Neto</td>
+                <td class="table-td text-right font-semibold">${{ netIncome }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="flex justify-end">
+        <button class="secundary-button">
+            Imprimir
+        </button>
+    </div>
+</div>
