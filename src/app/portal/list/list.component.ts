@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 import { RouterLink } from '@angular/router';
 
 export interface Section1 {
@@ -18,11 +19,17 @@ export interface Section2 {
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, MatListModule, MatIconModule, MatDividerModule, MatIconModule, DatePipe, CommonModule],
+  imports: [RouterLink, MatListModule, MatIconModule, MatDividerModule, MatIconModule, MatBadgeModule, DatePipe, CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent {
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
   links: Section1[] = [
     {
       url: '/portal/user-profile',
@@ -34,11 +41,6 @@ export class ListComponent {
       title: "Administra Usuarios",
       icon: "fa-users-gear"
 
-    },
-    {
-      url: '/portal/alert',
-      title: 'Notificaciones',
-      icon: "fa-bell"
     },
   ];
   notes: Section2[] = [

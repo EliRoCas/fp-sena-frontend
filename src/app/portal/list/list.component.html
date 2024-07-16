@@ -8,6 +8,15 @@
         </a>
     </mat-nav-list>
     }
+
+    <div matBadge="4" matBadgeSize="large" class="demo-section">
+        <mat-nav-list>
+            <a mat-list-item class="item-list" routerLink='/portal/alert'>
+                <i matListItemIcon class="fa-solid fa-bell"></i>
+                <div matListItemTitle>Notificaciones</div>
+            </a>
+        </mat-nav-list>
+    </div>
     <mat-divider></mat-divider>
     <div mat-subheader>Recordatorios</div>
     @for (note of notes; track note) {
