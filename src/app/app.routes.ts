@@ -3,7 +3,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './users/login/login.component';
 import { UsersAdminComponent } from './users/users-admin/users-admin.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
-import { ManagementComponent } from './management/management.component';
 import { ReportComponent } from './report/report.component';
 import { IncomesComponent } from './incomes/incomes.component';
 import { ExpensesComponent } from './expenses/expenses.component';
@@ -40,7 +39,6 @@ export const routes: Routes = [
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'register-user', component: RegisterUserComponent },
       { path: 'edit-user/:id', component: RegisterUserComponent },
-      { path: 'management', component: ManagementComponent },
       { path: 'report', component: ReportComponent },
       { path: 'balance', component: BalanceComponent },
       { path: 'net-income', component: NetIncomeComponent },
