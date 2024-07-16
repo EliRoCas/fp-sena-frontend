@@ -1,8 +1,8 @@
-<section class="text-gray-600 body-font">
+<section class="text-gray-600 body-font dark:bg-gray-900">
     <div class="container px-5 py-8 mx-auto">
         <div class="flex flex-wrap ">
             @for (strategy of strategicPlaning; track strategy) {
-            <div class="lg:w-1/3 md:w-1/2 p-2 w-full">
+            <div class="lg:w-1/3 md:w-1/2 p-2 w-full rounded-lg">
                 <app-card [src]="strategy.src" [title]="strategy.title" [text]="strategy.text"></app-card>
             </div>
             }
