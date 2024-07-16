@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BalanceComponent } from './balance/balance.component';
 import { RouterLink } from '@angular/router';
 
@@ -9,6 +9,23 @@ import { RouterLink } from '@angular/router';
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
-export class ReportComponent {
+export class ReportComponent implements OnInit {
+  public baseMoney: number;
+  public spentMoney: number;
+  public lastIncomes: string[];
+  public lastExpenses: string[];
 
+  constructor() {
+
+    this.baseMoney = 5000;
+    this.spentMoney = 2500;
+    this.lastIncomes = ['Ingreso 1', 'Ingreso 2', 'Ingreso 3'];
+    this.lastExpenses = ['Gasto 1', 'Gasto 2', 'Gasto 3'];
+  }
+
+
+  ngOnInit(): void {
+
+
+  }
 }

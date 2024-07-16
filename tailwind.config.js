@@ -9,7 +9,7 @@ module.exports = {
         '70': '16rem',
         '76': '19rem',
       },
-      fontFamily:{
+      fontFamily: {
         'titles': ['Cormorant'],
         'body': ['Wittgenstein'],
       },
@@ -17,7 +17,7 @@ module.exports = {
         'white-rose': "url('/img/white-rose.jpg')",
         'red-rose': "url('/img/red-rose.jpg')",
         'roses': "url('/img/bouquet.jpg')",
-      }
+      },
 
     },
   },

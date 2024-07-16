@@ -1,21 +1,68 @@
-<div class="flex flex-col">
-    <app-balance> </app-balance>
-</div>
+<div class="dark:bg-gray-900 w-full">
+    <div class="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-900 flex flex-wrap justify-center items-center ">
+        <h2 class="text-2xl font-bold mb-4 font-primary font-semibold dark:text-white">Resumen Financiero</h2>
+        <div class="flex flex-row">
 
-<div class="container px-2 py-2 mx-auto flex flex-wrap justify-center items-center">
-    <div class="flex flex-row mx-4">
-        <a routerLink='/portal/net-income' routerLinkActive="router-link-active">
-            <button class="secundary-button mx-2">Utilidad Neta </button>
-        </a>
-        <a routerLink="/portal/income-statement">
-            <button class="secundary-button mx-2">Estado de Resultados </button>
-        </a>
-        <a routerLink="/portal/operating-budget">
-            <button class="secundary-button mx-2"> Presupuesto de Operación</button>
-        </a>
-        <a routerLink="/portal/stock">
-            <button class="secundary-button mx-2"> Inventario</button>
-        </a>
+            <div class="flex flex-col">
+                <app-balance> </app-balance>
+            </div>
+
+            <div class="flex flex-row flex-wrap gab-2 justify-center ">
+                <a routerLink="/portal/expenses"
+                    class="font-primary  max-w-sm p-6 m-2 bg-white border-2 border-red-800 rounded-lg shadow hover:bg-red-300 dark:bg-gray-800 dark:border-red-800 dark:hover:bg-gray-700">
+                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dinero Gastado</h3>
+                    <p class="font-secundary text-gray-700 dark:text-gray-400">${{ spentMoney }}</p>
+                    <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Últimos Egresos:
+                    </h4>
+                    @for (lastExpense of lastExpenses; track lastExpense) {
+                    <li class="font-secundary text-gray-700 dark:text-gray-400">${{lastExpense}}</li>
+                    }
+                </a>
+                <a routerLink="/portal/incomes"
+                    class=" font-primary  max-w-sm p-6 m-2 bg-white border-2 border-red-800 rounded-lg shadow hover:bg-red-300 dark:bg-gray-800 dark:border-red-800 dark:hover:bg-gray-700">
+                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dinero de Base</h3>
+                    <p class="font-secundary text-gray-700 dark:text-gray-400">${{ baseMoney }}</p>
+                    <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Últimos Ingresos:
+                    </h4>
+                    @for (lastIncome of lastIncomes; track lastIncome) {
+                    <li class="font-secundary text-gray-700 dark:text-gray-300">${{lastIncome}}</li>
+                    }
+                </a>
+            </div>
+
+        </div>
     </div>
 
+    <div class="container px-2 py-2 mx-auto flex flex-wrap justify-center items-center ">
+        <div class="flex flex-col mx-4 lg:flex-row">
+            <a routerLink='/portal/net-income' routerLinkActive="router-link-active" class="a-reports">
+                <i class="fa-solid fa-circle-dollar-to-slot me-3 w-7 h-7 text-red-600"></i>
+                <div class="text-left rtl:text-right">
+                    <div class="mb-1 text-sm font-['Wittgenstein']">Consultar</div>
+                    <div class="-mt-1 font-['Wittgenstein'] text-medium ">Utilidad Neta</div>
+                </div>
+            </a>
+            <a routerLink="/portal/income-statement" class="a-reports">
+                <i class="fa-solid fa-chart-line me-3 w-7 h-7 text-red-600"></i>
+                <div class="text-left rtl:text-right">
+                    <div class="mb-1 text-sm font-['Wittgenstein']">Consultar</div>
+                    <div class="-mt-1 font-['Wittgenstein'] text-medium ">Estado de Resultados</div>
+                </div>
+            </a>
+            <a routerLink="/portal/operating-budget" class="a-reports">
+                <i class="fa-solid fa-sack-dollar me-3 w-7 h-7 text-red-600"></i>
+                <div class="text-left rtl:text-right">
+                    <div class="mb-1 text-sm font-['Wittgenstein']">Consultar</div>
+                    <div class="-mt-1 font-['Wittgenstein'] text-medium ">Presupuesto de Operación</div>
+                </div>
+            </a>
+            <a routerLink="/portal/stock" class="a-reports">
+                <i class="fa-solid fa-cubes me-3 w-7 h-7 text-red-600"></i>
+                <div class="text-left rtl:text-right">
+                    <div class="mb-1 text-sm font-['Wittgenstein'] ">Consultar</div>
+                    <div class="-mt-1 font-['Wittgenstein'] text-medium ">Inventario</div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
