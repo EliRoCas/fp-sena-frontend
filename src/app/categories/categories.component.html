@@ -1,0 +1,36 @@
+<section class="text-gray-600 body-font dark:bg-gray-900 ">
+    <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
+        <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
+            <div class="flex flex-col justify-center">
+                <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary"> Categorías
+                </h2>
+                <div class="input-special flex flex-col mb-4">
+                    <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
+                    <input type="text" id="category_name" name="category_name" placeholder="Nombre de la categoría"
+                        aria-label="">
+                </div>
+                <div class="input-special flex flex-row mb-4 select-id">
+                    <label for="type" class="text-sm font-semibold text-gray-700">Tipo</label>
+                    <select name="type" id="type" class="input-special py-3" required>
+                        <option value="gas" autofocus>Combustible</option>
+                        <option value="insecticida">Insecticida</option>
+                        <option value="pesticida">Pesticida</option>
+                        <option value="herbicida">Herbicida</option>
+                        <option value="fungicida">Fungicida</option>
+                        <option value="fertilizante">Fertilizante</option>
+                        <option value="abono">Abono</option>
+                        <option value="mallas">Mallas</option>
+                        <option value="tabacos">Tabacos</option>
+                    </select>
+                </div>
+                <div class="input-special flex flex-col mb-4">
+                    <label for="description" class="text-sm font-semibold text-gray-700">Descripción</label>
+                    <textarea id="description" name="description" class="input-form h-32 resize-none"></textarea>
+                </div>
+            </div>
+            <button class="primary-button">
+                Continuar
+            </button>
+        </div>
+    </div>
+</section>
