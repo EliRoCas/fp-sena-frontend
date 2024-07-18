@@ -4,24 +4,26 @@
             <div class="flex flex-col justify-center">
                 <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary"> Categorías
                 </h2>
+                <div class="input-special flex flex-row mb-4 select-id">
+                    <label for="parentCategories" class="text-sm font-semibold text-gray-700">Categoría Principal</label>
+                    <select name="parentCategories" id="parentCategories" class="input-special py-3" required>
+                        @for (parentCategory of parentCategories; track parentCategory) {
+                        <option value="parentCategory">{{parentCategory}}</option>
+                        }
+                    </select>
+                </div>
+                <!-- <div class="input-special flex flex-row mb-4 select-id">
+                    <label for="subcategories" class="text-sm font-semibold text-gray-700">Subcategoría</label>
+                    <select name="subcategory" id="subcategory" class="input-special py-3" required>
+                        @for (subcategory of subcategories; track subcategory) {
+                        <option value="parentCategory">{{subcategory}}</option>
+                        }
+                    </select>
+                </div> -->
                 <div class="input-special flex flex-col mb-4">
                     <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
-                    <input type="text" id="category_name" name="category_name" placeholder="Nombre de la categoría"
+                    <input parentCategories="text" id="category_name" name="category_name" placeholder="Nombre de la categoría"
                         aria-label="">
-                </div>
-                <div class="input-special flex flex-row mb-4 select-id">
-                    <label for="type" class="text-sm font-semibold text-gray-700">Tipo</label>
-                    <select name="type" id="type" class="input-special py-3" required>
-                        <option value="gas" autofocus>Combustible</option>
-                        <option value="insecticida">Insecticida</option>
-                        <option value="pesticida">Pesticida</option>
-                        <option value="herbicida">Herbicida</option>
-                        <option value="fungicida">Fungicida</option>
-                        <option value="fertilizante">Fertilizante</option>
-                        <option value="abono">Abono</option>
-                        <option value="mallas">Mallas</option>
-                        <option value="tabacos">Tabacos</option>
-                    </select>
                 </div>
                 <div class="input-special flex flex-col mb-4">
                     <label for="description" class="text-sm font-semibold text-gray-700">Descripción</label>

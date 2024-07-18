@@ -10,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class CategoriesComponent {
 
+  parentCategories: string[] = [
+    "Ventas", "Gastos", "Agroinsumo", "Servicios", "Salarios"];
+
+  subcategories: any = {
+    'Ventas': ['Rosa Mondial', 'Rosa Roja', 'Rosa Nacional'],
+    'Gastos': ['Mercado', 'Fertilizante'],
+    "Agroinsumo ": ['Pesticida', 'Herbicida', 'Abono'],
+    'Servicios': ['Luz', 'Agua', 'Aseo'],
+    'Salarios': ['Opeario', 'Ingeniero']
+  }
+
+
 }

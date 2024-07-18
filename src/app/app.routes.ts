@@ -21,6 +21,7 @@ import { BalanceComponent } from './report/balance/balance.component';
 import { NetIncomeComponent } from './report/net-income/net-income.component';
 import { OperatingBudgetComponent } from './report/operating-budget/operating-budget.component';
 import { IncomeStatementComponent } from './report/income-statement/income-statement.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' },
@@ -51,6 +52,7 @@ export const routes: Routes = [
       { path: 'expenses', component: ExpensesComponent },
       { path: 'register-expense', component: TransactionsComponent },
       { path: 'edit-expense/:id', component: TransactionsComponent },
+      { path: "categories", component: CategoriesComponent },
       { path: 'stock', component: StockComponent },
       { path: 'register-product', component: ProductComponent },
       { path: 'edit-product/:id', component: ProductComponent },
