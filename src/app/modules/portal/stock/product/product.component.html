@@ -5,13 +5,13 @@
                 <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary"> {{title()}}
                 </h2>
                 <div class="input-special flex flex-col mb-4">
-                    <label for="description" class="text-sm font-semibold text-gray-700">Nombre</label>
-                    <input type="text" id="description" name="description" placeholder="Nombre del Producto"
-                        aria-label="description">
+                    <label for="product_name" class="text-sm font-semibold text-gray-700">Nombre</label>
+                    <input type="text" id="product_name" name="product_name" placeholder="Nombre del Producto"
+                        aria-label="product_name">
                 </div>
                 <div class="input-special flex flex-row mb-4 select-id">
-                    <label for="prodcutType" class="text-sm font-semibold text-gray-700">Tipo de Producto</label>
-                    <select name="prodcutType" id="prodcutType" class="input-special py-3" required>
+                    <label for="prodcut_type" class="text-sm font-semibold text-gray-700">Tipo de Producto</label>
+                    <select name="prodcut_type" id="prodcut_type" class="input-special py-3" required>
                         <option value="gas" autofocus>Combustible</option>
                         <option value="insecticida">Insecticida</option>
                         <option value="pesticida">Pesticida</option>
@@ -22,13 +22,14 @@
                         <option value="mallas">Mallas</option>
                         <option value="tabacos">Tabacos</option>
                     </select>
+                    <!-- Agregar la clase de la BD para las imágenes -->
                     <div class="lg:w-42 md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
                         <img src="img/spray.png" alt="Typing on laptop" class="grayscale w-1/2 h-auto">
                     </div>
                 </div>
                 <div class="input-special flex flex-col mb-4">
-                    <label for="description" class="text-sm font-semibold text-gray-700">Descripción</label>
-                    <textarea id="description" name="description" class="input-form h-32 resize-none"></textarea>
+                    <label for="product_description" class="text-sm font-semibold text-gray-700">Descripción</label>
+                    <textarea id="product_description" name="product_description" class="input-form h-32 resize-none"></textarea>
                 </div>
             </div>
             <button class="primary-button">

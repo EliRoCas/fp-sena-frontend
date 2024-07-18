@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CardComponent } from '../../share/card/card.component';
+import { CardComponent } from '../../../share/card/card.component';
+
 
 @Component({
   selector: 'app-our-services',

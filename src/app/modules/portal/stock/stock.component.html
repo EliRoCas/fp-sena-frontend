@@ -5,14 +5,14 @@
     <div class="flex justify-center flex-wrap mx-5">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <ng-container matColumnDef="productID">
+            <ng-container matColumnDef="id_product">
                 <th mat-header-cell *matHeaderCellDef>ID</th>
-                <td mat-cell *matCellDef="let element"> {{element.productID}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.id_product}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="productName">
+            <ng-container matColumnDef="product_name">
                 <th mat-header-cell *matHeaderCellDef> Nombre del Producto </th>
-                <td mat-cell *matCellDef="let element"> {{element.productName}}N</td>
+                <td mat-cell *matCellDef="let element"> {{element.product_name}}N</td>
             </ng-container>
 
             <ng-container matColumnDef="quantity">
@@ -31,7 +31,7 @@
                     <a routerLink="/portal/register-product" routerLinkActive="router-link-active">
                         <button class="text-green-700 px-2"><i class="fa-solid fa-circle-plus"></i></button>
                     </a>
-                    <a [routerLink]="['/portal/edit-product', element.productID]" routerLinkActive="router-link-active">
+                    <a [routerLink]="['/portal/edit-product', element.id_product]" routerLinkActive="router-link-active">
                         <button class="text-blue-700 px-2"><i class="fa-solid fa-pencil"></i></button>
                     </a>
                     <a>

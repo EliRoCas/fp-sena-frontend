@@ -17,6 +17,10 @@ import { IncomeStatementComponent } from './modules/portal/report/income-stateme
 import { TransactionsComponent } from './modules/portal/transactions/transactions.component';
 import { IncomesComponent } from './modules/portal/incomes/incomes.component';
 import { ExpensesComponent } from './modules/portal/expenses/expenses.component';
+import { CategoriesComponent } from './modules/portal/categories/categories.component';
+import { StockComponent } from './modules/portal/stock/stock.component';
+import { ProductComponent } from './modules/portal/stock/product/product.component';
+import { NotificationsComponent } from './structure/notifications/notifications.component';
 
 
 export const routes: Routes = [

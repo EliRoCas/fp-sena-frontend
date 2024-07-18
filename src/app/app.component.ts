@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './structure/header/header.component';
 import { FooterComponent } from './structure/footer/footer.component';
-import { LayoutComponent} from '@ea-controls/layout'
+import { LayoutComponent } from '@ea-controls/layout'
 
 @Component({
   selector: 'app-root',
