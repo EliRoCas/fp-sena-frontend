@@ -15,6 +15,8 @@ import { NetIncomeComponent } from './modules/portal/report/net-income/net-incom
 import { OperatingBudgetComponent } from './modules/portal/report/operating-budget/operating-budget.component';
 import { IncomeStatementComponent } from './modules/portal/report/income-statement/income-statement.component';
 import { TransactionsComponent } from './modules/portal/transactions/transactions.component';
+import { IncomesComponent } from './modules/portal/incomes/incomes.component';
+import { ExpensesComponent } from './modules/portal/expenses/expenses.component';
 
 
 export const routes: Routes = [

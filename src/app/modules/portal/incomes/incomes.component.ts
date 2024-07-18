@@ -4,59 +4,59 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 
 export interface IncomeElement {
-  incomeID: number,
-  incomeName: string,
-  incomeDate: Date,
-  incomeAmount: number,
-  roseType: string,
-  roseCategory: boolean,
+  id_income: number,
+  income_name: string,
+  income_date: Date,
+  income_amount: number,
+  rose_type: string,
+  rose_category: boolean,
   customer: string,
 }
 
 const ELEMENT_DATA: IncomeElement[] = [
   {
-    incomeID: 1,
-    incomeName: 'Venta Modial',
-    incomeDate: new Date ('05/06/2015'),
-    incomeAmount: 2500520,
-    roseType: 'Mondual',
-    roseCategory: true,
+    id_income: 1,
+    income_name: 'Venta Modial',
+    income_date: new Date ('05/06/2015'),
+    income_amount: 2500520,
+    rose_type: 'Mondual',
+    rose_category: true,
     customer: 'Paloquemado'
   },
   {
-    incomeID: 7,
-    incomeName: 'Venta Modial',
-    incomeDate: new Date ('05/06/2015'),
-    incomeAmount: 2500520,
-    roseType: 'Mondial',
-    roseCategory: true,
+    id_income: 7,
+    income_name: 'Venta Modial',
+    income_date: new Date ('05/06/2015'),
+    income_amount: 2500520,
+    rose_type: 'Mondial',
+    rose_category: true,
     customer: 'Paloquemado'
   },
   {
-    incomeID: 2,
-    incomeName: 'Venta Modial',
-    incomeDate: new Date ('05/12/2016'),
-    incomeAmount: 2500520,
-    roseType: 'Mondual',
-    roseCategory: false,
+    id_income: 2,
+    income_name: 'Venta Modial',
+    income_date: new Date ('05/12/2016'),
+    income_amount: 2500520,
+    rose_type: 'Mondual',
+    rose_category: false,
     customer: 'Paloquemado'
   },
   {
-    incomeID: 3,
-    incomeName: 'Venta Modial',
-    incomeDate:new Date ('28/4/2018') ,
-    incomeAmount: 2500520,
-    roseType: 'Mondual',
-    roseCategory: false,
+    id_income: 3,
+    income_name: 'Venta Modial',
+    income_date:new Date ('28/4/2018') ,
+    income_amount: 2500520,
+    rose_type: 'Mondual',
+    rose_category: false,
     customer: 'Paloquemado'
   },
   {
-    incomeID: 4,
-    incomeName: 'Venta Rosa Roja',
-    incomeDate: new Date ('05-07-2015'),
-    incomeAmount: 5500520,
-    roseType: 'Roja',
-    roseCategory: true,
+    id_income: 4,
+    income_name: 'Venta Rosa Roja',
+    income_date: new Date ('05-07-2015'),
+    income_amount: 5500520,
+    rose_type: 'Roja',
+    rose_category: true,
     customer: 'Infinity'
   },
 ]
@@ -70,12 +70,12 @@ const ELEMENT_DATA: IncomeElement[] = [
 })
 export class IncomesComponent {
   displayedColumns: string[] = [
-    'incomeID',
-    'incomeName',
-    'incomeDate',
-    'incomeAmount',
-    'roseType',
-    'roseCategory',
+    'id_income',
+    'income_name',
+    'income_date',
+    'income_amount',
+    'rose_type',
+    'rose_category',
     'customer',
     'incomeActions'];
   dataSource = ELEMENT_DATA;

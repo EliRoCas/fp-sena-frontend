@@ -4,53 +4,53 @@ import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 export interface expenseElement {
-  expenseId: number;
-  expenseName: string;
-  expenseDate: Date;
-  expenseAmount: number;
-  roseType: string;
+  id_expense: number;
+  expense_name: string;
+  expense_date: Date;
+  expense_amount: number;
+  rose_type: string;
   supplier: string;
 }
 
 const ELEMENT_DATA: expenseElement[] = [
   {
-    expenseId: 1,
-    expenseName: 'Venta Modial',
-    expenseDate: new Date('05/06/2015'),
-    expenseAmount: 2500520,
-    roseType: 'Mondual',
+    id_expense: 1,
+    expense_name: 'Venta Modial',
+    expense_date: new Date('05/06/2015'),
+    expense_amount: 2500520,
+    rose_type: 'Mondual',
     supplier: 'Paloquemado',
   },
   {
-    expenseId: 4,
-    expenseName: 'Venta Modial',
-    expenseDate: new Date('05/06/2015'),
-    expenseAmount: 2500520,
-    roseType: 'Mondual',
+    id_expense: 4,
+    expense_name: 'Venta Modial',
+    expense_date: new Date('05/06/2015'),
+    expense_amount: 2500520,
+    rose_type: 'Mondual',
     supplier: 'Paloquemado',
   },
   {
-    expenseId: 3,
-    expenseName: 'Venta Modial',
-    expenseDate: new Date('05/06/2015'),
-    expenseAmount: 2500520,
-    roseType: 'Mondual',
+    id_expense: 3,
+    expense_name: 'Venta Modial',
+    expense_date: new Date('05/06/2015'),
+    expense_amount: 2500520,
+    rose_type: 'Mondual',
     supplier: 'Paloquemado',
   },
   {
-    expenseId: 2,
-    expenseName: 'Venta Modial',
-    expenseDate: new Date('05/06/2015'),
-    expenseAmount: 2500520,
-    roseType: 'Mondual',
+    id_expense: 2,
+    expense_name: 'Venta Modial',
+    expense_date: new Date('05/06/2015'),
+    expense_amount: 2500520,
+    rose_type: 'Mondual',
     supplier: 'Paloquemado',
   },
   {
-    expenseId: 5,
-    expenseName: 'Venta Modial',
-    expenseDate: new Date('05/06/2015'),
-    expenseAmount: 2500520,
-    roseType: 'Mondual',
+    id_expense: 5,
+    expense_name: 'Venta Modial',
+    expense_date: new Date('05/06/2015'),
+    expense_amount: 2500520,
+    rose_type: 'Mondual',
     supplier: 'Paloquemado',
   },
 ];
@@ -64,11 +64,11 @@ const ELEMENT_DATA: expenseElement[] = [
 })
 export class ExpensesComponent {
   displayedColumns: string[] = [
-    'expenseId',
-    'expenseName',
-    'expenseDate',
-    'expenseAmount',
-    'roseType',
+    'id_expense',
+    'expense_name',
+    'expense_date',
+    'expense_amount',
+    'rose_type',
     'supplier',
     'expenseActions',
   ];
