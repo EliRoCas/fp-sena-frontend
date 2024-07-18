@@ -1,27 +1,15 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './modules/portal/users/login/login.component';
+import { FaqComponent } from './structure/dashboard/faq/faq.component';
+import { SupportComponent } from './structure/dashboard/support/support.component';
+import { OurServicesComponent } from './structure/dashboard/our-services/our-services.component';
+import { AboutUsComponent } from './structure/dashboard/about-us/about-us.component';
+import { DashboardComponent } from './structure/dashboard/dashboard.component';
+import { PortalComponent } from './modules/portal/portal.component';
+import { UsersAdminComponent } from './modules/portal/users/users-admin/users-admin.component';
+import { UserProfileComponent } from './modules/portal/users/user-profile/user-profile.component';
+import { RegisterUserComponent } from './modules/portal/users/register-user/register-user.component';
 
-import { LoginComponent } from './users/login/login.component';
-import { UsersAdminComponent } from './users/users-admin/users-admin.component';
-import { UserProfileComponent } from './users/user-profile/user-profile.component';
-import { ReportComponent } from './report/report.component';
-import { IncomesComponent } from './incomes/incomes.component';
-import { ExpensesComponent } from './expenses/expenses.component';
-import { StockComponent } from './stock/stock.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AboutUsComponent } from './dashboard/about-us/about-us.component';
-import { SupportComponent } from './dashboard/support/support.component';
-import { OurServicesComponent } from './dashboard/our-services/our-services.component';
-import { FaqComponent } from './dashboard/faq/faq.component';
-import { PortalComponent } from './portal/portal.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { RegisterUserComponent } from './users/register-user/register-user.component';
-import { ProductComponent } from './stock/product/product.component';
-import { TransactionsComponent } from './transactions/transactions.component';
-import { BalanceComponent } from './report/balance/balance.component';
-import { NetIncomeComponent } from './report/net-income/net-income.component';
-import { OperatingBudgetComponent } from './report/operating-budget/operating-budget.component';
-import { IncomeStatementComponent } from './report/income-statement/income-statement.component';
-import { CategoriesComponent } from './categories/categories.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' },

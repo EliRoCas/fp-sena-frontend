@@ -4,22 +4,22 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 
 export interface userList {
-  idType: string;
-  idNumber: number;
-  name: string;
-  lastname: string;
-  rol: string;
+document_type: string;
+  document_number: number;
+  user_name: string;
+  user_lastname: string;
+  user_role: string;
   email: string;
   }
 
 const ELEMENT_DATA: userList[] = [
-  { idType: 'Cédula', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
-  { idType: 'CC', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
-  { idType: 'CC', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
-  { idType: 'CC', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
-  { idType: 'CC', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
-  { idType: 'CC', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
-  { idType: 'CC', idNumber: 1151320, name: 'Dante', lastname: 'Arias', rol:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'Cédula', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'CC', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'CC', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'CC', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'CC', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'CC', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
+  {document_type: 'CC', document_number: 1151320, user_name: 'Dante', user_lastname: 'Arias', user_role:'Capataz', email:'dante@gmail.com'},
  ];
 
 @Component({
@@ -30,6 +30,6 @@ const ELEMENT_DATA: userList[] = [
   styleUrl: './users-admin.component.scss'
 })
 export class UsersAdminComponent {
-  displayedColumns: string[] = ['idType', 'idNumber', 'name', 'lastname', 'rol', 'email', 'actions'];
+  displayedColumns: string[] = ['document_type', 'document_number', 'user_name', 'user_lastname', 'user_role', 'email', 'actions'];
   dataSource = ELEMENT_DATA;
 }

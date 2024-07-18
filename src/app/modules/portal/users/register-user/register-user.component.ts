@@ -1,6 +1,7 @@
 import { Component, input, model, signal } from '@angular/core';
-import { UserFormComponent } from '../../share/user-form/user-form.component';
+
 import { ActivatedRoute } from '@angular/router';
+import { UserFormComponent } from '../../../../share/user-form/user-form.component';
 
 @Component({
   selector: 'app-register-user',
@@ -18,11 +19,11 @@ export class RegisterUserComponent {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.id = params['id']; 
+      this.id = params['id'];
 
-      if (this.id ){
+      if (this.id) {
         this.title.set('Editar usuario');
-        
+
       }
 
       //console.log(this.id)
