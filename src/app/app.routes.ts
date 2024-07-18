@@ -9,6 +9,12 @@ import { PortalComponent } from './modules/portal/portal.component';
 import { UsersAdminComponent } from './modules/portal/users/users-admin/users-admin.component';
 import { UserProfileComponent } from './modules/portal/users/user-profile/user-profile.component';
 import { RegisterUserComponent } from './modules/portal/users/register-user/register-user.component';
+import { ReportComponent } from './modules/portal/report/report.component';
+import { BalanceComponent } from './modules/portal/report/balance/balance.component';
+import { NetIncomeComponent } from './modules/portal/report/net-income/net-income.component';
+import { OperatingBudgetComponent } from './modules/portal/report/operating-budget/operating-budget.component';
+import { IncomeStatementComponent } from './modules/portal/report/income-statement/income-statement.component';
+import { TransactionsComponent } from './modules/portal/transactions/transactions.component';
 
 
 export const routes: Routes = [

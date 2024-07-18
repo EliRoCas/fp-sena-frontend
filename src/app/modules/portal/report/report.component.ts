@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BalanceComponent } from './balance/balance.component';
 import { RouterLink } from '@angular/router';
+import { BalanceComponent } from './balance/balance.component';
 
 @Component({
   selector: 'app-report',
