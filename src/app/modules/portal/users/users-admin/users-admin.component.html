@@ -12,7 +12,7 @@
             <mat-label>Filter</mat-label>
             <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input> -->
             <input matInput placeholder="Ex. ium" #input>
-          </mat-form-field>
+        </mat-form-field>
     </div>
 
     <div class="flex justify-center flex-wrap mx-5 ">
@@ -62,9 +62,9 @@
                         routerLinkActive="router-link-active">
                         <button class="text-blue-700 px-2"><i class="fa-solid fa-user-pen"></i></button>
                     </a>
-                    <a>
-                        <button class="text-red-700 px-2"><i class="fa-solid fa-trash-can"></i></button>
-                    </a>
+
+                    <button (click)="delete(element)" class="text-red-700 px-2"><i class="fa-solid fa-trash-can"></i></button>
+
                 </td>
             </ng-container>
 

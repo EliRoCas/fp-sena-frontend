@@ -20,7 +20,8 @@ export class UserFormComponent {
     document_number: 0,
     roles: "",
     email: "",
-    password: ""
+    password: "",
+    id_user: 0
   }
 
 

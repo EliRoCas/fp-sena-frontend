@@ -4,7 +4,7 @@ import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX 
 
 // Se define la estructura del modelo de usuario que se aplicará, concuerda con la DB 
 export interface UserModel {
-  fo_document_type: number,
+  fo_document_type: number;
   document_type_name: string;
   document_number: number;
   user_name: string;
@@ -12,25 +12,29 @@ export interface UserModel {
   roles: string;
   email: string;
   password: string;
+  id_user: number;
 }
 
 // Se crea una instancia de "EntityAdapter" específica para el modelo de usuario hecho (UserModel), 
 // designándole el nombre "users". Este adaptador proporciona métodos HTTP para realizar operaciones CRUD
 // en el estado, utilizando por debajo la lógica de NGRX 
-export const userAdapter = new EntityAdapter<UserModel>("users");
+export const userAdapter = new EntityAdapter<UserModel>("users", (input) => input.id_user.toString());
 
 // Se crea una función (userByName) que retrorna un selector, que filtra los datos de "users", 
 // que llegan por "userAdapter.feature" para encontrar los usuarios (user_name) que cotengan la cadena "name",
 // se ignoran las mayúsculas y minúsculas. 
-export const userByName = (name: string) => createSelector(userAdapter.feature, users => {
-  return users.filter(u => u.user_name.toLowerCase().indexOf(name.toLowerCase()) > -1);
-})
+export const userByName = (name: string) => createSelector(userAdapter.feature,
+  users => {
+    return users.filter(u => u.user_name.toLowerCase().indexOf(name.toLowerCase()) > -1);
+  })
+
+
 
 
 
 
 // -----------------------------------------------------------------------------------
-// CÓDIGO SUGERIDO POR EL DOCENTE 
+// CÓDIGO SUGERIDO POR EL DOCENTE
 // import { HttpClient } from '@angular/common/http';
 // import { Injectable } from '@angular/core';
 

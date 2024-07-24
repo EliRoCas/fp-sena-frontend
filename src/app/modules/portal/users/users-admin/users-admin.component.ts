@@ -44,10 +44,9 @@ export class UsersAdminComponent {
     })
   };
 
+  delete(user: UserModel) {
+    this.store.dispatch(userAdapter.removeOne(user));
+  }
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
-
+ 
 }
