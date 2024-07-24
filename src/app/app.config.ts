@@ -22,6 +22,13 @@ WebApiEffectRegister.configure({
   removeUrl(adapter, data) {
     return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php?id=${adapter.getId(data)}`
   },
+
+  postUrl(adapter, data) {
+    return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php`
+  },
+  patchUrl(adapter, data) {
+    return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php?id=${adapter.getId(data)}`
+  },
 });
 
 export const appConfig: ApplicationConfig = {

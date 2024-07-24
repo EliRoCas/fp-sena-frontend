@@ -12,7 +12,7 @@ import { UserFormComponent } from '../../../../share/user-form/user-form.compone
 })
 export class RegisterUserComponent {
 
-  id?: string;
+  id?: number;
   private sub: any;
 
   constructor(private route: ActivatedRoute) { }

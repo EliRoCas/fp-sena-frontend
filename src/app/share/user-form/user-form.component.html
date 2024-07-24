@@ -1,58 +1,58 @@
-<div class="flex flex-col justify-center">
-    <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary"> {{title()}}</h2>
+<form [formGroup]="userForm" (ngSubmit)="add()" class="flex flex-col justify-center">
+    <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-['Cormorant']"> {{title()}}</h2>
     <div class="input-special flex flex-col mb-4">
         <label for="name" class="text-sm font-semibold text-gray-700">Nombre</label>
         <input type="text" id="name" name="name" placeholder="Nombre" aria-label="First Name"
-            [(ngModel)]="user.user_name">
+            formControlName="user_name">
     </div>
     <div class="input-special flex flex-col mb-4">
         <label for="lastname" class="text-sm font-semibold text-gray-700">Apellidos</label>
         <input type="text" id="lastname" name="lastname" placeholder="Apellidos" aria-label="Lastname"
-            [(ngModel)]="user.user_lastname">
+            formControlName="user_lastname">
     </div>
     <div class="input-special flex flex-row mb-4 select-id">
         <label for="document_type" class="text-sm font-semibold text-gray-700">Tipo de Documento</label>
         <select name="document_type" id="document_type" class="input-special py-3" required
-            [(ngModel)]="user.fo_document_type">
-            <option value="CC" autofocus>Cédula de Ciudadanía</option>
-            <option value="CE">Cédula de Extranjería</option>
-            <option value="PP">Pasaporte</option>
-            <option value="PEP">Permiso Especial de Permanencia</option>
-            <option value="DIE">Documento de Identificación Extranjero</option>
+            formControlName="fo_document_type">
+            <option value="1" autofocus>Cédula de Ciudadanía</option>
+            <option value="1">Cédula de Extranjería</option>
+            <option value="1">Pasaporte</option>
+            <option value="1">Permiso Especial de Permanencia</option>
+            <option value="1">Documento de Identificación Extranjero</option>
         </select>
         <label for="document_number" class="text-sm font-semibold text-gray-700 pr-3">No. de Documento</label>
         <input type="number" id="document_number" name="document_number" placeholder="Documento" aria-label="Documento"
-            [(ngModel)]="user.document_number">
+            formControlName="document_number">
     </div>
     <div class="input-special flex flex-col mb-4 select-id">
         <label for="rol" class="text-sm font-semibold text-gray-700">Rol</label>
-        <select name="rol" id="rol" class="input-special py-3" required [(ngModel)]="user.roles">
-            <option value="userAdmin" autofocus>Administrador</option>
-            <option value="userAccountant">Jefe de Finanzas</option>
-            <option value="foreman">Capataz</option>
-            <option value="plantingManager">Jefe de Plantación</option>
-            <option value="worker">Operario</option>
+        <select name="rol" id="rol" class="input-special py-3" required formControlName="roles">
+            <option value="1" autofocus>Administrador</option>
+            <option value="1">Jefe de Finanzas</option>
+            <option value="1">Capataz</option>
+            <option value="1">Jefe de Plantación</option>
+            <option value="1">Operario</option>
         </select>
     </div>
     <div class="input-special flex flex-col mb-4">
         <label for="email" class="text-sm font-semibold text-gray-700">Correo</label>
         <input type="email" id="email" name="email" placeholder="ejemplo@x.com" aria-label="Email"
-            [(ngModel)]="user.email">
+            formControlName="email">
     </div>
     <div class="input-special flex flex-col mb-4">
         <label for="password" class="text-sm font-semibold text-gray-700">Contraseña</label>
         <input type="password" id="password" name="password" placeholder="Contraseña" aria-label="password"
-            [(ngModel)]="user.password">
+            formControlName="password">
 
     </div>
     <div class="input-special flex flex-col mb-4">
         <label for="confirmPassword" class="text-sm font-semibold text-gray-700">Confirme la Contraseña</label>
         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme contraseña"
-            aria-label="Comfirm password">
+            aria-label="Comfirm password" formControlName="confirm_password">
     </div>
 
-    <button class="primary-button" (click)="submit()">
-        Continuar
+    <button class="primary-button" type="submit" [disabled]="!userForm.valid">
+        Guardar
     </button>
 
-</div>
+</form>

@@ -28,6 +28,11 @@ export const userByName = (name: string) => createSelector(userAdapter.feature,
     return users.filter(u => u.user_name.toLowerCase().indexOf(name.toLowerCase()) > -1);
   })
 
+export const userById = (id: number) => createSelector(userAdapter.feature,
+  users => {
+    return users.find(u => u.id_user === id);
+  })
+
 
 
 
