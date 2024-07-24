@@ -1,7 +1,7 @@
 import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 import { Component, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserModel, UsersService } from '../../services/users.service';
+import { UserModel } from '../../services/users.service';
 
 @Component({
   selector: 'app-user-form',
@@ -23,7 +23,6 @@ export class UserFormComponent {
     password: ""
   }
 
-  constructor(private userSvc: UsersService) { }
 
   submit() {
     console.log(this.user)
