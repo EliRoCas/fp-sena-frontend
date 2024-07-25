@@ -1,1 +1,15 @@
-<!-- <app-nav></app-nav> -->
+<section ea-header class="dark:dark:bg-gray-900 shadow">
+
+    <button mat-mini-fab (click)="drawer().toggle()" color="secondary">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <a routerLink="/" routerLinkActive="router-link-active">
+        <div
+            class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl">
+            SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+    </a>
+
+    <ea-portal name="header-title" />
+
+</section>

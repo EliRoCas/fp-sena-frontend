@@ -28,8 +28,7 @@ import { MatDividerModule } from '@angular/material/divider';
     RouterOutlet
   ],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './nav.component.scss'
 })
 export class NavComponent {
 

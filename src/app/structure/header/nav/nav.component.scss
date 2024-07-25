@@ -8,5 +8,9 @@
 }
 
 [routerLink] {
-    cursor: pointer;
+    cursor: pointer !important;
+
+    &:hover{
+        background-color: rgb(216, 143, 139);
+    }
 }
