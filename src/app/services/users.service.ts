@@ -29,11 +29,11 @@ export interface DocTypeModel {
 // Se crea una instancia de "EntityAdapter" específica para el modelo de usuario hecho (UserModel), 
 // designándole el nombre "users". Este adaptador proporciona métodos HTTP para realizar operaciones CRUD
 // en el estado, utilizando por debajo la lógica de NGRX 
-export const userAdapter = new EntityAdapter<UserModel>("users", (input) => input.id_user.toString());
+export const userAdapter = new EntityAdapter<UserModel>("users", { getId: (input) => input.id_user.toString() });
 
-export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", (input) => input.id_role.toString());
+export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", { getId: (input) => input.id_role.toString() });
 
-export const docTypeAdapter = new EntityAdapter<DocTypeModel>("document_types", (input) => input.id_document_type.toString());
+export const docTypeAdapter = new EntityAdapter<DocTypeModel>("document_types", { getId: (input) => input.id_document_type.toString() });
 
 
 // Se crea una función (userByName) que retrorna un selector, que filtra los datos de "users", 

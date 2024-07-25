@@ -7,11 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
 import { provideStore, provideState, Store } from '@ngrx/store';
 import { userAdapter, userByName, UserModel } from '../../../../services/users.service';
+import { PortalContentComponent } from '@ea-controls/portal';
 
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatIcon, RouterLink],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatIcon, RouterLink, PortalContentComponent],
   templateUrl: './users-admin.component.html',
   styleUrl: './users-admin.component.scss'
 })
