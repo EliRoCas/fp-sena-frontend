@@ -9,9 +9,12 @@ import { WebApiEffect, WebApiEffectRegister } from "@ea-controls/ngrx-repository
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { userAdapter } from './services/users.service';
+import { docTypeAdapter, roleAdapter, userAdapter } from './services/users.service';
 
 WebApiEffectRegister.register(userAdapter);
+WebApiEffectRegister.register(roleAdapter);
+WebApiEffectRegister.register(docTypeAdapter);
+
 // Register other adapters as needed
 
 WebApiEffectRegister.configure({
@@ -37,10 +40,9 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideStore(),
-    provideState(userAdapter.reducer(
-      //add more reducer actions
-      //on(....)
-    )),
+    provideState(userAdapter.reducer()),
+    provideState(roleAdapter.reducer()),
+    provideState(docTypeAdapter.reducer()),
     importProvidersFrom(RouterModule), provideAnimationsAsync(),
     provideEffects(WebApiEffect)
   ],

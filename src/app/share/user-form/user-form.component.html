@@ -12,13 +12,10 @@
     </div>
     <div class="input-special flex flex-row mb-4 select-id">
         <label for="document_type" class="text-sm font-semibold text-gray-700">Tipo de Documento</label>
-        <select name="document_type" id="document_type" class="input-special py-3" required
-            formControlName="fo_document_type">
-            <option value="1" autofocus>Cédula de Ciudadanía</option>
-            <option value="1">Cédula de Extranjería</option>
-            <option value="1">Pasaporte</option>
-            <option value="1">Permiso Especial de Permanencia</option>
-            <option value="1">Documento de Identificación Extranjero</option>
+        <select name="document_type" id="document_type" class="input-special py-3" formControlName="fo_document_type">
+            @for (docType of docTypes(); track docType) {
+            <option [value]="docType.id_document_type">{{docType.document_type_name}}</option>
+            }
         </select>
         <label for="document_number" class="text-sm font-semibold text-gray-700 pr-3">No. de Documento</label>
         <input type="number" id="document_number" name="document_number" placeholder="Documento" aria-label="Documento"
@@ -26,12 +23,10 @@
     </div>
     <div class="input-special flex flex-col mb-4 select-id">
         <label for="rol" class="text-sm font-semibold text-gray-700">Rol</label>
-        <select name="rol" id="rol" class="input-special py-3" required formControlName="roles">
-            <option value="1" autofocus>Administrador</option>
-            <option value="1">Jefe de Finanzas</option>
-            <option value="1">Capataz</option>
-            <option value="1">Jefe de Plantación</option>
-            <option value="1">Operario</option>
+        <select name="rol" id="rol" class="input-special py-3" formControlName="roles">
+            @for (role of roles(); track role) {
+            <option [value]="role.id_role">{{role.role_name}}</option>
+            }
         </select>
     </div>
     <div class="input-special flex flex-col mb-4">
