@@ -51,20 +51,25 @@ export class UserFormComponent implements OnInit {
   constructor(private store: Store, private _snackBar: MatSnackBar, private fb: FormBuilder) {
 
     this.userForm = this.fb.group({
-      id_user: ['', [Validators.required]],
+      id_user: [''],
       user_name: ['', [Validators.required, Validators.minLength(3)]],
       user_lastname: ['', [Validators.required, Validators.minLength(3)]],
       fo_document_type: [0, [Validators.required]],
       document_number: ['', [Validators.required]],
-      roles: (0),
+      roles: 0,
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$')
       ]],
       confirm_password: ['', [Validators.required]],
-    }, { validators: this.passwordsMatchValidator }
+    },
+      { validators: this.passwordsMatchValidator }
     );
+
+    // this.userForm.valueChanges.subscribe(x => {
+    //   console.log(this.userForm);
+    // })
 
     effect(() => {
 
@@ -90,11 +95,13 @@ export class UserFormComponent implements OnInit {
     this.store.select(roleAdapter.feature).subscribe(data => this.roles.set(data));
 
     this.store.dispatch(docTypeAdapter.getAll());
+
+    this.store.dispatch(userAdapter.getAll());
   }
 
   passwordsMatchValidator(form: FormGroup): null | { passwordsMismatch: boolean } {
     const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
+    const confirmPassword = form.get('confirm_password')?.value;
     return password === confirmPassword ? null : { passwordsMismatch: true };
   };
 
