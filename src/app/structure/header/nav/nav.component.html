@@ -1,77 +1,63 @@
-<nav class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div class="relative flex items-center justify-between h-16">
-            <div class="inset-y-0 left-0 flex items-center sm:hidden">
-                <!-- Botón del menú móvil -->
-                <button (click)="isOpen = !isOpen" type="button"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                    aria-controls="mobile-menu" aria-expanded="false">
-                    <span class="sr-only">Abrir menú principal</span>
-                    <!-- Ícono del menú (hamburguesa) -->
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                    <!-- Ícono del menú (cruz) -->
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex-1 flex">
-                <div class="flex-shrink-0">
-                    <!-- Texto del logotipo-->
-                    <a routerLink="/" routerLinkActive="router-link-active">
-                        <div class="text-logo text-red-800 align-middle"> SiGef <i
-                                class="fa-solid fa-circle-dollar-to-slot"></i></div>
-                    </a>
-                </div>
-                <div class="hidden sm:block sm:ml-6">
-                    <div class="flex space-x-4">
-                        <!-- Páginas -->
-                        <ea-portal name="navbar" />
-                        <a routerLink="/about-us"
-                            class="text-gray-900 dark:text-white px-2 py-2 rounded-md text-sm font-medium navPage">
-                            Sobre Nosotros
-                        </a>
-                        <a routerLink="/support"
-                            class="text-gray-900 dark:text-white px-2 py-2 rounded-md text-sm font-medium navPage">
-                            Contáctenos
-                        </a>
-                        <a routerLink="/faq"
-                            class="text-gray-900 dark:text-white px-2 py-2 rounded-md text-sm font-medium navPage">
-                            FAQ
-                        </a>
-                        <a routerLink="/portal"
-                            class="text-gray-900 dark:text-white px-2 py-2 rounded-md text-sm font-medium navPage">
-                            Portal
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <!-- Botones de Login -->
-                <a routerLink="/login" routerLinkActive="router-link-active"
-                    class="font-secundary text-white font-extralight mt-2 ml-4 bg-red-800 hover:bg-red-600 px-3 py-1 rounded-xl text-sm">
-                    Login</a>
+<ea-layout mode="vertical">
+    <section ea-left-sidebar class="left-bar-options">
+        <mat-icon fontIcon="home"></mat-icon>
+        <mat-icon fontIcon="add"></mat-icon>
+        <mat-icon fontIcon="settings"></mat-icon>
+        <mat-icon fontIcon="search"></mat-icon>
+        <mat-icon fontIcon="favorite"></mat-icon>
+    </section>
 
-            </div>
-        </div>
-    </div>
+    <div style="padding: .5rem">
+        <mat-list>
+            <mat-list-item routerLink="about-us" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>folder</mat-icon>
+                <div matListItemTitle>Sobre Nosotros</div>
+            </mat-list-item>
 
-    <!-- Menú móvil -->
-    <div class="sm:hidden" id="mobile-menu" *ngIf="isOpen">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <a routerLink="/about-us"
-                class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">Sobre
-                Nosotros</a>
-            <a routerLink="/support"
-                class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">Contáctenos</a>
-            <a routerLink="/faq"
-                class="text-gray-900 dark:text-white block px-3 py-2 rounded-md text-base font-medium navPage">FAQ</a>
-        </div>
+            <mat-list-item routerLink="support" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Contáctenos</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="faq" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>FAQ</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/user-admin" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Administrar Usuarios</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/user-profile" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Perfil</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/transactions" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Transacciones</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/incomes" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Ventas</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/stock" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Inventario</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/report" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Reportes</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="portal/categories" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>note</mat-icon>
+                <div matListItemTitle>Categorias</div>
+            </mat-list-item>
+        </mat-list>
     </div>
-</nav>
+</ea-layout>

@@ -45,6 +45,10 @@ main {
 
 }
 
+.footer-font {
+    @apply font-['Wittgenstein'] font-medium text-gray-500
+}
+
 input.ng-invalid.ng-touched {
     @apply bg-red-100 border-red-700
 }

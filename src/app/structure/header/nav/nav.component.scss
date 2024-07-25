@@ -1,37 +1,12 @@
-.menu-content {
-  transition: all 0.3s ease-in-out;
+.left-bar-options,
+[ea-right-sidebar] {
+    background-color: lightgray;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.menu-content.hidden {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-
-.menu-content.block {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-
-a.navPage {
-  font-family: 'Cormorant', italic, 'Times New Roman', Times, serif;
-  font-size: 1.2rem;
-}
-
-.text-logo {
-  font-family: 'Cormorant', italic, 'Times New Roman', Times, serif;
-  font-size: 2rem;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 600px) {
-    font-size: 1.5rem;
-    margin-left: 2rem;
-  }
-}
-
-.active {
-  font-weight: bold;
-  color: #ff0000;
-  
+[routerLink] {
+    cursor: pointer;
 }

@@ -1,11 +1,28 @@
 <ea-layout mode="vertical">
+    <section ea-header class="dark:dark:bg-gray-900 shadow">
 
-  <app-header ea-header></app-header>
+        <button mat-mini-fab (click)="drawer.toggle()" color="secondary">
+            <mat-icon>menu</mat-icon>
+        </button>
 
-  <app-footer ea-footer></app-footer>
+        <a routerLink="/" routerLinkActive="router-link-active">
+            <div
+                class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl">
+                SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+        </a>
 
-  <router-outlet>
+        <ea-portal name="header-title" />
 
-  </router-outlet>
+    </section>
 
+    <app-footer ea-footer></app-footer>
+
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer mode="over">
+            <app-nav [drawer]="drawer"></app-nav>
+        </mat-drawer>
+
+        <router-outlet></router-outlet>
+
+    </mat-drawer-container>
 </ea-layout>
