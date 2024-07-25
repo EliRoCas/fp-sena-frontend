@@ -24,6 +24,7 @@
     "@ea-controls/ngrx-repository": "^18.0.9",
     "@ea-controls/ngrx-repository-webapi": "^18.0.9",
     "@ea-controls/portal": "^0.0.1",
+    "@ea-controls/slidder": "^18.0.1",
     "@fortawesome/angular-fontawesome": "^0.15.0",
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",

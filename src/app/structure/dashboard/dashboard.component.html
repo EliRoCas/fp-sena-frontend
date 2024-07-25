@@ -1,5 +1,19 @@
 <section>
-  <app-carousel></app-carousel>
+  <div ea-slidder class="bg-no-repeat bg-center" [interval]="3000">
+    <div class="bg-image bg-roses" *ea-slidder-item>
+      <span>Estamos Cultivando Finanzas Una Rosa a la Vez</span>
+    </div>
+    <div class="bg-image bg-white-rose" *ea-slidder-item>
+      <span>
+        Con la Elegancia y Pureza de La Rosa Mundial, Tus Finanzas a Otro Nivel.
+      </span>
+    </div>
+    <div class="bg-image bg-red-rose" *ea-slidder-item>
+      <span>
+        Vive la Magia y Pasión de la Rosa Roja en Cada Transacción.
+      </span>
+    </div>
+  </div>
 </section>
 <section>
   <app-our-services></app-our-services>
