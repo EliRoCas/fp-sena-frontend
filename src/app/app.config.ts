@@ -8,6 +8,8 @@ import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { docTypeAdapter, roleAdapter, userAdapter } from './services/users.service';
 import { productAdapter } from './services/products.service';
+import { catAdapter } from './services/categories.service';
+import { subcatAdapter } from './services/subcategories.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +21,8 @@ export const appConfig: ApplicationConfig = {
     provideState(roleAdapter.reducer()),
     provideState(docTypeAdapter.reducer()),
     provideState(productAdapter.reducer()),
+    provideState(catAdapter.reducer()),
+    provideState(subcatAdapter.reducer()),
     importProvidersFrom(RouterModule), provideAnimationsAsync(),
     provideRepositoryWebApi({
       adapters: [
@@ -26,6 +30,8 @@ export const appConfig: ApplicationConfig = {
         roleAdapter,
         docTypeAdapter,
         productAdapter,
+        catAdapter,
+        subcatAdapter,
       ],
       urlBase: `http://localhost/sigef-final-proyect/Backend/controller/`,
       getUrl(adapter) {

@@ -21,14 +21,7 @@ export interface ProductModel {
   fo_category: number;
 }
 
-export interface CategoryModel {
-  id_category: number;
-  category_name: string;
-}
-
 export const productAdapter = new EntityAdapter<ProductModel>("products", { getId: (input) => input.id_product.toString() });
-export const catAdapter = new EntityAdapter<CategoryModel>("categories", { getId: (input) => input.id_category.toString() });
-
 
 export const productByName = (name: string) => createSelector(productAdapter.feature,
   products => {
