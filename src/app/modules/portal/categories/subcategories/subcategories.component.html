@@ -4,13 +4,23 @@
             <div class="flex flex-col justify-center">
                 <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
                     <ea-portal-content name="header-title">
-                        Categorías
+                        Subcategorías
                     </ea-portal-content>
                 </h2>
+                <div class="input-special flex flex-row mb-4 select-id">
+                    <label for="parentCategories" class="text-sm font-semibold text-gray-700">Categoría
+                        Principal</label>
+                    <select name="parentCategories" id="parentCategories" class="input-special py-3" required>
+                        @for (parentCategory of parentCategories; track parentCategory) {
+                        <option value="parentCategory">{{parentCategory}}</option>
+                        }
+                    </select>
+                </div>
+
                 <div class="input-special flex flex-col mb-4">
                     <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
                     <input parentCategories="text" id="category_name" name="category_name"
-                        placeholder="Nombre de la categoría" aria-label="">
+                        placeholder="Nombre de la subcategoría" aria-label="">
                 </div>
             </div>
             <div class="flex justify-center flex-row gap-5">
