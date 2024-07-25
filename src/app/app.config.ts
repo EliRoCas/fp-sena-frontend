@@ -25,7 +25,7 @@ export const appConfig: ApplicationConfig = {
         userAdapter,
         roleAdapter,
         docTypeAdapter,
-        productAdapter
+        productAdapter,
       ],
       urlBase: `http://localhost/sigef-final-proyect/Backend/controller/`,
       getUrl(adapter) {
