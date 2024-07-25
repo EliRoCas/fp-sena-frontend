@@ -1,18 +1,32 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
-  constructor(private route: ActivatedRoute) {}
 
-  id?: string;
+  productForm: FormGroup;
+
+  constructor(private route: ActivatedRoute, private fb: FormBuilder) {
+    this.productForm = this.fb.group({
+      id_product: [''],
+      product_name: ['', [Validators.required, Validators.minLength(3)]],
+      product_type: ['', [Validators.required]],
+      product_img: [''],
+      product_description: [''],
+      quantity: [0, [Validators.required]],
+      fo_category: [0, [Validators.required]],
+    })
+  }
+
+  id?: number;
   private sub: any;
 
   ngOnInit() {
