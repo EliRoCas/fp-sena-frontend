@@ -1,15 +1,20 @@
-<section ea-header class="dark:dark:bg-gray-900 shadow">
+<section ea-header class="dark:dark:bg-gray-900 shadow flex justify-between">
 
-    <button mat-mini-fab (click)="drawer().toggle()" color="secondary">
-        <mat-icon>menu</mat-icon>
-    </button>
 
-    <a routerLink="/" routerLinkActive="router-link-active">
-        <div
-            class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl">
-            SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
-    </a>
+    <div class="flex gap-5">
+        <button mat-mini-fab (click)="drawer().toggle()" color="secondary">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a routerLink="/" routerLinkActive="router-link-active">
+            <div
+                class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl">
+                SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+        </a>
+    </div>
+    <div ea-portal name="header-title" class="font-primary ">
+    </div>
 
-    <ea-portal name="header-title" />
+    <button routerLink="/login" class="primary-button">Login</button>
+
 
 </section>
