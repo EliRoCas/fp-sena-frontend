@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
 
   id = input<number | undefined>();
   categories = signal<CategoryModel[]>([]);
-  selectedCat = signal<CategoryModel | undefined>(undefined)
+  selectedCat = signal<CategoryModel | undefined>(undefined);
   subcategories = signal<SubcategoryModel[]>([]);
   selectedSubca = signal<SubcategoryModel | undefined>(undefined);
   imageUrl: string | ArrayBuffer | null = null;
