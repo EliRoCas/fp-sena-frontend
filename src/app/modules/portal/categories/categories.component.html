@@ -1,33 +1,36 @@
-<section class="text-gray-600 body-font dark:bg-gray-900 ">
-    <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
-        <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
-            <div class="flex flex-col justify-center">
-                <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
-                    <ea-portal-content name="header-title">
-                        Categorías
-                    </ea-portal-content>
-                </h2>
-                <div class="input-special flex flex-col mb-4">
-                    <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
-                    <input parentCategories="text" id="category_name" name="category_name"
-                        placeholder="Nombre de la categoría" aria-label="">
+<form [formGroup]="catForm" (ngSubmit)="add()">
+    <section class="text-gray-600 body-font dark:bg-gray-900 ">
+        <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
+            <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
+
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
+                        <ea-portal-content name="header-title">
+                            Categorías
+                        </ea-portal-content>
+                    </h2>
+                    <div class="input-special flex flex-col mb-4">
+                        <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
+                        <input parentCategories="text" id="category_name" name="category_name"
+                            placeholder="Nombre de la categoría" aria-label="" formControlName="category_name">
+                    </div>
+                </div>
+                <div class="flex justify-center flex-row gap-5">
+                    <button type="submit" [disabled]="!catForm.valid" class="secundary-button-main">
+                        Guardar
+                    </button>
+                    <button class="secundary-button">
+                        Cancelar
+                    </button>
                 </div>
             </div>
-            <div class="flex justify-center flex-row gap-5">
-                <button class="secundary-button-main">
-                    Guardar
-                </button>
-                <button class="secundary-button">
-                    Cancelar
-                </button>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
+</form>
 
 <div class="dark:bg-gray-900 w-full h-full">
 
-    <a routerLink="/portal/register-product" routerLinkActive="router-link-active">
+    <a routerLink="/portal/categories" routerLinkActive="router-link-active">
         <button class="px-2 secundary-button ml-4"><i class="fa-solid fa-user-plus text-green-700"></i>
             Agregar</button> </a>
 
@@ -53,8 +56,7 @@
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
 
-                    <a [routerLink]="['/portal/edit-product', element.id_category]"
-                        routerLinkActive="router-link-active">
+                    <a [routerLink]="['/portal/categories', element.id_category]" routerLinkActive="router-link-active">
                         <button class="text-blue-700 px-2"><i class="fa-solid fa-pencil"></i></button>
                     </a>
                     <a>

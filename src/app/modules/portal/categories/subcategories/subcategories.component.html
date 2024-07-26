@@ -1,4 +1,4 @@
-<section class="text-gray-600 body-font dark:bg-gray-900 ">
+<form [formGroup]="subcatForm" (ngSubmit)="add()" class="text-gray-600 body-font dark:bg-gray-900 ">
     <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
         <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
             <div class="flex flex-col justify-center">
@@ -10,9 +10,10 @@
                 <div class="input-special flex flex-row mb-4 select-id">
                     <label for="parentCategories" class="text-sm font-semibold text-gray-700">Categoría
                         Principal</label>
-                    <select name="parentCategories" id="parentCategories" class="input-special py-3" required>
-                        @for (parentCategory of parentCategories; track parentCategory) {
-                        <option value="parentCategory">{{parentCategory}}</option>
+                    <select name="parentCategories" id="parentCategories" class="input-special py-3"
+                        formControlName="fo_category">
+                        @for (category of categories(); track category) {
+                        <option [value]="category.id_category">{{category.category_name}}</option>
                         }
                     </select>
                 </div>
@@ -20,11 +21,11 @@
                 <div class="input-special flex flex-col mb-4">
                     <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
                     <input parentCategories="text" id="category_name" name="category_name"
-                        placeholder="Nombre de la subcategoría" aria-label="">
+                        placeholder="Nombre de la subcategoría" aria-label="" formControlName="subcategory_name">
                 </div>
             </div>
             <div class="flex justify-center flex-row gap-5">
-                <button class="secundary-button-main">
+                <button type="submit" [disabled]="!subcatForm.valid" class="secundary-button-main">
                     Guardar
                 </button>
                 <button class="secundary-button">
@@ -33,7 +34,7 @@
             </div>
         </div>
     </div>
-</section>
+</form>
 
 <div class="dark:bg-gray-900 w-full h-full">
 
