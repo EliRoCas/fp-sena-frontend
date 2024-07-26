@@ -19,8 +19,6 @@ export class StockComponent {
   dataSource = signal<ProductModel[]>([]);
   selected = signal<ProductModel | undefined>(undefined);
 
-  endpoint = '/api/usuarios';
-  filterFields = ['id', 'nombre'];
 
   constructor(private store: Store) { }
 

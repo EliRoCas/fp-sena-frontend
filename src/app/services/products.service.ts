@@ -14,7 +14,7 @@ import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX 
 export interface ProductModel {
   id_product: number;
   product_name: string;
-  product_type: string;
+  fo_subcategory: string;
   product_img: string;
   product_description: string;
   quantity: number;
