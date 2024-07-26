@@ -53,6 +53,7 @@ export const transactionIncome = createSelector(transactionAdapter.feature,
   transactions => {
     return transactions.filter(trans => trans.transaction_type === 'income');
   })
+  
 export const transactionExpense = createSelector(transactionAdapter.feature,
   transactions => {
     return transactions.filter(trans => trans.transaction_type === 'expense');

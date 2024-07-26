@@ -1,82 +1,58 @@
 import { DatePipe } from '@angular/common';
-import { Component} from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
+import { PortalContentComponent } from '@ea-controls/portal';
+import { transactionAdapter, transactionIncome, TransactionModel } from '../../../services/transactions.service';
+import { Store } from '@ngrx/store';
 
-export interface IncomeElement {
-  id_income: number,
-  income_name: string,
-  income_date: Date,
-  income_amount: number,
-  rose_type: string,
-  rose_category: boolean,
-  customer: string,
-}
-
-const ELEMENT_DATA: IncomeElement[] = [
-  {
-    id_income: 1,
-    income_name: 'Venta Modial',
-    income_date: new Date ('05/06/2015'),
-    income_amount: 2500520,
-    rose_type: 'Mondual',
-    rose_category: true,
-    customer: 'Paloquemado'
-  },
-  {
-    id_income: 7,
-    income_name: 'Venta Modial',
-    income_date: new Date ('05/06/2015'),
-    income_amount: 2500520,
-    rose_type: 'Mondial',
-    rose_category: true,
-    customer: 'Paloquemado'
-  },
-  {
-    id_income: 2,
-    income_name: 'Venta Modial',
-    income_date: new Date ('05/12/2016'),
-    income_amount: 2500520,
-    rose_type: 'Mondual',
-    rose_category: false,
-    customer: 'Paloquemado'
-  },
-  {
-    id_income: 3,
-    income_name: 'Venta Modial',
-    income_date:new Date ('28/4/2018') ,
-    income_amount: 2500520,
-    rose_type: 'Mondual',
-    rose_category: false,
-    customer: 'Paloquemado'
-  },
-  {
-    id_income: 4,
-    income_name: 'Venta Rosa Roja',
-    income_date: new Date ('05-07-2015'),
-    income_amount: 5500520,
-    rose_type: 'Roja',
-    rose_category: true,
-    customer: 'Infinity'
-  },
-]
 
 @Component({
   selector: 'app-incomes',
   standalone: true,
-  imports: [MatTableModule, RouterLink, DatePipe],
+  imports: [
+    MatTableModule,
+    RouterLink,
+    DatePipe,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIcon,
+    PortalContentComponent,
+  ],
   templateUrl: './incomes.component.html',
   styleUrl: './incomes.component.scss'
 })
 export class IncomesComponent {
   displayedColumns: string[] = [
-    'id_income',
-    'income_name',
-    'income_date',
-    'income_amount',
-    'rose_type',
-    'rose_category',
-    'customer',
+    'id_transaction',
+    'transaction_name',
+    'transaction_date',
+    'transaction_amount',
+    'fo_rose_type',
+    'transaction_rose_export',
+    'transaction_customer',
     'incomeActions'];
-  dataSource = ELEMENT_DATA;
+  dataSource = signal<TransactionModel[]>([])
+  selected = signal<TransactionModel | undefined>(undefined);
+
+  constructor(
+    private store: Store
+  ) { }
+
+  ngOnInit(): void {
+    this.store.dispatch(transactionAdapter.getAll());
+    this.store.select(transactionIncome).subscribe(data => this.dataSource.set(data));
+
+    //this.store.select(transactionIncome).subscribe;
+  }
+
+  delete(transaction: TransactionModel) {
+    this.store.dispatch(transactionAdapter.removeOne(transaction));
+  }
 }
+
