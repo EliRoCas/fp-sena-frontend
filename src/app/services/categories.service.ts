@@ -14,6 +14,8 @@ import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX 
 export interface CategoryModel {
   id_category: number;
   category_name: string;
+  fo_subcategory: number;
+  subcategory_name: string;
 }
 
 export const catAdapter = new EntityAdapter<CategoryModel>("categories", { getId: (input) => input.id_category.toString() });

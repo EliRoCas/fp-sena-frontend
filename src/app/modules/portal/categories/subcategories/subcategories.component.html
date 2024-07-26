@@ -1,46 +1,17 @@
-<form [formGroup]="subcatForm" (ngSubmit)="add()" class="text-gray-600 body-font dark:bg-gray-900 ">
-    <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
-        <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
-            <div class="flex flex-col justify-center">
-                <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
-                    <ea-portal-content name="header-title">
-                        Subcategorías
-                    </ea-portal-content>
-                </h2>
-                <div class="input-special flex flex-row mb-4 select-id">
-                    <label for="parentCategories" class="text-sm font-semibold text-gray-700">Categoría
-                        Principal</label>
-                    <select name="parentCategories" id="parentCategories" class="input-special py-3"
-                        formControlName="fo_category">
-                        @for (category of categories(); track category) {
-                        <option [value]="category.id_category">{{category.category_name}}</option>
-                        }
-                    </select>
-                </div>
-
-                <div class="input-special flex flex-col mb-4">
-                    <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
-                    <input parentCategories="text" id="category_name" name="category_name"
-                        placeholder="Nombre de la subcategoría" aria-label="" formControlName="subcategory_name">
-                </div>
-            </div>
-            <div class="flex justify-center flex-row gap-5">
-                <button type="submit" [disabled]="!subcatForm.valid" class="secundary-button-main">
-                    Guardar
-                </button>
-                <button class="secundary-button">
-                    Cancelar
-                </button>
-            </div>
-        </div>
-    </div>
-</form>
-
 <div class="dark:bg-gray-900 w-full h-full">
-
-    <a routerLink="/portal/register-product" routerLinkActive="router-link-active">
+    <div class="flex justify-center pt-2">
+        <h2 class="text-2xl font-bold mb-4 font-primary dark:text-white">
+            <ea-portal-content name="header-title">
+                Subcategorías
+            </ea-portal-content>
+        </h2>
+    </div>
+    <a (click)="openNewCategory()">
+        <!-- routerLink="/portal/subcategory" routerLinkActive="router-link-active" -->
         <button class="px-2 secundary-button ml-4"><i class="fa-solid fa-user-plus text-green-700"></i>
-            Agregar</button> </a>
+            Agregar
+        </button>
+    </a>
 
     <div class="flex justify-center flex-wrap mx-5">
         <table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
@@ -63,8 +34,7 @@
             <ng-container matColumnDef="subcatActions">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <a [routerLink]="['/portal/edit-product', element.id_subcategory]"
-                        routerLinkActive="router-link-active">
+                    <a (click)="editCategory(element.id_subcategory)">
                         <button class="text-blue-700 px-2"><i class="fa-solid fa-pencil"></i></button>
                     </a>
                     <a>

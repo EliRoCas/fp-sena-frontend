@@ -1,0 +1,26 @@
+<form [formGroup]="catForm" class="text-gray-600 body-font dark:bg-gray-900 w-full h-full">
+    <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
+        <div class="bg-gray-100 rounded-lg p-3 flex flex-col w-full h-full  md:mt-0">
+            <div class="flex flex-col justify-center">
+                <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary">
+                    <ea-portal-content name="header-title">
+                        Categorías
+                    </ea-portal-content>
+                </h2>
+                <div class="input-special flex flex-col mb-4">
+                    <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
+                    <input parentCategories="text" id="category_name" name="category_name"
+                        placeholder="Nombre de la categoría" aria-label="" formControlName="category_name">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center flex-row gap-5">
+        <button (click)="add()" [disabled]="!catForm.valid" class="secundary-button-main">
+            Guardar
+        </button>
+        <button class="secundary-button" mat-dialog-close="">
+            Cancelar
+        </button>
+    </div>
+</form>

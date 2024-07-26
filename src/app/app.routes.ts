@@ -22,6 +22,8 @@ import { StockComponent } from './modules/portal/stock/stock.component';
 import { ProductComponent } from './modules/portal/stock/product/product.component';
 import { NotificationsComponent } from './structure/notifications/notifications.component';
 import { SubcategoriesComponent } from './modules/portal/categories/subcategories/subcategories.component';
+import { SubcategoryFormComponent } from './modules/portal/categories/subcategories/subcategory-form/subcategory-form.component';
+import { CategoryFormComponent } from './modules/portal/categories/category-form/category-form.component';
 
 
 export const routes: Routes = [
@@ -54,7 +56,9 @@ export const routes: Routes = [
       { path: 'register-expense', component: TransactionsComponent },
       { path: 'edit-expense/:id', component: TransactionsComponent },
       { path: "categories", component: CategoriesComponent },
-      { path: "subcategories", component: SubcategoriesComponent},
+      { path: "category", component: CategoryFormComponent },
+      { path: "subcategories", component: SubcategoriesComponent },
+      { path: "subcategory", component: SubcategoryFormComponent },
       { path: 'stock', component: StockComponent },
       { path: 'register-product', component: ProductComponent },
       { path: 'edit-product/:id', component: ProductComponent },

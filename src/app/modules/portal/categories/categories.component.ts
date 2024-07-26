@@ -6,9 +6,9 @@ import { PortalContentComponent } from '@ea-controls/portal';
 import { FilterComponent } from '../../../share/filter/filter.component';
 import { catAdapter, catById, catByName, CategoryModel } from '../../../services/categories.service';
 import { Store } from '@ngrx/store';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { filter } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { CategoryFormComponent } from './category-form/category-form.component';
 
 @Component({
   selector: 'app-categories',
@@ -26,13 +26,16 @@ import { filter } from 'rxjs';
 })
 export class CategoriesComponent {
 
-  displayedColumns: string[] = ['id_category', 'category_name', 'subcategories', 'catActions'];
+  displayedColumns: string[] = ['id_category', 'category_name', 'catActions'];
   dataSource = signal<CategoryModel[]>([]);
   selected = signal<CategoryModel | undefined>(undefined);
   id = input<number | undefined>();
-  catForm: FormGroup;
 
 
+
+  constructor(private store: Store,
+    private matDialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.store.dispatch(catAdapter.getAll());
@@ -42,55 +45,20 @@ export class CategoriesComponent {
 
     this.store.select(catByName('')).subscribe(result => {
       console.log('catByName', result)
-    })
+    });
   };
 
   delete(category: CategoryModel) {
     this.store.dispatch(catAdapter.removeOne(category))
   }
 
-
-  add() {
-    if (this.id()) {
-      this.store.dispatch(catAdapter.patchOne(this.catForm.value as unknown as CategoryModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-        },
-        (error) => {
-          this._snackBar.open("Error", "", { duration: 5000 })
-        }
-      ));
-    } else {
-      this.store.dispatch(catAdapter.addOne(this.catForm.value as unknown as CategoryModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-          this.catForm.reset();
-        },
-        (error) => {
-          this._snackBar.open("ERROR", "", { duration: 5000 })
-        }
-      ));
-    }
+  openNewCategory() {
+    this.matDialog.open(CategoryFormComponent);
   }
-  constructor(private store: Store, private _snackBar: MatSnackBar, private fb: FormBuilder) {
-    this.catForm = this.fb.group({
-      id_category: [''],
-      category_name: ['', [Validators.required]],
-    },
-    );
-    effect(() => {
 
-      if (this.id()) {
-        this.store.select(catById(this.id()!))
-          .pipe(
-            filter(catData => !!catData)
-          )
-          .subscribe(catData => {
-
-            this.catForm.patchValue(catData as any);
-
-          })
-      }
+  editCategory(id: number): void {
+    this.matDialog.open(CategoryFormComponent, {
+      data: id
     });
   }
 

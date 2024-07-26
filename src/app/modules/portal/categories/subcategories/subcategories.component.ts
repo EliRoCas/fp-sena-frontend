@@ -10,6 +10,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { filter } from 'rxjs';
 import { catAdapter, CategoryModel } from '../../../../services/categories.service';
+import {
+  MatDialog,
+  MatDialogClose,
+} from '@angular/material/dialog';
+import { SubcategoryFormComponent } from './subcategory-form/subcategory-form.component';
 
 @Component({
   selector: 'app-subcategories',
@@ -33,31 +38,9 @@ export class SubcategoriesComponent {
   id = input<number | undefined>();
   categories = signal<CategoryModel[]>([]);
 
-  subcatForm: FormGroup;
-
-  constructor(private store: Store, private _snackBar: MatSnackBar, private fb: FormBuilder) {
-    this.subcatForm = this.fb.group({
-      id_subcategory: [''],
-      subcategory_name: ['', [Validators.required]],
-      fo_category: [0, [Validators.required]]
-    });
-
-    effect(() => {
-
-      if (this.id()) {
-        this.store.select(subcatById(this.id()!))
-          .pipe(
-            filter(subcatData => !!subcatData)
-          )
-          .subscribe(subcatData => {
-
-            this.subcatForm.patchValue(subcatData as any);
-
-          })
-      }
-    });
-
-  }
+  constructor(private store: Store,
+    private matDialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.store.dispatch(subcatAdapter.getAll());
@@ -73,41 +56,19 @@ export class SubcategoriesComponent {
     this.store.select(catAdapter.feature).subscribe(data => this.categories.set(data));
   };
 
-  add() {
-    if (this.id()) {
-
-      this.store.dispatch(subcatAdapter.patchOne(this.subcatForm.value as unknown as SubcategoryModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-        },
-        (error) => {
-          console.log(error);
-          this._snackBar.open("ERROR","", { duration: 5000 })
-        }
-      ));
-
-    } else {
-
-      this.store.dispatch(subcatAdapter.addOne(this.subcatForm.value as unknown as SubcategoryModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-          this.subcatForm.reset();
-        },
-        (error) => {
-          console.log(error);
-
-          this._snackBar.open("ERROR", "", { duration: 5000 })
-        }
-      ));
-    }
-  }
 
   delete(subcategory: SubcategoryModel) {
     this.store.dispatch(subcatAdapter.removeOne(subcategory))
   }
 
+  openNewCategory() {
+    this.matDialog.open(SubcategoryFormComponent);
+  }
 
-  parentCategories: string[] = [
-    "Ventas", "Gastos", "Agroinsumo", "Servicios", "Salarios"];
 
+  editCategory(id: number): void {
+    this.matDialog.open(SubcategoryFormComponent, {
+      data: id
+    });
+  }
 }
