@@ -11,6 +11,7 @@ import { productAdapter } from './services/products.service';
 import { catAdapter } from './services/categories.service';
 import { subcatAdapter } from './services/subcategories.service';
 import { roseTypeAdapter, transactionAdapter } from './services/transactions.service';
+import { budgetAdapter } from './services/budgets.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideState(subcatAdapter.reducer()),
     provideState(transactionAdapter.reducer()),
     provideState(roseTypeAdapter.reducer()),
+    provideState(budgetAdapter.reducer()),
     importProvidersFrom(RouterModule), provideAnimationsAsync(),
     provideRepositoryWebApi({
       adapters: [
@@ -36,7 +38,8 @@ export const appConfig: ApplicationConfig = {
         catAdapter,
         subcatAdapter,
         transactionAdapter,
-        roseTypeAdapter
+        roseTypeAdapter,
+        budgetAdapter
       ],
       urlBase: `http://localhost/sigef-final-proyect/Backend/controller/`,
       getUrl(adapter) {

@@ -10,15 +10,6 @@ import { PortalContentComponent } from '@ea-controls/portal';
 import { transactionAdapter, transactionExpense, TransactionModel } from '../../../services/transactions.service';
 import { Store } from '@ngrx/store';
 
-export interface expenseElement {
-  id_expense: number;
-  expense_name: string;
-  expense_date: Date;
-  expense_amount: number;
-  rose_type: string;
-  supplier: string;
-}
-
 @Component({
   selector: 'app-expenses',
   standalone: true,

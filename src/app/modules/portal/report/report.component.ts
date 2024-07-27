@@ -1,31 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BalanceComponent } from './balance/balance.component';
+import { CommonModule } from '@angular/common';
+import { ReportsService } from '../../../services/reports.service';
+import { Store } from '@ngrx/store';
+import { PortalContentComponent } from '@ea-controls/portal';
 
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [BalanceComponent, RouterLink],
+  imports: [BalanceComponent, RouterLink, CommonModule, PortalContentComponent],
   templateUrl: './report.component.html',
   styleUrl: './report.component.scss'
 })
 export class ReportComponent implements OnInit {
-  public baseMoney: number;
-  public spentMoney: number;
-  public lastIncomes: string[];
-  public lastExpenses: string[];
+  public baseMoney = signal<number | undefined>(undefined);
+  public spentMoney = signal<number | undefined>(undefined);
+  public lastIncomes = signal<string[]>([]);
+  public lastExpenses = signal<string[]>([]);
 
-  constructor() {
-
-    this.baseMoney = 5000;
-    this.spentMoney = 2500;
-    this.lastIncomes = ['Ingreso 1', 'Ingreso 2', 'Ingreso 3'];
-    this.lastExpenses = ['Gasto 1', 'Gasto 2', 'Gasto 3'];
-  }
-
+  constructor(
+    private store: Store,
+    private reportsService: ReportsService,
+  ) { }
 
   ngOnInit(): void {
 
+    // Se obtienen los últimos 3 egresos
+    this.store.select(this.reportsService.getExpensesReport()).subscribe(expenses => {
+      this.spentMoney.set(expenses.reduce((acc, expense) => acc + Number(expense.transaction_amount), 0));
+      this.lastExpenses.set(expenses.slice(0, 3).map(expense => expense.transaction_name));
+    });
 
+
+    // Se obtienen los últimos tres ingresos
+    this.store.select(this.reportsService.getIncomesReport()).subscribe(incomes => {
+      this.baseMoney.set(incomes.reduce((acc, income) => acc + Number(income.transaction_amount), 0));
+      this.lastIncomes.set(incomes.slice(0, 3).map(income => income.transaction_name));
+    });
   }
 }

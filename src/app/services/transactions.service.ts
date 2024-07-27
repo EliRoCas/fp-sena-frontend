@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { EntityAdapter } from '@ea-controls/ngrx-repository'; // Manejador de operaciones para entidades NGRX
+import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX para crar selectores de estado memorizados
+
 @Injectable({
   providedIn: 'root'
 })
@@ -7,9 +10,6 @@ export class TransactionsService {
 
   constructor() { }
 }
-
-import { EntityAdapter } from '@ea-controls/ngrx-repository'; // Manejador de operaciones para entidades NGRX
-import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX para crar selectores de estado memorizados
 
 export interface TransactionModel {
   id_transaction: number;

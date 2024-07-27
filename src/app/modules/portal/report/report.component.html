@@ -1,6 +1,10 @@
 <div class="dark:bg-gray-900 w-full">
     <div class="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-900 flex flex-wrap justify-center items-center ">
-        <h2 class="text-2xl font-bold mb-4 font-primary font-semibold dark:text-white">Resumen Financiero</h2>
+        <h2 class="text-2xl font-bold mb-4 font-primary font-semibold dark:text-white">
+            <ea-portal-content name="header-title">
+                Resumen Financiero
+            </ea-portal-content>
+        </h2>
         <div class="flex flex-row">
 
             <div class="flex flex-col">
@@ -10,21 +14,31 @@
             <div class="flex flex-row flex-wrap gab-2 justify-center ">
                 <a routerLink="/portal/expenses"
                     class="font-primary  max-w-sm p-6 m-2 bg-white border-2 border-red-800 rounded-lg shadow hover:bg-red-300 dark:bg-gray-800 dark:border-red-800 dark:hover:bg-gray-700">
-                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dinero Gastado</h3>
-                    <p class="font-secundary text-gray-700 dark:text-gray-400">${{ spentMoney }}</p>
-                    <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Últimos Egresos:
+                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Dinero Gastado
+                    </h3>
+                    <p class="font-secundary text-gray-700 dark:text-gray-400">
+                        ${{ spentMoney() }}
+                    </p>
+                    <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Últimos Egresos:
                     </h4>
-                    @for (lastExpense of lastExpenses; track lastExpense) {
+                    @for (lastExpense of lastExpenses(); track lastExpense) {
                     <li class="font-secundary text-gray-700 dark:text-gray-400">${{lastExpense}}</li>
                     }
                 </a>
                 <a routerLink="/portal/incomes"
                     class=" font-primary  max-w-sm p-6 m-2 bg-white border-2 border-red-800 rounded-lg shadow hover:bg-red-300 dark:bg-gray-800 dark:border-red-800 dark:hover:bg-gray-700">
-                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dinero de Base</h3>
-                    <p class="font-secundary text-gray-700 dark:text-gray-400">${{ baseMoney }}</p>
-                    <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Últimos Ingresos:
+                    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Dinero de Base
+                    </h3>
+                    <p class="font-secundary text-gray-700 dark:text-gray-400">
+                        ${{ baseMoney() }}
+                    </p>
+                    <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Últimos Ingresos:
                     </h4>
-                    @for (lastIncome of lastIncomes; track lastIncome) {
+                    @for (lastIncome of lastIncomes(); track lastIncome) {
                     <li class="font-secundary text-gray-700 dark:text-gray-300">${{lastIncome}}</li>
                     }
                 </a>
