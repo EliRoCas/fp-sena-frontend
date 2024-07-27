@@ -41,11 +41,11 @@ export const getPeriodReportData = createSelector(transactionAdapter.feature, (t
   const getPeriod = (string_date: Date) => {
     const date = dayjs(string_date).toDate();
 
-    if ([1, 2, 3].includes(date.getMonth())) {
+    if ([1, 2, 3].includes(date.getMonth() + 1)) {
       return 'Q1'
-    } else if ([4, 5, 6].includes(date.getMonth())) {
+    } else if ([4, 5, 6].includes(date.getMonth() + 1)) {
       return 'Q2'
-    } else if ([7, 8, 9].includes(date.getMonth())) {
+    } else if ([7, 8, 9].includes(date.getMonth() + 1)) {
       return 'Q3'
     } else {
       return 'Q4'
