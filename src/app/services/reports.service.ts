@@ -20,15 +20,21 @@ dayjs().format()
 export const getBalanceReport = createSelector(
   transactionAdapter.feature,
   (transactions: TransactionModel[]) => {
-    const expenses = transactions.filter(t => t.transaction_type === 'expense' && new Date(t.transaction_date).getMonth() + 1);
-    const incomes = transactions.filter(t => t.transaction_type === 'income' && new Date(t.transaction_date).getMonth() + 1);
-
-    const totalExpenses = expenses.reduce((acc, t) => acc + t.transaction_amount, 0);
-    const totalIncomes = incomes.reduce((acc, t) => acc + t.transaction_amount, 0);
+    const expenses = transactions.
+      filter(t => t.transaction_type === 'expense')
+      .filter(t => dayjs(t.transaction_date).toDate().getMonth() === new Date().getMonth())
+      .map(t => Number(t.transaction_amount))
+      .reduce((prev, curr) => prev + curr, 0)
+    const incomes = transactions
+      .filter(t => t.transaction_type === 'income')
+      .filter(t => dayjs(t.transaction_date).toDate().getMonth() === new Date().getMonth())
+      .map(t => Number(t.transaction_amount))
+      .reduce((prev, curr) => prev + curr, 0)
 
     return {
-      totalExpenses,
-      totalIncomes
+      expenses,
+      incomes
+
     }
   }
 );
@@ -149,7 +155,7 @@ export const getIncomeStatement = createSelector(transactionAdapter.feature, (tr
 
   const totalOperatingExpenses = salaries + rent + advertising + otherExpenses;
 
-const taxes = (grossProfit - totalOperatingExpenses) * 0.35; 
+  const taxes = (grossProfit - totalOperatingExpenses) * 0.35;
 
   return {
     totalIncome: incomesAll - totalExpenses,
@@ -171,8 +177,9 @@ const taxes = (grossProfit - totalOperatingExpenses) * 0.35;
 export const getExpensesReport = createSelector(
   transactionAdapter.feature,
   (transactions: TransactionModel[]) => {
-    const currentMonth = new Date().getMonth() + 1;
-    const expenses = transactions.filter(t => t.transaction_type === 'expense' && new Date().getMonth() + 1 === currentMonth);
+    const expenses = transactions
+      .filter(t => t.transaction_type === 'expense')
+      .filter(t => dayjs(t.transaction_date).toDate().getMonth() === new Date().getMonth());
     return expenses;
   }
 );
@@ -181,9 +188,9 @@ export const getExpensesReport = createSelector(
 export const getIncomesReport = createSelector(
   transactionAdapter.feature,
   (transactions: TransactionModel[]) => {
-    const currentMonth = new Date().getMonth() + 1;
-
-    const incomes = transactions.filter(t => t.transaction_type === 'income' && new Date().getMonth() + 1 === currentMonth);
+    const incomes = transactions
+      .filter(t => t.transaction_type === 'income')
+      .filter(t => dayjs(t.transaction_date).toDate().getMonth() === new Date().getMonth());
     return incomes;
   }
 );

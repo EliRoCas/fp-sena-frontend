@@ -1,7 +1,9 @@
 <div id="chart" class="p-4 bg-white dark:bg-gray-800 shadow rounded-lg">
+    @if (transactionsOptions) {
     <apx-chart [series]="transactionsOptions.series" [chart]="transactionsOptions.chart"
         [labels]="transactionsOptions.labels" [colors]="transactionsOptions.colors"
         [dataLabels]="transactionsOptions.dataLabels" [stroke]="transactionsOptions.stroke"
         [plotOptions]="transactionsOptions.plotOptions" [legend]="transactionsOptions.legend">
     </apx-chart>
+    }
 </div>
