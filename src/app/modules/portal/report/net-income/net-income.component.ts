@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, viewChild } from '@angular/core';
-import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -12,20 +13,12 @@ import {
   ApexTitleSubtitle,
   NgApexchartsModule
 } from 'ng-apexcharts';
+import { transactionAdapter } from '../../../../services/transactions.service';
 
-export interface NetIncomeData {
-  period: string;
-  incomes: number;
-  expenses: number;
-  netIncome: number;
-}
+import { getPeriodReportData } from '../../../../services/reports.service';
+import { Store } from '@ngrx/store';
+import { PortalContentComponent } from '@ea-controls/portal';
 
-const Element_Data: NetIncomeData[] = [
-  { period: 'Q1 2024', incomes: 50000000, expenses: 25000000, netIncome: 25000000 },
-  { period: 'Q2 2024', incomes: 50000000, expenses: 25000000, netIncome: 25000000 },
-  { period: 'Q3 2024', incomes: 50000000, expenses: 25000000, netIncome: 25000000 },
-  { period: 'Q4 2024', incomes: 50000000, expenses: 25000000, netIncome: 25000000 },
-]
 
 export type netIncomeOptions = {
   series: ApexAxisChartSeries;
@@ -40,57 +33,77 @@ export type netIncomeOptions = {
 @Component({
   selector: 'app-net-income',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule, MatTableModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    NgApexchartsModule,
+    MatTableModule,
+    MatButtonModule,
+    PortalContentComponent],
   templateUrl: './net-income.component.html',
   styleUrl: './net-income.component.scss'
 })
 export class NetIncomeComponent implements OnInit {
 
   displayedColumns: string[] = ['period', 'incomes', 'expenses', 'netIncome'];
-  dataSource = [...Element_Data];
+  dataSource: any[] = [];
 
-  public netIncomeOptions: netIncomeOptions;
+  public netIncomeOptions?: netIncomeOptions;
+  //store: any;
 
-  constructor() {
-    this.netIncomeOptions = {
-      series: [
-        {
-          name: "Utilidad Neta",
-          data: [10, 41, 35, 51] // Datos de utilidad neta trimestral
+  constructor(private store: Store) {
+    this.store.dispatch(transactionAdapter.getAll());
+
+    this.store.select(getPeriodReportData).subscribe(data => {
+      this.dataSource = data;
+      //console.log('data', data);
+
+
+
+      this.netIncomeOptions = {
+        series: [
+          {
+            name: "Utilidad Neta",
+            data: data.map(x => x.netIncome)  // Datos de utilidad neta trimestral
+          }
+        ],
+        chart: {
+          height: 350,
+          type: 'line'
+        },
+        xaxis: {
+          categories: data.map(x => x.period)
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'light',
+            type: 'horizontal',
+            shadeIntensity: 0.25,
+            gradientToColors: undefined,
+            inverseColors: true,
+            opacityFrom: 0.75,
+            opacityTo: 0.75,
+            stops: [0, 90, 100]
+          }
+        },
+        title: {
+          text: 'Utilidad Neta Trimestral',
+          align: 'left'
         }
-      ],
-      chart: {
-        height: 350,
-        type: 'line'
-      },
-      xaxis: {
-        categories: ['Q1', 'Q2', 'Q3', 'Q4']
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: 'smooth'
-      },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shade: 'light',
-          type: 'horizontal',
-          shadeIntensity: 0.25,
-          gradientToColors: undefined,
-          inverseColors: true,
-          opacityFrom: 0.75,
-          opacityTo: 0.75,
-          stops: [0, 90, 100]
-        }
-      },
-      title: {
-        text: 'Utilidad Neta Trimestral',
-        align: 'left'
-      }
-    };
+      };
+
+    })
+
+
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+  }
 }
