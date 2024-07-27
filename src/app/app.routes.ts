@@ -12,7 +12,6 @@ import { RegisterUserComponent } from './modules/portal/users/register-user/regi
 import { ReportComponent } from './modules/portal/report/report.component';
 import { BalanceComponent } from './modules/portal/report/balance/balance.component';
 import { NetIncomeComponent } from './modules/portal/report/net-income/net-income.component';
-import { OperatingBudgetComponent } from './modules/portal/report/operating-budget/operating-budget.component';
 import { IncomeStatementComponent } from './modules/portal/report/income-statement/income-statement.component';
 import { TransactionsComponent } from './modules/portal/transactions/transactions.component';
 import { IncomesComponent } from './modules/portal/incomes/incomes.component';
@@ -46,7 +45,6 @@ export const routes: Routes = [
       { path: 'report', component: ReportComponent },
       { path: 'balance', component: BalanceComponent },
       { path: 'net-income', component: NetIncomeComponent },
-      { path: 'operating-budget', component: OperatingBudgetComponent },
       { path: 'income-statement', component: IncomeStatementComponent },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'incomes', component: IncomesComponent },
