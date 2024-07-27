@@ -26,14 +26,12 @@ export const getBalanceReport = createSelector(
     const totalExpenses = expenses.reduce((acc, t) => acc + t.transaction_amount, 0);
     const totalIncomes = incomes.reduce((acc, t) => acc + t.transaction_amount, 0);
 
-
     return {
       totalExpenses,
       totalIncomes
     }
   }
 );
-
 
 // Utilidad Neta 
 export interface NetIncomeModel {
@@ -95,14 +93,11 @@ export const getPeriodReportData = createSelector(transactionAdapter.feature, (t
 })
 
 // Estado de resultados
-
 export const getIncomeStatement = createSelector(transactionAdapter.feature, (transactions) => {
 
   const getYearPeriod = (string_date: Date) => {
     return dayjs(string_date).year();
   };
-
-
 
   const transactionByYear = transactions
     .filter(t => getYearPeriod(t.transaction_date) === new Date().getFullYear());
@@ -154,7 +149,7 @@ export const getIncomeStatement = createSelector(transactionAdapter.feature, (tr
 
   const totalOperatingExpenses = salaries + rent + advertising + otherExpenses;
 
-  const taxes = (grossProfit - totalOperatingExpenses) * 0.35;
+const taxes = (grossProfit - totalOperatingExpenses) * 0.35; 
 
   return {
     totalIncome: incomesAll - totalExpenses,
@@ -171,10 +166,6 @@ export const getIncomeStatement = createSelector(transactionAdapter.feature, (tr
   };
 
 });
-
-
-
-
 
 // Reporte de Gastos
 export const getExpensesReport = createSelector(
@@ -197,25 +188,3 @@ export const getIncomesReport = createSelector(
   }
 );
 
-// export const getIncomeStatements = createSelector(
-//   transactionAdapter.feature,
-//   (transactions: TransactionModel[]) => {
-//     const incomes = transactions.filter(t => t.transaction_type === 'income');
-//     const expenses = transactions.filter(t => t.transaction_type === 'expense');
-//     return {
-//       totalRevenue: incomes.reduce((acc, t) => acc + t.transaction_amount, 0),
-//       totalExpenses: expenses.reduce((acc, t) => acc + t.transaction_amount, 0),
-//       netIncome: incomes.reduce((acc, t) => acc + t.transaction_amount, 0) -
-//         expenses.reduce((acc, t) => acc + t.transaction_amount, 0)
-//     };
-//   }
-// );
-
-
-// // Presupuesto de Operaciones
-// export const getOperationalBudget = createSelector(
-//   budgetAdapter.feature,
-//   (budgets: BudgetModel[]) => {
-//     return budgets.reduce((acc, b) => acc + b.amount, 0);
-//   }
-// );
