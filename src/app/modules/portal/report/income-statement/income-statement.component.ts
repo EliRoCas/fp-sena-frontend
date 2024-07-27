@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { PortalContentComponent } from '@ea-controls/portal';
+import { Store } from '@ngrx/store';
+import { getIncomeStatement } from '../../../../services/reports.service';
+import { transactionAdapter } from '../../../../services/transactions.service';
 
 @Component({
   selector: 'app-income-statement',
@@ -14,27 +17,16 @@ import { PortalContentComponent } from '@ea-controls/portal';
 })
 export class IncomeStatementComponent {
 
-  incomeStatement = {
-    totalIncome: 100000,
-    cogs: 40000,
-    operatingExpenses: {
-      salaries: 15000,
-      rent: 5000,
-      supplies: 3000,
-      advertising: 2000,
-      other: 1000
-    },
-    otherExpenses: {
-      interest: 500,
-      depreciation: 700,
-      amortization: 300
-    },
-    otherIncomes: {
-      investmentIncome: 1000,
-      nonOperatingGains: 2000
-    },
-    taxes: 8000
-  };
+  incomeStatement: any;
+
+  constructor(private store: Store) {
+
+    this.store.dispatch(transactionAdapter.getAll());
+
+    this.store.select(getIncomeStatement).subscribe(data => {
+      this.incomeStatement = data;
+    })
+  }
 
   //Se calcula la ganancia bruta
   get grossProfit() {
@@ -43,8 +35,7 @@ export class IncomeStatementComponent {
 
   //Se calcula el total de gastos operativos 
   get totalOperatingExpenses() {
-    const expenses = this.incomeStatement.operatingExpenses;
-    return Object.values(expenses).reduce((a, b) => a + b, 0);
+    return this.incomeStatement.totalOperatingExpenses
   }
 
   // Se calcula el ingreso Operativo restando los gastos operativos totales
@@ -52,21 +43,9 @@ export class IncomeStatementComponent {
     return this.grossProfit - this.totalOperatingExpenses;
   }
 
-  //Se calcula el total de gastos 
-  get totalOtherExpenses() {
-    const expenses = this.incomeStatement.otherExpenses;
-    return Object.values(expenses).reduce((a, b) => a + b, 0);
-  }
-
-  //Se calcula el total de ingresos
-  get totalOtherIncomes() {
-    const incomes = this.incomeStatement.otherIncomes;
-    return Object.values(incomes).reduce((a, b) => a + b, 0);
-  }
-
   // Se calcula el ingreso antes de los impuestos 
   get incomeBeforeTaxes() {
-    return this.operatingIncome - this.totalOtherExpenses + this.totalOtherIncomes;
+    return this.operatingIncome
   }
 
   // Se calcula ell ingreso neto 

@@ -6,9 +6,9 @@
             </ea-portal-content>
         </h2>
         <table class="min-w-full bg-white">
-            <thead>
+            <thead class="bg-gray-300">
                 <tr>
-                    <th class="table-th text-left">Descripción</th>
+                    <th class="table-th text-left ">Descripción</th>
                     <th class="table-th text-right">Monto</th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="table-td" colspan="2">Gastos Operativos</td>
+                    <td class="table-td font-semibold" colspan="2">Gastos Operativos</td>
                 </tr>
                 <tr>
                     <td class="table-td pl-8">Salarios</td>
@@ -48,10 +48,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="table-td pl-8">Suministros</td>
-                    <td class="table-td text-right">
-                        ${{ incomeStatement.operatingExpenses.supplies}}
-                    </td>
                 </tr>
                 <tr>
                     <td class="table-td pl-8">Publicidad</td>
@@ -66,7 +62,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="table-td font-semibold">Total de Gastos Operativos</td>
+                    <td class="table-td font-semibold ">Total de Gastos Operativos</td>
                     <td class="table-td text-right font-semibold">
                         ${{ totalOperatingExpenses }}
                     </td>
@@ -77,54 +73,7 @@
                         ${{ operatingIncome }}
                     </td>
                 </tr>
-                <tr>
-                    <td class="table-td" colspan="2">Otros Gastos</td>
-                </tr>
-                <tr>
-                    <td class="table-td pl-8">Intereses</td>
-                    <td class="table-td text-right">
-                        ${{ incomeStatement.otherExpenses.interest }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-td pl-8">Depreciación</td>
-                    <td class="table-td text-right">
-                        ${{ incomeStatement.otherExpenses.depreciation }}
-                        /td>
-                </tr>
-                <tr>
-                    <td class="table-td pl-8">Amortización</td>
-                    <td class="table-td text-right">
-                        ${{ incomeStatement.otherExpenses.amortization }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-td font-semibold">Total de Otros Gastos</td>
-                    <td class="table-td text-right font-semibold">
-                        ${{ totalOtherExpenses }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-td" colspan="2">Otros Ingresos</td>
-                </tr>
-                <tr>
-                    <td class="table-td pl-8">Ingresos por inversiones</td>
-                    <td class="table-td text-right">
-                        ${{incomeStatement.otherIncomes.investmentIncome }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-td pl-8">Ganancias no operativas</td>
-                    <td class="table-td text-right">
-                        ${{incomeStatement.otherIncomes.nonOperatingGains }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-td font-semibold">Total de Otros Ingresos</td>
-                    <td class="table-td text-right font-semibold">
-                        ${{ totalOtherIncomes }}
-                    </td>
-                </tr>
+
                 <tr>
                     <td class="table-td font-semibold">Ingreso Antes de Impuestos</td>
                     <td class="table-td text-right font-semibold">
