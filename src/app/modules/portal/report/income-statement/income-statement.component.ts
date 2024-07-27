@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { PortalContentComponent } from '@ea-controls/portal';
 
 @Component({
   selector: 'app-income-statement',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [
+    MatButtonModule,
+    PortalContentComponent
+  ],
   templateUrl: './income-statement.component.html',
   styleUrl: './income-statement.component.scss'
 })

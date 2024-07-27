@@ -84,7 +84,48 @@ export const getPeriodReportData = createSelector(transactionAdapter.feature, (t
 
 
 // Estado de resultados
-export const getIncomeStatement = createSelector(
+
+export const getIncomeStatement = createSelector(transactionAdapter.feature, (transactions) => {
+
+  const getYearPeriod = (string_date: Date) => {
+    const year = dayjs(string_date).year();
+  };
+
+
+  let transactionsNew: NetIncomeModel[] = []
+
+  const transactionByYear = transactions
+    .filter(t => getYearPeriod(t.transaction_date));
+
+
+
+  const totalIncomes = transactionByYear
+    .filter(t => t.transaction_type === 'income')
+    .map(t => Number(t.transaction_amount))
+    .reduce((prev, curr) => prev + curr, 0);
+
+  const totalExpenses = transactionByYear
+    .filter(t => t.transaction_type === 'expense')
+    .map(t => Number(t.transaction_amount))
+    .reduce((prev, curr) => prev + curr, 0);
+
+
+  transactionsNew.push({
+    period: new Date().getFullYear().toString(),
+    incomes: totalIncomes,
+    expenses:  totalExpenses,
+    netIncome: totalIncomes - totalExpenses
+  }); 
+
+  return transactionsNew
+}
+
+)
+
+
+
+
+export const getIncomeStatements = createSelector(
   transactionAdapter.feature,
   (transactions: TransactionModel[]) => {
     const incomes = transactions.filter(t => t.transaction_type === 'income');
