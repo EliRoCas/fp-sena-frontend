@@ -24,7 +24,8 @@ import { filter } from 'rxjs';
 })
 export class TransactionsComponent implements OnInit {
 
-  id = input<number | undefined>();
+  id?: number;
+  private sub: any;
   categories = signal<CategoryModel[]>([]);
   selectedCat = signal<CategoryModel | undefined>(undefined);
   subcategories = signal<SubcategoryModel[]>([]);
@@ -49,31 +50,16 @@ export class TransactionsComponent implements OnInit {
       transaction_amount: [0, [Validators.required]],
       transaction_description: [''],
       transaction_type: ['', [Validators.required]],
-      fo_category: [0, [Validators.required]],
+      fo_category: [null, [Validators.required]],
       fo_subcategory: [null],
     });
 
-
-    effect(() => {
-
-      if (this.id()) {
-        this.store.select(transactionById(this.id()!))
-          .pipe(
-            filter(transactionData => !!transactionData)
-          )
-          .subscribe(transactionData => {
-
-            this.transactionForm.patchValue(transactionData as any);
-
-          })
-      }
-    });
 
   }
 
 
   add() {
-    if (this.id()) {
+    if (this.id) {
 
       this.store.dispatch(transactionAdapter.patchOne(this.transactionForm.value as unknown as TransactionModel,
         (data) => {
@@ -107,6 +93,22 @@ export class TransactionsComponent implements OnInit {
     this.store.select(subcatAdapter.feature).subscribe(data => this.subcategories.set(data));
     this.store.dispatch(roseTypeAdapter.getAll());
     this.store.select(roseTypeAdapter.feature).subscribe(data => this.roseTypes.set(data));
+
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      if (this.id) {
+        this.store.select(transactionById(this.id!))
+          .pipe(
+            filter(transactionData => !!transactionData)
+          )
+          .subscribe(transactionData => {
+
+            this.transactionForm.patchValue(transactionData as any);
+
+          })
+      }
+    });
+
   }
 
 

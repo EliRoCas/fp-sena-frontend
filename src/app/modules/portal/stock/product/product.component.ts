@@ -19,12 +19,13 @@ import { filter } from 'rxjs';
 })
 export class ProductComponent implements OnInit {
 
-  id = input<number | undefined>();
+  id?: number;
   categories = signal<CategoryModel[]>([]);
   selectedCat = signal<CategoryModel | undefined>(undefined);
   subcategories = signal<SubcategoryModel[]>([]);
   selectedSubca = signal<SubcategoryModel | undefined>(undefined);
   imageUrl: string | ArrayBuffer | null = null;
+  private sub: any;
 
   productForm: FormGroup;
 
@@ -40,27 +41,13 @@ export class ProductComponent implements OnInit {
       product_img: [''],
       product_description: [''],
       quantity: [0, [Validators.required]],
-      fo_category: [0, [Validators.required]],
+      fo_category: [null, [Validators.required]],
     });
 
-    effect(() => {
-
-      if (this.id()) {
-        this.store.select(productById(this.id()!))
-          .pipe(
-            filter(productData => !!productData)
-          )
-          .subscribe(productData => {
-
-            this.productForm.patchValue(productData as any);
-
-          })
-      }
-    });
   }
 
   add() {
-    if (this.id()) {
+    if (this.id) {
 
       this.store.dispatch(productAdapter.patchOne(this.productForm.value as unknown as ProductModel,
         (data) => {
@@ -93,6 +80,23 @@ export class ProductComponent implements OnInit {
     this.store.select(catAdapter.feature).subscribe(data => this.categories.set(data));
     this.store.dispatch(subcatAdapter.getAll());
     this.store.select(subcatAdapter.feature).subscribe(data => this.subcategories.set(data));
+
+
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      if (this.id) {
+        this.store.select(productById(this.id!))
+          .pipe(
+            filter(productData => !!productData)
+          )
+          .subscribe(productData => {
+
+            this.productForm.patchValue(productData as any);
+
+          })
+      }
+
+    });
   }
 
 
