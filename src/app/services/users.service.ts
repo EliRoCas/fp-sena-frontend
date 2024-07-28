@@ -75,7 +75,6 @@ export const userRoleAssign = createSelector(
         .filter(ra => ra.fo_user === u.id_user)
         .map(x => user_roles.find(r => r.id_user_role === x.id_user_role)?.role_name);
 
-      //const role = user_roles.find(r => r.id_role === user_role_assign?.fo_user_role);
       return {
         ...u,
         roles: user_role_assign.length > 0 ? user_role_assign.join(", ") : 'Rol no asignado'

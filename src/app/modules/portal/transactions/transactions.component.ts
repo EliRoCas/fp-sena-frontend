@@ -54,6 +54,11 @@ export class TransactionsComponent implements OnInit {
       fo_subcategory: [null],
     });
 
+    this.transactionForm.get("fo_category")?.valueChanges.subscribe(newValue => {
+      const subcat = this.categories().find(c => c.id_category === newValue)?.subcategories ?? [];
+      this.subcategories.set(subcat);
+
+    })
 
   }
 
@@ -88,9 +93,10 @@ export class TransactionsComponent implements OnInit {
     this.store.dispatch(transactionAdapter.getAll());
 
     this.store.dispatch(catAdapter.getAll());
-    this.store.select(catAdapter.feature).subscribe(data => this.categories.set(data));
-    this.store.dispatch(subcatAdapter.getAll());
-    this.store.select(subcatAdapter.feature).subscribe(data => this.subcategories.set(data));
+    this.store.select(catAdapter.feature).subscribe(data => {
+      this.categories.set(data);
+      console.log(data)
+    });
     this.store.dispatch(roseTypeAdapter.getAll());
     this.store.select(roseTypeAdapter.feature).subscribe(data => this.roseTypes.set(data));
 

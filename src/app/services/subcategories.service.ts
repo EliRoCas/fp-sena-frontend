@@ -10,6 +10,8 @@ export class SubcategoriesService {
 
 import { EntityAdapter } from '@ea-controls/ngrx-repository'; // Manejador de operaciones para entidades NGRX
 import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX para crar selectores de estado memorizados
+import { catAdapter } from './categories.service';
+import { retry } from 'rxjs';
 
 export interface SubcategoryModel {
   id_subcategory: number;
@@ -28,3 +30,14 @@ export const subcatById = (id: number) => createSelector(subcatAdapter.feature,
   subcategories => {
     return subcategories.find(subcat => subcat.id_subcategory === id);
   })
+
+// export const assignSubcat = createSelector(
+//   catAdapter.feature,
+//   subcatAdapter.feature,
+//   (categories, subcategories) => {
+//     return categories.map(cat => {
+//       const subcategory = subcategories
+//         .filter(subcat => subcat.id_subcategory === cat.fo_subcategory)
+//     })
+//   }
+// )

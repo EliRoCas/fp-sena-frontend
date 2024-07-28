@@ -44,6 +44,11 @@ export class ProductComponent implements OnInit {
       fo_category: [null, [Validators.required]],
     });
 
+    this.productForm.get("fo_category")?.valueChanges.subscribe(newValue => {
+      const subcat = this.categories().find(c => c.id_category === newValue)?.subcategories ?? [];
+      this.subcategories.set(subcat);
+    })
+
   }
 
   add() {
@@ -78,8 +83,6 @@ export class ProductComponent implements OnInit {
 
     this.store.dispatch(catAdapter.getAll());
     this.store.select(catAdapter.feature).subscribe(data => this.categories.set(data));
-    this.store.dispatch(subcatAdapter.getAll());
-    this.store.select(subcatAdapter.feature).subscribe(data => this.subcategories.set(data));
 
 
     this.sub = this.route.params.subscribe(params => {
