@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
 import { provideStore, provideState, Store } from '@ngrx/store';
-import { userAdapter, userByName, UserModel } from '../../../../services/users.service';
+import { roleAdapter, roleAssignAdapter, userAdapter, userByName, UserModel, userRoleAssign } from '../../../../services/users.service';
 import { PortalContentComponent } from '@ea-controls/portal';
 
 @Component({
@@ -32,16 +32,30 @@ export class UsersAdminComponent {
     // Se realiza el "envío/dispatch" de la acción "userAdapter.getAll()" 
     // para obtener todos los usuarios. 
     this.store.dispatch(userAdapter.getAll());
+    this.store.dispatch(roleAdapter.getAll());
+    this.store.dispatch(roleAssignAdapter.getAll());
+
     // Se realiza la suscripción a los datos enviados y se actualiza el "datasource", 
     // con los datos que se obtienen. 
-    this.store.select(userAdapter.feature).subscribe(data => this.dataSource.set(data));
+    //this.store.select(userAdapter.feature).subscribe(data => this.dataSource.set(data));
+
+
+
+
+
+
     // Se realiza la suscripción a los cambios en el usuario con ID particular y se actualiza 
     // el selected con los datos obtenidos. 
     this.store.select(userAdapter.selectById("2")).subscribe(data => this.selected.set(data));
 
     // Se realiza la suscripción al selector "userByName" y se registra el resultado 
-    this.store.select(userByName('do')).subscribe(result => {
-      console.log('userByName', result)
+    // this.store.select(userByName('do')).subscribe(result => {
+    //   // console.log('userByName', result)
+    // })
+
+    this.store.select(userRoleAssign).subscribe(data => {
+      console.log(data)
+      this.dataSource.set(data);
     })
   };
 
@@ -49,5 +63,5 @@ export class UsersAdminComponent {
     this.store.dispatch(userAdapter.removeOne(user));
   }
 
- 
+
 }

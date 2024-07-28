@@ -25,7 +25,7 @@ export interface UserModel {
 }
 
 export interface RoleModel {
-  id_role: number;
+  id_user_role: number;
   role_name: string;
 }
 
@@ -35,15 +35,22 @@ export interface DocTypeModel {
   document_type_name: string;
 }
 
+export interface RoleAssignModel {
+  fo_user: number;
+  id_user_role: number;
+  role_name: string
+}
+
 // Se crea una instancia de "EntityAdapter" específica para el modelo de usuario hecho (UserModel), 
 // designándole el nombre "users". Este adaptador proporciona métodos HTTP para realizar operaciones CRUD
 // en el estado, utilizando por debajo la lógica de NGRX 
 export const userAdapter = new EntityAdapter<UserModel>("users", { getId: (input) => input.id_user.toString() });
 
-export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", { getId: (input) => input.id_role.toString() });
+export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", { getId: (input) => input.id_user_role.toString() });
 
 export const docTypeAdapter = new EntityAdapter<DocTypeModel>("document_types", { getId: (input) => input.id_document_type.toString() });
 
+export const roleAssignAdapter = new EntityAdapter<RoleAssignModel>("user_roles_assignment");
 
 // Se crea una función (userByName) que retrorna un selector, que filtra los datos de "users", 
 // que llegan por "userAdapter.feature" para encontrar los usuarios (user_name) que cotengan la cadena "name",
@@ -57,6 +64,26 @@ export const userById = (id: number) => createSelector(userAdapter.feature,
   users => {
     return users.find(u => u.id_user === id);
   })
+
+export const userRoleAssign = createSelector(
+  userAdapter.feature,
+  roleAdapter.feature,
+  roleAssignAdapter.feature,
+  (users, user_roles, user_roles_assignment) => {
+    return users.map(u => {
+      const user_role_assign = user_roles_assignment
+        .filter(ra => ra.fo_user === u.id_user)
+        .map(x => user_roles.find(r => r.id_user_role === x.id_user_role)?.role_name);
+
+      //const role = user_roles.find(r => r.id_role === user_role_assign?.fo_user_role);
+      return {
+        ...u,
+        roles: user_role_assign.length > 0 ? user_role_assign.join(", ") : 'Rol no asignado'
+      };
+    });
+  }
+)
+
 
 
 

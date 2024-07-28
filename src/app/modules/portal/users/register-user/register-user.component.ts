@@ -2,6 +2,8 @@ import { Component, input, model, signal } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { UserFormComponent } from '../../../../share/user-form/user-form.component';
+import { roleAdapter, roleAssignAdapter, userAdapter, userRoleAssign } from '../../../../services/users.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-register-user',
@@ -15,7 +17,9 @@ export class RegisterUserComponent {
   id?: number;
   private sub: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    private store: Store,
+  ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -26,8 +30,15 @@ export class RegisterUserComponent {
 
       }
 
+      this.store.select(userRoleAssign).subscribe(data => {
+        console.log(data)
+      })
       //console.log(this.id)
     });
+
+    this.store.dispatch(userAdapter.getAll());
+    this.store.dispatch(roleAdapter.getAll());
+    this.store.dispatch(roleAssignAdapter.getAll());
   }
 
   ngOnDestroy() {

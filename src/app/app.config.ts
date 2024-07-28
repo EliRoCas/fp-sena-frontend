@@ -6,7 +6,7 @@ import { importProvidersFrom } from '@angular/core';
 import { provideRepositoryWebApi } from "@ea-controls/ngrx-repository-webapi";
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { docTypeAdapter, roleAdapter, userAdapter } from './services/users.service';
+import { docTypeAdapter, roleAdapter, roleAssignAdapter, userAdapter } from './services/users.service';
 import { productAdapter } from './services/products.service';
 import { catAdapter } from './services/categories.service';
 import { subcatAdapter } from './services/subcategories.service';
@@ -28,6 +28,7 @@ export const appConfig: ApplicationConfig = {
     provideState(transactionAdapter.reducer()),
     provideState(roseTypeAdapter.reducer()),
     provideState(budgetAdapter.reducer()),
+    provideState(roleAssignAdapter.reducer()),
     importProvidersFrom(RouterModule), provideAnimationsAsync(),
     provideRepositoryWebApi({
       adapters: [
@@ -39,7 +40,8 @@ export const appConfig: ApplicationConfig = {
         subcatAdapter,
         transactionAdapter,
         roseTypeAdapter,
-        budgetAdapter
+        budgetAdapter,
+        roleAssignAdapter
       ],
       urlBase: `http://localhost/sigef-final-proyect/Backend/controller/`,
       getUrl(adapter) {

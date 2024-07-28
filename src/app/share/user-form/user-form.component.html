@@ -25,7 +25,7 @@
         <label for="rol" class="text-sm font-semibold text-gray-700">Rol</label>
         <select name="rol" id="rol" class="input-special py-3" formControlName="roles">
             @for (role of roles(); track role) {
-            <option [value]="role.id_role">{{role.role_name}}</option>
+            <option [value]="role.id_user_role">{{role.role_name}}</option>
             }
         </select>
     </div>
