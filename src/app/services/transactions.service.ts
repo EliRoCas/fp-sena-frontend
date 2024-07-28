@@ -59,8 +59,3 @@ export const transactionExpense = createSelector(transactionAdapter.feature,
     return transactions.filter(trans => trans.transaction_type === 'expense');
   })
 
-
-// export const transactionByDate = (date: Date) => createSelector(transactionAdapter.feature,
-//   transactions => {
-//     return transactions.filter(trans => trans.transaction_date === );
-//   })
