@@ -5,7 +5,7 @@ import { UserFormComponent } from '../../../../share/user-form/user-form.compone
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [UserCardComponent, UserFormComponent],
+  imports: [UserFormComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
