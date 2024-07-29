@@ -34,6 +34,7 @@
     "font-awesome": "^4.7.0",
     "keen-slider": "^6.8.6",
     "ng-apexcharts": "^1.11.0",
+    "ngx-cookie-service": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
