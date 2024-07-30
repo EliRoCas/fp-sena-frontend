@@ -23,6 +23,7 @@ import { NotificationsComponent } from './structure/notifications/notifications.
 import { SubcategoriesComponent } from './modules/portal/categories/subcategories/subcategories.component';
 import { SubcategoryFormComponent } from './modules/portal/categories/subcategories/subcategory-form/subcategory-form.component';
 import { CategoryFormComponent } from './modules/portal/categories/category-form/category-form.component';
+import { UserGuard } from './guards/user-guard.guard';
 
 
 export const routes: Routes = [
@@ -36,6 +37,7 @@ export const routes: Routes = [
   {
     path: 'portal',
     component: PortalComponent,
+    canActivate: [UserGuard],
     children: [
       { path: '', redirectTo: '/portal/report', pathMatch: 'full' },
       { path: 'user-admin', component: UsersAdminComponent },

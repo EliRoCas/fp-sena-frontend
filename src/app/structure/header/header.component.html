@@ -14,7 +14,12 @@
     <div ea-portal name="header-title" class="font-primary ">
     </div>
 
+    @if(!isLoggedIn()){
     <button routerLink="/login" class="primary-button">Login</button>
+    }@else {
+        <button (click)="logout()" class="primary-button">Logout</button>
+
+    }
 
 
 </section>

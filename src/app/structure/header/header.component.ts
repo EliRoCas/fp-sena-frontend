@@ -5,9 +5,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { LayoutComponent } from '@ea-controls/layout';
 import { PortalComponent, PortalContentComponent } from '@ea-controls/portal';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -34,4 +35,17 @@ import { PortalComponent, PortalContentComponent } from '@ea-controls/portal';
 export class HeaderComponent {
   drawer = input.required<MatDrawer>()
 
+  constructor(
+    private authService: AuthService,
+    private router: Router, 
+  ) { }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/'])
+  }
 }

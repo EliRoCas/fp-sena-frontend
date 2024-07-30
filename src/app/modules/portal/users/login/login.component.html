@@ -1,4 +1,4 @@
-<section class="text-gray-600 body-font dark:bg-gray-900 ">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="text-gray-600 body-font dark:bg-gray-900 ">
   <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
 
     <div class="hidden md:block lg:w-70 md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
@@ -13,48 +13,37 @@
         <div>
           <i class="fa-solid fa-at"></i>
         </div>
-        <input type="email" id="email" name="email" placeholder="Usuario o Correo" aria-label="Email">
+        <input type="email" id="email" name="email" placeholder="Usuario o Correo" aria-label="Email" 
+        formControlName="email">
       </div>
 
       <div class="input-special">
         <div>
           <i class="fa-solid fa-unlock-keyhole"></i>
         </div>
-        <input type="password" id="password" name="password" placeholder="Contraseña" aria-label="password">
+        <input type="password" id="password" name="password" placeholder="Contraseña" aria-label="password"
+        formControlName="password">
       </div>
 
 
-      <button class="primary-button">
+      <button type="submit" class="primary-button" [disabled]="loginForm.invalid" >
         Iniciar
       </button>
       <a href="#" class="text-xs text-gray-500 mt-3 text-center"> He olvidado mi contraseña</a>
 
       <div class="flex items-center mb-4">
         <div class="w-full border-b border-gray-300 my-1"></div>
-        <div class="mx-4 text-gray-600">0</div>
+        <p class="text-xs text-gray-500 my-3 text-center"> Al continuar, aceptas nuestros términos de servicio.</p>
         <div class="w-full border-b border-gray-300 my-1"></div>
       </div>
 
-      <button class="secundary-button">
-        <i class="fa-brands fa-facebook"></i>
-        Iniciar con Facebook
-      </button>
-
-      <button class="secundary-button">
-        <i class="fa-brands fa-google"></i>
-        Iniciar con Google
-      </button>
-
-      <p class="text-xs text-gray-500 my-3 text-center"> Al continuar, aceptas nuestros términos de servicio.</p>
 
 
-      <button class="secundary-button">
-        Registrarse
-      </button>
+
 
 
 
     </div>
 
   </div>
-</section>
+</form>

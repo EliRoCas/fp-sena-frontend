@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
 
-  private loginUrl = `http://localhost/sigef-final-proyect/Backend/controller/`;
+  private loginUrl = `http://localhost/sigef-final-proyect/Backend/controller/login.php`;
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   login(credentials: { email: string, password: string }): Observable<any> {
@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.cookieService.delete('token');
+    this.cookieService.deleteAll('token');
   }
 
   isLoggedIn(): boolean {

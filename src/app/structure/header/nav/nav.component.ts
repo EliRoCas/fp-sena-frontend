@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -33,19 +34,12 @@ import { MatDividerModule } from '@angular/material/divider';
 export class NavComponent {
 
   drawer = input.required<MatDrawer>()
-  // isOpen = false;
-  // isDarkMode = false;
 
-  // toggleDarkMode() {
-  //   this.isDarkMode = !this.isDarkMode;
-  //   if (this.isDarkMode) {
-  //     document.documentElement.classList.add('dark');
-  //   } else {
-  //     document.documentElement.classList.remove('dark');
-  //   }
-  // }
+  constructor(
+    private authService: AuthService,
+  ) { }
 
-  // toggleMenu() {
-
-  // }
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 }
