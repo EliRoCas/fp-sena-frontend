@@ -60,6 +60,12 @@ export const userByName = (name: string) => createSelector(userAdapter.feature,
     return users.filter(u => u.user_name.toLowerCase().indexOf(name.toLowerCase()) > -1);
   })
 
+
+export const userByEmail = (email: string) => createSelector(userAdapter.feature,
+  users => {
+    return users.find(u => u.email.toLowerCase() === email.toLowerCase());
+  })
+
 export const userById = (id: number) => createSelector(userAdapter.feature,
   users => {
     return users.find(u => u.id_user === id);

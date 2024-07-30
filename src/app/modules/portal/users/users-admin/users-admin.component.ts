@@ -61,7 +61,7 @@ export class UsersAdminComponent {
     // })
 
     this.store.select(userRoleAssign).subscribe(data => {
-      console.log(data)
+      // console.log(data)
       this.dataSource.data = data;
     })
   };

@@ -30,9 +30,9 @@ export class RegisterUserComponent {
 
       }
 
-      this.store.select(userRoleAssign).subscribe(data => {
-        console.log(data)
-      })
+      // this.store.select(userRoleAssign).subscribe(data => {
+      //   console.log(data)
+      // })
       //console.log(this.id)
     });
 

@@ -1,9 +1,11 @@
 import { Component, effect, input, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { docTypeAdapter, DocTypeModel, roleAdapter, RoleModel, userAdapter, userById, UserModel } from '../../services/users.service';
+import { docTypeAdapter, DocTypeModel, roleAdapter, RoleModel, userAdapter, userByEmail, userById, UserModel } from '../../services/users.service';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -15,6 +17,7 @@ import { filter } from 'rxjs';
 export class UserFormComponent implements OnInit {
   title = input('Registrar Usuario');
   id = input<number | undefined>();
+  email = input<string | undefined>();
   docTypes = signal<DocTypeModel[]>([]);
   selectedDoc = signal<DocTypeModel | undefined>(undefined);
   roles = signal<RoleModel[]>([]);
@@ -22,33 +25,13 @@ export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
 
-  add() {
-    if (this.id()) {
-
-      this.store.dispatch(userAdapter.patchOne(this.userForm.value as unknown as UserModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-        },
-        (error) => {
-          this._snackBar.open("ERROR", "", { duration: 5000 })
-        }
-      ));
-
-    } else {
-
-      this.store.dispatch(userAdapter.addOne(this.userForm.value as unknown as UserModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-          this.userForm.reset();
-        },
-        (error) => {
-          this._snackBar.open("ERROR", "", { duration: 5000 })
-        }
-      ));
-    }
-  }
-
-  constructor(private store: Store, private _snackBar: MatSnackBar, private fb: FormBuilder) {
+  constructor(
+    private store: Store,
+    private _snackBar: MatSnackBar,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+  ) {
 
     this.userForm = this.fb.group({
       id_user: [''],
@@ -83,10 +66,17 @@ export class UserFormComponent implements OnInit {
             this.userForm.patchValue(userData as any);
 
           })
+      } else if (this.email()) {
+
+        this.store.select(userByEmail(this.authService.email)).subscribe(data => {
+          this.userForm.patchValue(data as any);
+        });
+
+
       }
     });
 
-  }
+  };
 
   ngOnInit(): void {
     this.store.select(docTypeAdapter.feature).subscribe(data => this.docTypes.set(data));
@@ -98,6 +88,34 @@ export class UserFormComponent implements OnInit {
 
     this.store.dispatch(userAdapter.getAll());
   }
+
+  add() {
+    if (this.id()) {
+
+      this.store.dispatch(userAdapter.patchOne(this.userForm.value as unknown as UserModel,
+        (data) => {
+          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
+        },
+        (error) => {
+          this._snackBar.open("ERROR", "", { duration: 5000 })
+        }
+      ));
+
+    } else {
+
+      this.store.dispatch(userAdapter.addOne(this.userForm.value as unknown as UserModel,
+        (data) => {
+          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
+          this.userForm.reset();
+        },
+        (error) => {
+          this._snackBar.open("ERROR", "", { duration: 5000 })
+        }
+      ));
+    }
+  }
+
+
 
   passwordsMatchValidator(form: FormGroup): null | { passwordsMismatch: boolean } {
     const password = form.get('password')?.value;

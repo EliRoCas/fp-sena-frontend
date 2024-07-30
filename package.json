@@ -32,6 +32,7 @@
     "apexcharts": "^3.50.0",
     "dayjs": "^1.11.12",
     "font-awesome": "^4.7.0",
+    "jwt-decode": "^4.0.0",
     "keen-slider": "^6.8.6",
     "ng-apexcharts": "^1.11.0",
     "ngx-cookie-service": "^18.0.0",
