@@ -9,18 +9,19 @@
 
     <div class="container">
         <a routerLink="/portal/register-user" routerLinkActive="router-link-active">
-            <button class="px-2 secundary-button ml-4"><i class="fa-solid fa-user-plus text-green-700"></i>
-                Agregar</button>
+            <button class="px-2 secundary-button ml-4">
+                <i class="fa-solid fa-user-plus text-green-700"></i>
+                Agregar
+            </button>
         </a>
         <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input> -->
-            <input matInput placeholder="Ex. ium" #input>
+            <mat-label>Filtrar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Dante" #input>
         </mat-form-field>
     </div>
 
     <div class="flex justify-center flex-wrap mx-5 ">
-        <table matcolor mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
+        <table matcolor mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <!-- ID type Column-->
             <ng-container matColumnDef="document_type">

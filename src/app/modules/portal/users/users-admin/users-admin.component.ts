@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,7 +12,14 @@ import { PortalContentComponent } from '@ea-controls/portal';
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatIcon, RouterLink, PortalContentComponent],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIcon,
+    RouterLink,
+    PortalContentComponent],
   templateUrl: './users-admin.component.html',
   styleUrl: './users-admin.component.scss'
 })
@@ -23,7 +30,7 @@ export class UsersAdminComponent {
   // Se crean dos signals para manejar los estados reactivos. 
   // La primera maneja los datos de "UserModel"
   // La segunda maneja el usuario que se filtra, por lo que es 'undefined'.  
-  dataSource = signal<UserModel[]>([]);
+  dataSource = new MatTableDataSource<UserModel>();
   selected = signal<UserModel | undefined>(undefined);
 
   constructor(private store: Store) { }
@@ -55,7 +62,7 @@ export class UsersAdminComponent {
 
     this.store.select(userRoleAssign).subscribe(data => {
       console.log(data)
-      this.dataSource.set(data);
+      this.dataSource.data = data;
     })
   };
 
@@ -63,5 +70,9 @@ export class UsersAdminComponent {
     this.store.dispatch(userAdapter.removeOne(user));
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

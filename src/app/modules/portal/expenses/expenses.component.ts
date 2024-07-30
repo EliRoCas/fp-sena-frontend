@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,7 +35,7 @@ export class ExpensesComponent {
     'transaction_customer',
     'expenseActions',
   ];
-  dataSource = signal<TransactionModel[]>([])
+  dataSource = new MatTableDataSource<TransactionModel>()
   selected = signal<TransactionModel | undefined>(undefined);
 
   constructor(
@@ -44,12 +44,16 @@ export class ExpensesComponent {
 
   ngOnInit(): void {
     this.store.dispatch(transactionAdapter.getAll());
-    this.store.select(transactionExpense).subscribe(data => this.dataSource.set(data));
+    this.store.select(transactionExpense).subscribe(data => this.dataSource.data = data);
 
   }
 
   delete(transaction: TransactionModel) {
     this.store.dispatch(transactionAdapter.removeOne(transaction));
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

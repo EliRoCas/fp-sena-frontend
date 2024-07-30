@@ -7,11 +7,17 @@
         </h2>
     </div>
     <a routerLink="/portal/register-product" routerLinkActive="router-link-active">
-        <button class="px-2 secundary-button ml-4"><i class="fa-solid fa-user-plus text-green-700"></i>
-            Agregar</button> </a>
+        <button class="px-2 secundary-button ml-4"><i class="fa-solid fa-plus text-green-700"></i>
+            Agregar
+        </button>
+    </a>
+    <mat-form-field>
+        <mat-label>Filtrar</mat-label>
+        <input class="bg-white" matInput (keyup)="applyFilter($event)" placeholder="Pesticida" #input>
+    </mat-form-field>
 
     <div class="flex justify-center flex-wrap mx-5">
-        <table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id_product">
                 <th mat-header-cell *matHeaderCellDef>Código</th>
@@ -42,8 +48,8 @@
                         <button class="text-blue-700 px-2"><i class="fa-solid fa-pencil"></i></button>
                     </a>
                     <a>
-                        <button (click)="delete(element)"
-                        class="text-red-700 px-2"><i class="fa-solid fa-trash-can"></i></button>
+                        <button (click)="delete(element)" class="text-red-700 px-2"><i
+                                class="fa-solid fa-trash-can"></i></button>
                     </a>
                 </td>
             </ng-container>

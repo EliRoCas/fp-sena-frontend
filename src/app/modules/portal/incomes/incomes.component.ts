@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { PortalContentComponent } from '@ea-controls/portal';
 import { transactionAdapter, transactionIncome, TransactionModel } from '../../../services/transactions.service';
@@ -37,7 +37,7 @@ export class IncomesComponent {
     'transaction_rose_export',
     'transaction_customer',
     'incomeActions'];
-  dataSource = signal<TransactionModel[]>([])
+  dataSource = new MatTableDataSource<TransactionModel>();
   selected = signal<TransactionModel | undefined>(undefined);
 
   constructor(
@@ -46,13 +46,18 @@ export class IncomesComponent {
 
   ngOnInit(): void {
     this.store.dispatch(transactionAdapter.getAll());
-    this.store.select(transactionIncome).subscribe(data => this.dataSource.set(data));
+    this.store.select(transactionIncome).subscribe(data => this.dataSource.data = data);
 
     //this.store.select(transactionIncome).subscribe;
   }
 
   delete(transaction: TransactionModel) {
     this.store.dispatch(transactionAdapter.removeOne(transaction));
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 
