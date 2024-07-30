@@ -53,5 +53,9 @@ export class StockComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  printTable() {
+    window.print();
+  }
 }
 

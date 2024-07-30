@@ -1,0 +1,8 @@
+@media print {
+    button,
+    mat-form-field, 
+    mat-icon, 
+    .mat-column-expenseActions{
+        display: none;
+    }
+}

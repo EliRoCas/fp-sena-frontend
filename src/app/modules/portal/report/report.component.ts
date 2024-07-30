@@ -40,4 +40,8 @@ export class ReportComponent implements OnInit {
       this.lastIncomes.set(incomes.slice(0, 3).map(income => income.transaction_name));
     });
   }
+
+  printTable() {
+    window.print();
+  }
 }

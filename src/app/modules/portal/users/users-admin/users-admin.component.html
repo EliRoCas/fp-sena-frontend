@@ -76,5 +76,9 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <button (click)="printTable()" class="px-2 secundary-button ml-4">
+            <i class="fa-solid fa-print text-green-700"></i> 
+            Imprimir
+        </button>
     </div>
 </div>

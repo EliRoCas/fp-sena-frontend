@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -54,6 +54,10 @@ export class ExpensesComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  };
+
+  printTable() {
+    window.print();
   }
 
 }

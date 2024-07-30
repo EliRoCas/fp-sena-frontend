@@ -52,4 +52,8 @@ export class IncomeStatementComponent {
   get netIncome() {
     return this.incomeBeforeTaxes - this.incomeStatement.taxes;
   }
+
+  printTable() {
+    window.print();
+  }
 }

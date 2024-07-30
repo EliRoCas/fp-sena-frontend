@@ -1,3 +1,11 @@
 td {
     font-family: 'Wittgenstein', 'Times New Roman', Times, serif;;
 }
+@media print {
+    button,
+    mat-form-field, 
+    mat-icon, 
+    .mat-column-incomeActions{
+        display: none;
+    }
+}

@@ -8,8 +8,8 @@
     </div>
     <a routerLink="/portal/register-expense" routerLinkActive="router-link-active">
         <button class="text-green-700 px-2 secundary-button mx-5">
-            <i class="fa-solid fa-circle-plus mr-2"></i>
-            Agregar 
+            <i class="fa-solid fa-circle-plus text-green-700 mr-2"></i>
+            Agregar
         </button>
     </a>
     <mat-form-field>
@@ -68,5 +68,9 @@
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr>
         </table>
+        <button (click)="printTable()" class="px-2 secundary-button ml-4">
+            <i class="fa-solid fa-print text-green-700"></i> 
+            Imprimir
+        </button>
     </div>
 </div>

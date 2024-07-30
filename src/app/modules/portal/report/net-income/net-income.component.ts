@@ -106,4 +106,8 @@ export class NetIncomeComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  printTable() {
+    window.print();
+  }
 }
