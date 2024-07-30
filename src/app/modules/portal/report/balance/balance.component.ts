@@ -41,7 +41,7 @@ export class BalanceComponent implements OnInit {
     this.store.dispatch(transactionAdapter.getAll());
 
     this.store.select(getBalanceReport).subscribe(data => {
-      console.log(data)
+      // console.log(data)
 
       this.transactionsOptions = {
         series: [data.incomes, data.expenses],

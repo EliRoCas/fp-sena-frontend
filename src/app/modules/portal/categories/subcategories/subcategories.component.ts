@@ -48,9 +48,9 @@ export class SubcategoriesComponent {
 
     this.store.select(subcatAdapter.selectById("2")).subscribe(data => this.selected.set(data));
 
-    this.store.select(subcatByName('')).subscribe(result => {
-      console.log('subcatByName', result)
-    });
+    // this.store.select(subcatByName('')).subscribe(result => {
+    //   console.log('subcatByName', result)
+    // });
 
     this.store.dispatch(catAdapter.getAll());
     this.store.select(catAdapter.feature).subscribe(data => this.categories.set(data));

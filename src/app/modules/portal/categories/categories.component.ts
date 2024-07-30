@@ -48,9 +48,9 @@ export class CategoriesComponent {
 
     this.store.select(catAdapter.selectById("2")).subscribe(data => this.selected.set(data));
 
-    this.store.select(catByName('')).subscribe(result => {
-      console.log('catByName', result)
-    });
+    // this.store.select(catByName('')).subscribe(result => {
+    //   console.log('catByName', result)
+    // });
   };
 
   delete(category: CategoryModel) {

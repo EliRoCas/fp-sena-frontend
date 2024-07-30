@@ -95,7 +95,7 @@ export class TransactionsComponent implements OnInit {
     this.store.dispatch(catAdapter.getAll());
     this.store.select(catAdapter.feature).subscribe(data => {
       this.categories.set(data);
-      console.log(data)
+      // console.log(data)
     });
     this.store.dispatch(roseTypeAdapter.getAll());
     this.store.select(roseTypeAdapter.feature).subscribe(data => this.roseTypes.set(data));

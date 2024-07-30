@@ -77,8 +77,8 @@ export class SubcategoryFormComponent {
           this.dialogRef.close();
         },
         (error) => {
-          console.log(error);
-          this._snackBar.open("ERROR", "", { duration: 5000 })
+          // console.log(error);
+          this._snackBar.open("¡Upps! Algo salió mal.", "", { duration: 5000 })
         }
       ));
 
@@ -93,9 +93,9 @@ export class SubcategoryFormComponent {
 
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
 
-          this._snackBar.open("ERROR", "", { duration: 5000 })
+          this._snackBar.open("¡Upps! Algo salió mal.", "", { duration: 5000 })
         }
       ));
     }
