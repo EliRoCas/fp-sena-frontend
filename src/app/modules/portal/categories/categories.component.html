@@ -11,8 +11,12 @@
             Agregar
         </button>
     </a>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input class="bg-white" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
     <div class="flex justify-center flex-wrap mx-5">
-        <table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id_category">
                 <th mat-header-cell *matHeaderCellDef>Código</th>
@@ -40,6 +44,10 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr>
         </table>
     </div>
 </div>

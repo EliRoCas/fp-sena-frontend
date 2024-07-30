@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, signal, effect } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { PortalContentComponent } from '@ea-controls/portal';
 import { FilterComponent } from '../../../share/filter/filter.component';
@@ -9,6 +9,8 @@ import { Store } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-categories',
@@ -19,7 +21,9 @@ import { CategoryFormComponent } from './category-form/category-form.component';
     MatTableModule,
     RouterLink,
     FilterComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule, 
+    MatInputModule
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
@@ -27,9 +31,10 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 export class CategoriesComponent {
 
   displayedColumns: string[] = ['id_category', 'category_name', 'catActions'];
-  dataSource = signal<CategoryModel[]>([]);
+  dataSource = new MatTableDataSource<CategoryModel>();
   selected = signal<CategoryModel | undefined>(undefined);
   id = input<number | undefined>();
+  filterValue = "";
 
 
 
@@ -39,7 +44,7 @@ export class CategoriesComponent {
 
   ngOnInit(): void {
     this.store.dispatch(catAdapter.getAll());
-    this.store.select(catAdapter.feature).subscribe(data => this.dataSource.set(data));
+    this.store.select(catAdapter.feature).subscribe(data => this.dataSource.data =data);
 
     this.store.select(catAdapter.selectById("2")).subscribe(data => this.selected.set(data));
 
@@ -60,6 +65,11 @@ export class CategoriesComponent {
     this.matDialog.open(CategoryFormComponent, {
       data: id
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
