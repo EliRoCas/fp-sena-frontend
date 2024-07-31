@@ -6,7 +6,7 @@
             </ea-portal-content>
         </h2>
     </div>
-    <a (click)="openNewCategory()">
+    <a (click)="openNewSubcategory()">
         <!-- routerLink="/portal/subcategory" routerLinkActive="router-link-active" -->
         <button class="px-2 secundary-button ml-4"><i class="fa-solid fa-user-plus text-green-700"></i>
             Agregar
@@ -34,7 +34,7 @@
             <ng-container matColumnDef="subcatActions">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <a (click)="editCategory(element.id_subcategory)">
+                    <a (click)="editSubcategory(element.id_subcategory)">
                         <button class="text-blue-700 px-2"><i class="fa-solid fa-pencil"></i></button>
                     </a>
                     <a>

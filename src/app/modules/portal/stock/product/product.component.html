@@ -13,29 +13,39 @@
                         aria-label="product_name" formControlName="product_name">
                 </div>
                 <div class="input-special flex flex-row mb-4 select-id">
-                    <label for="prodcut_type" class="text-sm font-semibold text-gray-700">
+                    <label for="product_type" class="text-sm font-semibold text-gray-700 flex flex-col justify-center">
                         Categoría
+                        <button (click)="openNewCategory()">
+                            <i class="fa-solid fa-circle-plus text-red-600 mx-2"></i>
+                        </button>
                     </label>
-                    <select name="prodcut_type" id="prodcut_type" class="input-special py-3"
+                    <select name="product_type" id="prodcut_type" class="input-special py-3 mx-2"
                         formControlName="fo_category">
+                        <option value="">Seleccione una categoría</option>
                         @for(category of categories(); track category) {
-                        <option [value]="category.id_category" autofocus>{{category.category_name}}</option>
+                        <option [value]="category.id_category">{{category.category_name}}</option>
                         }
                     </select>
-                    <label for="prodcut_type" class="text-sm font-semibold text-gray-700">
+
+
+                    <label for="product_type" class="text-sm font-semibold text-gray-700 flex flex-col justify-center">
                         Subcategoría
+                        <button (click)="openNewSubcategory()">
+                            <i class="fa-solid fa-circle-plus text-red-600 mx-2"></i>
+                        </button>
                     </label>
-                    <select name="prodcut_type" id="prodcut_type" class="input-special py-3"
+                    <select name="product_type" id="prodcut_type" class="input-special py-3 mx-2"
                         formControlName="fo_subcategory">
+                        <option value="">Seleccione una subcategoría</option>
                         @for(subcategory of subcategories(); track subcategory) {
-                        <option [value]="subcategory.id_subcategory" autofocus>{{subcategory.subcategory_name}}
+                        <option [value]="subcategory.id_subcategory">{{subcategory.subcategory_name}}
                         </option>
                         }
                     </select>
                 </div>
                 <div class="input-special flex flex-row mb-4 select-id ">
                     <span class="flex flex-col w-full mr-2">
-                        <label for="prodcut_type" class="text-sm font-semibold text-gray-700">
+                        <label for="product_type" class="text-sm font-semibold text-gray-700">
                             Cantidad
                         </label>
                         <input type="number" id="quantity" name="quantity" placeholder="Número de Existencias"

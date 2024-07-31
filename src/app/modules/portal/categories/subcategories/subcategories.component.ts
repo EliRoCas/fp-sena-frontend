@@ -61,12 +61,12 @@ export class SubcategoriesComponent {
     this.store.dispatch(subcatAdapter.removeOne(subcategory))
   }
 
-  openNewCategory() {
+  openNewSubcategory() {
     this.matDialog.open(SubcategoryFormComponent);
   }
 
 
-  editCategory(id: number): void {
+  editSubcategory(id: number): void {
     this.matDialog.open(SubcategoryFormComponent, {
       data: id
     });
