@@ -58,7 +58,7 @@ export const routes: Routes = [
       { path: "categories", component: CategoriesComponent },
       { path: "category", component: CategoryFormComponent },
       { path: "subcategories", component: SubcategoriesComponent },
-      { path: "subcategory", component: SubcategoryFormComponent },
+      { path: "subcategories", component: SubcategoryFormComponent },
       { path: 'stock', component: StockComponent },
       { path: 'register-product', component: ProductComponent },
       { path: 'edit-product/:id', component: ProductComponent },
