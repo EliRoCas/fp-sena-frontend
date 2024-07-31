@@ -13,15 +13,16 @@ import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX 
 
 // Se define la estructura del modelo de usuario que se aplicará, concuerda con la DB 
 export interface UserModel {
-  fo_document_type: number;
-  document_type_name: string;
-  document_number: number;
   user_name: string;
   user_lastname: string;
-  roles: string;
+  document_type_name: string;
+  fo_document_type: number;
+  document_number: number;
   email: string;
   password: string;
+  roles: string;
   id_user: number;
+  roleIds: number[];
 }
 
 export interface RoleModel {
@@ -50,7 +51,7 @@ export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", { getId: (
 
 export const docTypeAdapter = new EntityAdapter<DocTypeModel>("document_types", { getId: (input) => input.id_document_type.toString() });
 
-export const roleAssignAdapter = new EntityAdapter<RoleAssignModel>("user_roles_assignment");
+export const roleAssignAdapter = new EntityAdapter<RoleAssignModel>("user_roles_assignment", { getId: (input) => input.fo_user.toString() });
 
 // Se crea una función (userByName) que retrorna un selector, que filtra los datos de "users", 
 // que llegan por "userAdapter.feature" para encontrar los usuarios (user_name) que cotengan la cadena "name",
@@ -71,6 +72,7 @@ export const userById = (id: number) => createSelector(userAdapter.feature,
     return users.find(u => u.id_user === id);
   })
 
+
 export const userRoleAssign = createSelector(
   userAdapter.feature,
   roleAdapter.feature,
@@ -78,15 +80,20 @@ export const userRoleAssign = createSelector(
   (users, user_roles, user_roles_assignment) => {
     return users.map(u => {
       const user_role_assign = user_roles_assignment
-        .filter(ra => ra.fo_user === u.id_user)
-        .map(x => user_roles.find(r => r.id_user_role === x.id_user_role)?.role_name);
+        .filter(ra => ra.fo_user === u.id_user);
+
+      const roleIds = user_role_assign.map(x => x.id_user_role);
+      const roleNames = user_role_assign.map(x => user_roles
+        .find(r => r.id_user_role === x.id_user_role)?.role_name);
 
       return {
         ...u,
-        roles: user_role_assign.length > 0 ? user_role_assign.join(", ") : 'Rol no asignado'
+        roleIds: roleIds.length > 0 ? roleIds : [],
+        roleNames: roleNames.length > 0 ? roleNames.join(", ") : 'Rol no asignado'
       };
     });
   }
+
 )
 
 

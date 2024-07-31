@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
 import { provideStore, provideState, Store } from '@ngrx/store';
-import { roleAdapter, roleAssignAdapter, userAdapter, userByName, UserModel, userRoleAssign } from '../../../../services/users.service';
+import { roleAdapter, roleAssignAdapter, RoleAssignModel, RoleModel, userAdapter, userByName, UserModel, userRoleAssign } from '../../../../services/users.service';
 import { PortalContentComponent } from '@ea-controls/portal';
 
 @Component({
@@ -32,6 +32,8 @@ export class UsersAdminComponent {
   // La segunda maneja el usuario que se filtra, por lo que es 'undefined'.  
   dataSource = new MatTableDataSource<UserModel>();
   selected = signal<UserModel | undefined>(undefined);
+  selectedRole = signal<RoleAssignModel | undefined>(undefined);
+
 
   constructor(private store: Store) { }
 
@@ -47,10 +49,6 @@ export class UsersAdminComponent {
     //this.store.select(userAdapter.feature).subscribe(data => this.dataSource.set(data));
 
 
-
-
-
-
     // Se realiza la suscripción a los cambios en el usuario con ID particular y se actualiza 
     // el selected con los datos obtenidos. 
     this.store.select(userAdapter.selectById("2")).subscribe(data => this.selected.set(data));
@@ -64,11 +62,20 @@ export class UsersAdminComponent {
       // console.log(data)
       this.dataSource.data = data;
     })
+
   };
 
   delete(user: UserModel) {
     this.store.dispatch(userAdapter.removeOne(user));
   }
+
+  deleteRol(userModel: UserModel) {
+    //userModel.roleIds.forEach(role => {
+
+    this.store.dispatch(roleAssignAdapter.removeOne({ fo_user: userModel.id_user } as RoleAssignModel));
+    //})
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
