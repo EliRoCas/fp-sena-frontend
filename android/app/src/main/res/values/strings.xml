@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">sigef-final-proyect</string>
+    <string name="title_activity_main">sigef-final-proyect</string>
+    <string name="package_name">com.sigef.app</string>
+    <string name="custom_url_scheme">com.sigef.app</string>
+</resources>

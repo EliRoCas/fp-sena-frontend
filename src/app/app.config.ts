@@ -16,6 +16,22 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { AuthService } from './services/auth.service';
 import { UserGuard } from './guards/user-guard.guard';
+import { environment } from '../../environment';
+import { EntityAdapter } from '@ea-controls/ngrx-repository';
+import { provideRepositoryPouchDb } from "@ea-controls/ngrx-repository-pouchdb";
+
+const adapters: EntityAdapter<any>[] = [
+  userAdapter,
+  roleAdapter,
+  docTypeAdapter,
+  productAdapter,
+  catAdapter,
+  subcatAdapter,
+  transactionAdapter,
+  roseTypeAdapter,
+  budgetAdapter,
+  roleAssignAdapter
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,49 +39,34 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideStore(),
-    provideState(userAdapter.reducer()),
-    provideState(roleAdapter.reducer()),
-    provideState(docTypeAdapter.reducer()),
-    provideState(productAdapter.reducer()),
-    provideState(catAdapter.reducer()),
-    provideState(subcatAdapter.reducer()),
-    provideState(transactionAdapter.reducer()),
-    provideState(roseTypeAdapter.reducer()),
-    provideState(budgetAdapter.reducer()),
-    provideState(roleAssignAdapter.reducer()),
+    ...adapters.map(a => provideState(a.reducer())),
     importProvidersFrom(RouterModule), provideAnimationsAsync(),
     importProvidersFrom(HttpClient),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     CookieService,
     AuthService,
     UserGuard,
-    provideRepositoryWebApi({
-      adapters: [
-        userAdapter,
-        roleAdapter,
-        docTypeAdapter,
-        productAdapter,
-        catAdapter,
-        subcatAdapter,
-        transactionAdapter,
-        roseTypeAdapter,
-        budgetAdapter,
-        roleAssignAdapter
-      ],
-      urlBase: `http://localhost/sigef-final-proyect/Backend/controller/`,
-      getUrl(adapter) {
-        return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php`
-      },
-      removeUrl(adapter, data) {
-        return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php?id=${adapter.getId(data)}`
-      },
 
-      postUrl(adapter, data) {
-        return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php`
-      },
-      patchUrl(adapter, data) {
-        return `http://localhost/sigef-final-proyect/Backend/controller/${adapter.name}.php?id=${adapter.getId(data)}`
-      },
-    })
+    !environment.isMobile
+      ? provideRepositoryWebApi({
+        adapters: adapters,
+        urlBase: environment.urlBase,
+        getUrl(adapter) {
+          return `${environment.urlBase}/${adapter.name}.php`
+        },
+        removeUrl(adapter, data) {
+          return `${environment.urlBase}/${adapter.name}.php?id=${adapter.getId(data)}`
+        },
+        postUrl(adapter, data) {
+          return `${environment.urlBase}/${adapter.name}.php`
+        },
+        patchUrl(adapter, data) {
+          return `${environment.urlBase}/${adapter.name}.php?id=${adapter.getId(data)}`
+        },
+      })
+      : provideRepositoryPouchDb({
+        adapters: adapters,
+        getIdField: (adapter) => adapter.options.additionalData?.id
+      })
   ],
 };
