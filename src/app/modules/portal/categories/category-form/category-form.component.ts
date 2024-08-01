@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { filter } from 'rxjs';
 import { catAdapter, CategoryModel, catById } from '../../../../services/categories.service';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-category-form',
@@ -45,10 +46,10 @@ export class CategoryFormComponent {
     @Optional() @Inject(MAT_DIALOG_DATA) public id?: number) {
 
     this.catForm = this.fb.group({
-      id_category: [''],
+      id_category: [Guid.create().toString()],
       category_name: ['', [Validators.required]],
-    },
-    );
+    });
+    
     effect(() => {
 
       if (this.id) {

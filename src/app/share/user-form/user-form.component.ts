@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-user-form',
@@ -34,7 +35,7 @@ export class UserFormComponent implements OnInit {
   ) {
 
     this.userForm = this.fb.group({
-      id_user: [''],
+      id_user: [Guid.create().toString()],
       user_name: ['', [Validators.required, Validators.minLength(3)]],
       user_lastname: ['', [Validators.required, Validators.minLength(3)]],
       fo_document_type: [null, [Validators.required]],

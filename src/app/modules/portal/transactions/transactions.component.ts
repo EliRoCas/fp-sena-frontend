@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { RoseModel, roseTypeAdapter, transactionAdapter, transactionById, TransactionModel } from '../../../services/transactions.service';
 import { filter } from 'rxjs';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-transactions',
@@ -41,7 +42,7 @@ export class TransactionsComponent implements OnInit {
     private _snackBar: MatSnackBar,
   ) {
     this.transactionForm = this.fb.group({
-      id_transaction: [''],
+      id_transaction: [Guid.create().toString()],
       transaction_name: ['', [Validators.required, Validators.minLength(3)]],
       transaction_rose_export: [''],
       fo_rose_type: [null],

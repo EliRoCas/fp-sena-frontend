@@ -16,6 +16,7 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-subcategory-form',
@@ -46,7 +47,7 @@ export class SubcategoryFormComponent {
     
 
     this.subcatForm = this.fb.group({
-      id_subcategory: [''],
+      id_subcategory: [Guid.create().toString()],
       subcategory_name: ['', [Validators.required]],
       fo_category: [0, [Validators.required]]
     });

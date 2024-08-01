@@ -16,6 +16,7 @@ import {
 } from '@angular/material/dialog';
 import { CategoryFormComponent } from '../../categories/category-form/category-form.component';
 import { SubcategoryFormComponent } from '../../categories/subcategories/subcategory-form/subcategory-form.component';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-product',
@@ -53,7 +54,7 @@ export class ProductComponent implements OnInit {
     private matDialog: MatDialog
   ) {
     this.productForm = this.fb.group({
-      id_product: [''],
+      id_product: [Guid.create().toString()],
       product_name: ['', [Validators.required, Validators.minLength(3)]],
       fo_subcategory: [null],
       product_img: [''],
