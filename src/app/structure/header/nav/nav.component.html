@@ -1,8 +1,8 @@
 <ea-layout mode="vertical">
     <section ea-left-sidebar class="left-bar-options">
-        <mat-icon routerLink="/portal" fontIcon="home"></mat-icon>
-        <mat-icon routerLink="/portal/transactions" fontIcon="add"></mat-icon>
-        <mat-icon routerLink="/portal/register-product" fontIcon="local_mall"></mat-icon>
+        <mat-icon routerLink="/portal" fontIcon="home" (click)="drawer().toggle()"></mat-icon>
+        <mat-icon routerLink="/portal/transactions" fontIcon="add" (click)="drawer().toggle()"></mat-icon>
+        <mat-icon routerLink="/portal/register-product" fontIcon="local_mall" (click)="drawer().toggle()"></mat-icon>
     </section>
 
     <div style="padding: .5rem">
