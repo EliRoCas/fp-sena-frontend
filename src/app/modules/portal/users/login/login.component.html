@@ -1,20 +1,20 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="text-gray-600 body-font dark:bg-gray-900 ">
-  <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="text-gray-600 body-font ">
+  <div class="mx-auto flex flex-wrap justify-center">
 
     <div class="hidden md:block lg:w-70 md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
       <img src="img/businesswoman.jpg" alt="Imagen sobre finanzas" class="grayscale rounded-lg">
     </div>
 
-    <div class="lg:w-76 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
+    <div class="pt-20 md:w-3/6 md:mx-2 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20">
 
-      <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 ">Iniciar Sesión</h2>
+      <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-2 ">Iniciar Sesión</h2>
 
       <div class="input-special">
         <div>
           <i class="fa-solid fa-at"></i>
         </div>
-        <input type="email" id="email" name="email" placeholder="Usuario o Correo" aria-label="Email" 
-        formControlName="email">
+        <input type="email" id="email" name="email" placeholder="Usuario o Correo" aria-label="Email"
+          formControlName="email">
       </div>
 
       <div class="input-special">
@@ -22,26 +22,19 @@
           <i class="fa-solid fa-unlock-keyhole"></i>
         </div>
         <input type="password" id="password" name="password" placeholder="Contraseña" aria-label="password"
-        formControlName="password">
+          formControlName="password">
       </div>
 
 
-      <button type="submit" class="primary-button" [disabled]="loginForm.invalid" >
+      <button type="submit" class="primary-button" [disabled]="loginForm.invalid">
         Iniciar
       </button>
       <a href="#" class="text-xs text-gray-500 mt-3 text-center"> He olvidado mi contraseña</a>
 
-      <div class="flex items-center mb-4">
-        <div class="w-full border-b border-gray-300 my-1"></div>
-        <p class="text-xs text-gray-500 my-3 text-center"> Al continuar, aceptas nuestros términos de servicio.</p>
-        <div class="w-full border-b border-gray-300 my-1"></div>
-      </div>
 
-
-
-
-
-
+      <div class="w-full border-b border-gray-300 my-1"></div>
+      <p class="text-xs text-gray-500 my-3 text-center"> Al continuar, aceptas nuestros términos de servicio.</p>
+      <div class="w-full border-b border-gray-300 my-1"></div>
 
     </div>
 

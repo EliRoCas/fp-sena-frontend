@@ -7,22 +7,6 @@
 
     <div style="padding: .5rem">
         <mat-list>
-            <mat-list-item routerLink="about-us" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>apartment</mat-icon>
-                <div matListItemTitle>Sobre Nosotros</div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="support" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>perm_phone_msg</mat-icon>
-                <div matListItemTitle>Contáctenos</div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="faq" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>quiz</mat-icon>
-                <div matListItemTitle>FAQ</div>
-            </mat-list-item>
-
-
             @if(isLoggedIn()){
             <mat-list-item routerLink="portal/user-admin" (click)="drawer().toggle()">
                 <mat-icon matListItemIcon>manage_accounts</mat-icon>
@@ -67,6 +51,23 @@
                 <div matListItemTitle>Subcategorías</div>
             </mat-list-item>
             }
+
+            @if (!navApk()){
+            <mat-list-item routerLink="about-us" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>apartment</mat-icon>
+                <div matListItemTitle>Sobre Nosotros</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="support" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>perm_phone_msg</mat-icon>
+                <div matListItemTitle>Contáctenos</div>
+            </mat-list-item>
+            }
+
+            <mat-list-item routerLink="faq" (click)="drawer().toggle()">
+                <mat-icon matListItemIcon>quiz</mat-icon>
+                <div matListItemTitle>FAQ</div>
+            </mat-list-item>
         </mat-list>
     </div>
 </ea-layout>

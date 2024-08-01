@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { AuthService } from '../../../services/auth.service';
+import { environment } from '../../../../../environment';
 
 @Component({
   selector: 'app-nav',
@@ -32,6 +33,14 @@ import { AuthService } from '../../../services/auth.service';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+
+  navApk(): boolean {
+    if (environment.isMobile){
+      return true; 
+    }else {
+      return false;
+    }
+  };
 
   drawer = input.required<MatDrawer>()
 

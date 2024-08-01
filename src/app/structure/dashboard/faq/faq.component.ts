@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { QuestionCardComponent } from './question-card/question-card.component';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -10,6 +11,16 @@ import { QuestionCardComponent } from './question-card/question-card.component';
   styleUrl: './faq.component.scss'
 })
 export class FaqComponent {
+  
+  
+  constructor(
+    private authService: AuthService,
+  ) { }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+  
   questions = [
     {
       title: '¿Cómo puedo acceder al sistema?',

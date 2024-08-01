@@ -5,8 +5,10 @@
             @for (question of questions; track question){
             <app-question-card [title]="question.title" [text]="question.text"></app-question-card>
             }
+            @if (isLoggedIn()){
             @for (registerQuestion of registerQuestions; track registerQuestion){
             <app-question-card [title]="registerQuestion.title" [text]="registerQuestion.text"></app-question-card>
+            }
             }
         </div>
     </div>
