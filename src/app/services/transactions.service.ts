@@ -30,9 +30,9 @@ export interface RoseModel {
   rose_type_name: string;
 }
 
-export const transactionAdapter = new EntityAdapter<TransactionModel>("transactions", { getId: (input) => input.id_transaction.toString() });
+export const transactionAdapter = new EntityAdapter<TransactionModel>("transactions", { getId: (input) => input.id_transaction.toString(), additionalData: { id: "id_transaction" } });
 
-export const roseTypeAdapter = new EntityAdapter<RoseModel>("rose_types", { getId: (input) => input.id_rose_type.toString() });
+export const roseTypeAdapter = new EntityAdapter<RoseModel>("rose_types", { getId: (input) => input.id_rose_type.toString(), additionalData: { id: "id_rose_type" } });
 
 export const transactionByName = (name: string) => createSelector(transactionAdapter.feature,
   transactions => {
@@ -53,7 +53,7 @@ export const transactionIncome = createSelector(transactionAdapter.feature,
   transactions => {
     return transactions.filter(trans => trans.transaction_type === 'income');
   })
-  
+
 export const transactionExpense = createSelector(transactionAdapter.feature,
   transactions => {
     return transactions.filter(trans => trans.transaction_type === 'expense');

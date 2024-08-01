@@ -19,7 +19,7 @@ export interface SubcategoryModel {
   fo_category: number;
 }
 
-export const subcatAdapter = new EntityAdapter<SubcategoryModel>("subcategories", { getId: (input) => input.id_subcategory.toString() });
+export const subcatAdapter = new EntityAdapter<SubcategoryModel>("subcategories", { getId: (input) => input.id_subcategory.toString(), additionalData: { id: "id_subcategory" } });
 
 export const subcatByName = (name: string) => createSelector(subcatAdapter.feature,
   subcategories => {

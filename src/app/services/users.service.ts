@@ -45,13 +45,13 @@ export interface RoleAssignModel {
 // Se crea una instancia de "EntityAdapter" específica para el modelo de usuario hecho (UserModel), 
 // designándole el nombre "users". Este adaptador proporciona métodos HTTP para realizar operaciones CRUD
 // en el estado, utilizando por debajo la lógica de NGRX 
-export const userAdapter = new EntityAdapter<UserModel>("users", { getId: (input) => input.id_user.toString() });
+export const userAdapter = new EntityAdapter<UserModel>("users", { getId: (input) => input.id_user.toString(), additionalData: { id: "id_user" } });
 
-export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", { getId: (input) => input.id_user_role.toString() });
+export const roleAdapter = new EntityAdapter<RoleModel>("user_roles", { getId: (input) => input.id_user_role.toString(), additionalData: { id: "id_user_role" } });
 
-export const docTypeAdapter = new EntityAdapter<DocTypeModel>("document_types", { getId: (input) => input.id_document_type.toString() });
+export const docTypeAdapter = new EntityAdapter<DocTypeModel>("document_types", { getId: (input) => input.id_document_type.toString(), additionalData: { id: "id_document_type" } });
 
-export const roleAssignAdapter = new EntityAdapter<RoleAssignModel>("user_roles_assignment", { getId: (input) => input.fo_user.toString() });
+export const roleAssignAdapter = new EntityAdapter<RoleAssignModel>("user_roles_assignment", { getId: (input) => input.fo_user.toString(), additionalData: { id: "fo_user" } });
 
 // Se crea una función (userByName) que retrorna un selector, que filtra los datos de "users", 
 // que llegan por "userAdapter.feature" para encontrar los usuarios (user_name) que cotengan la cadena "name",

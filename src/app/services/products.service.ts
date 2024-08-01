@@ -24,7 +24,7 @@ export interface ProductModel {
 }
 
 
-export const productAdapter = new EntityAdapter<ProductModel>("products", { getId: (input) => input.id_product.toString() });
+export const productAdapter = new EntityAdapter<ProductModel>("products", { getId: (input) => input.id_product.toString(), additionalData: { id: "id_product" } });
 
 export const productByName = (name: string) => createSelector(productAdapter.feature,
   products => {

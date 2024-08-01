@@ -18,7 +18,7 @@ export interface CategoryModel {
   subcategories: SubcategoryModel[]
 }
 
-export const catAdapter = new EntityAdapter<CategoryModel>("categories", { getId: (input) => input.id_category.toString() });
+export const catAdapter = new EntityAdapter<CategoryModel>("categories", { getId: (input) => input.id_category.toString(), additionalData: { id: "id_category" } });
 
 export const catByName = (name: string) => createSelector(catAdapter.feature,
   categories => {

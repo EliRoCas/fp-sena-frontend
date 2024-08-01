@@ -20,7 +20,7 @@ export interface BudgetModel {
   description_budget: string;
 }
 
-export const budgetAdapter = new EntityAdapter<BudgetModel>("products", { getId: (input) => input.id_product.toString() });
+export const budgetAdapter = new EntityAdapter<BudgetModel>("products", { getId: (input) => input.id_product.toString(), additionalData: { id: "id_product" } });
 
 export const budgetByDate = (name: string) => createSelector(budgetAdapter.feature,
   budgets => {
