@@ -1,6 +1,14 @@
 .example-container {
     height: 100%;
     width: 100%;
+    padding-top: 4rem;
+    @apply dark:bg-gray-900;
+}
+
+@media (max-width: 780px){
+    .example-container {
+         padding-top: 6rem;
+    }
 }
 
 [ea-header],
