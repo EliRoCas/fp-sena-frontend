@@ -12,6 +12,7 @@ import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layo
 import { Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { environment } from '../../../../../environment';
 
 
 @Component({
@@ -83,5 +84,14 @@ export class StockComponent {
   printTable() {
     window.print();
   }
+
+  apk(): boolean {
+    if (environment.isMobile){
+      return true; 
+    }else {
+      return false;
+    }
+  };
+
 }
 
