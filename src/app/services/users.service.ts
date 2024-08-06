@@ -7,22 +7,23 @@ export class UsersService {
   constructor() { }
 }
 
-
 import { EntityAdapter } from '@ea-controls/ngrx-repository'; // Manejador de operaciones para entidades NGRX
 import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX para crar selectores de estado memorizados
 
 // Se define la estructura del modelo de usuario que se aplicará, concuerda con la DB 
 export interface UserModel {
+  id_user: number;
   user_name: string;
   user_lastname: string;
-  document_type_name: string;
   fo_document_type: number;
   document_number: number;
   email: string;
   password: string;
-  roles: string;
-  id_user: number;
-  roleIds: number[];
+}
+
+export interface DocTypeModel {
+  id_document_type: number;
+  document_type_name: string;
 }
 
 export interface RoleModel {
@@ -30,16 +31,9 @@ export interface RoleModel {
   role_name: string;
 }
 
-
-export interface DocTypeModel {
-  id_document_type: number;
-  document_type_name: string;
-}
-
 export interface RoleAssignModel {
   fo_user: number;
-  id_user_role: number;
-  role_name: string
+  fo_user_role: number;
 }
 
 // Se crea una instancia de "EntityAdapter" específica para el modelo de usuario hecho (UserModel), 

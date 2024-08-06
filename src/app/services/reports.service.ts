@@ -1,20 +1,10 @@
-import { Injectable } from '@angular/core';
-
 import { createSelector } from '@ngrx/store';
-import { budgetAdapter, BudgetModel } from './budgets.service';
 import { transactionAdapter, TransactionModel } from './transactions.service';
 
 // import * as dayjs from 'dayjs'
 import dayjs from 'dayjs'
 
 dayjs().format()
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ReportsService {
-//   constructor() { }
-// }
 
 // Balance: gastos y ventas ingresados
 export const getBalanceReport = createSelector(

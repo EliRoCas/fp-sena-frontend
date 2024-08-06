@@ -20,9 +20,7 @@ export interface ProductModel {
   product_description: string;
   quantity: number;
   fo_category: number;
-  category_name?: string
 }
-
 
 export const productAdapter = new EntityAdapter<ProductModel>("products", { getId: (input) => input.id_product.toString(), additionalData: { id: "id_product" } });
 

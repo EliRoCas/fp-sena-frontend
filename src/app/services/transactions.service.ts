@@ -15,7 +15,6 @@ export interface TransactionModel {
   id_transaction: number;
   transaction_name: string;
   transaction_rose_export: string;
-  fo_rose_type: string;
   transaction_customer: string;
   transaction_date: Date;
   transaction_amount: number;
@@ -23,6 +22,7 @@ export interface TransactionModel {
   transaction_type: string;
   fo_category: number;
   fo_subcategory: number;
+  fo_rose_type: string;
 }
 
 export interface RoseModel {
