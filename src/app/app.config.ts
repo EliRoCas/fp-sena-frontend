@@ -11,7 +11,6 @@ import { productAdapter } from './services/products.service';
 import { catAdapter } from './services/categories.service';
 import { subcatAdapter } from './services/subcategories.service';
 import { roseTypeAdapter, transactionAdapter } from './services/transactions.service';
-import { budgetAdapter } from './services/budgets.service';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { AuthService } from './services/auth.service';
@@ -29,7 +28,6 @@ const adapters: EntityAdapter<any>[] = [
   subcatAdapter,
   transactionAdapter,
   roseTypeAdapter,
-  budgetAdapter,
   roleAssignAdapter
 ];
 
