@@ -14,6 +14,7 @@
     </a>
 
     <div class="flex justify-center flex-wrap mx-5">
+        @if (!isSmallScreen) {
         <table mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id_subcategory">
@@ -23,7 +24,7 @@
 
             <ng-container matColumnDef="fo_category">
                 <th mat-header-cell *matHeaderCellDef> Categoría Padre </th>
-                <td mat-cell *matCellDef="let element"> {{element.category_name}}</td>
+                <td mat-cell *matCellDef="let element"> {{element.categoryName}}</td>
             </ng-container>
 
             <ng-container matColumnDef="subcategory_name">
@@ -47,5 +48,32 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        }@else {
+        <mat-accordion #mobileView>
+            @for(element of dataSource(); track element){
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{element.subcategory_name}}</mat-panel-title>
+                    <mat-panel-description>
+                        {{panelOpenState() ? 'ocultar' : 'ver'}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="p-4">
+                    <p><strong>Código:</strong> {{element.id_subcategory}}</p>
+                    <p><strong>Categoría Padre:</strong> {{element.categoryName}}</p>
+                    <p><strong>Subcategoría:</strong> {{element.subcategory_name}}</p>
+                    <div class="flex space-x-2 mt-2">
+                        <button (click)="editSubcategory(element.id_subcategory)" class="text-blue-700 px-2">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                        <button (click)="delete(element)" class="text-red-700 px-2">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            }
+        </mat-accordion>
+        }
     </div>
 </div>

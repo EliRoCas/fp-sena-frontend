@@ -13,6 +13,8 @@
                     </label>
                     <select name="parentCategories" id="parentCategories" class="input-special py-3"
                         formControlName="fo_category">
+                        <option value="">Seleccione una categoría</option>
+
                         @for (category of categories(); track category) {
                         <option [value]="category.id_category">{{category.category_name}}</option>
                         }
@@ -20,8 +22,8 @@
                 </div>
 
                 <div class="input-special flex flex-col mb-4">
-                    <label for="category_name" class="text-sm font-semibold text-gray-700">Nombre</label>
-                    <input parentCategories="text" id="category_name" name="category_name"
+                    <label for="subcategory_name" class="text-sm font-semibold text-gray-700">Nombre</label>
+                    <input parentCategories="text" id="subcategory_name" name="subcategory_name"
                         placeholder="Nombre de la subcategoría" aria-label="" formControlName="subcategory_name">
                 </div>
             </div>

@@ -14,7 +14,6 @@ import {
   MAT_DIALOG_DATA,
   MatDialogClose,
   MatDialogRef,
-  MatDialogTitle,
 } from '@angular/material/dialog';
 import { Guid } from 'guid-typescript';
 
@@ -49,20 +48,17 @@ export class SubcategoryFormComponent {
     this.subcatForm = this.fb.group({
       id_subcategory: [Guid.create().toString()],
       subcategory_name: ['', [Validators.required]],
-      fo_category: [0, [Validators.required]]
+      fo_category: [null, [Validators.required]]
     });
 
     effect(() => {
-
       if (this.id) {
         this.store.select(subcatById(this.id!))
           .pipe(
             filter(subcatData => !!subcatData)
           )
           .subscribe(subcatData => {
-
             this.subcatForm.patchValue(subcatData as any);
-
           })
       }
     });
@@ -71,7 +67,6 @@ export class SubcategoryFormComponent {
 
   add() {
     if (this.id) {
-
       this.store.dispatch(subcatAdapter.patchOne(this.subcatForm.value as unknown as SubcategoryModel,
         (data) => {
           this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
@@ -84,7 +79,6 @@ export class SubcategoryFormComponent {
       ));
 
     } else {
-
       this.store.dispatch(subcatAdapter.addOne(this.subcatForm.value as unknown as SubcategoryModel,
         (data) => {
           this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
@@ -95,7 +89,6 @@ export class SubcategoryFormComponent {
         },
         (error) => {
           // console.log(error);
-
           this._snackBar.open("¡Upps! Algo salió mal.", "", { duration: 5000 })
         }
       ));
