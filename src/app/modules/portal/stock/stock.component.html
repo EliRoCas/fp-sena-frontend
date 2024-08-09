@@ -72,12 +72,12 @@
                     @if(apk()){
                     <p><strong>Nombre del Producto:</strong> {{element.product_name}}</p>
                     <p><strong>Cantidad:</strong> {{element.quantity}}</p>
-                    <p><strong>Categoría:</strong> {{element.category_name}}</p>
+                    <!-- <p><strong>Categoría:</strong> {{element.category_name}}</p> -->
                     } @else {
                     <p><strong>Código:</strong> {{element.id_product}}</p>
                     <p><strong>Nombre del Producto:</strong> {{element.product_name}}</p>
                     <p><strong>Cantidad:</strong> {{element.quantity}}</p>
-                    <p><strong>Categoría:</strong> {{element.category_name}}</p>
+                    <!-- <p><strong>Categoría:</strong> {{element.category_name}}</p> -->
                     }
                     <div class="flex space-x-2 mt-2">
                         <a [routerLink]="['/portal/edit-product', element.id_product]"

@@ -55,11 +55,11 @@ export class TransactionsComponent implements OnInit {
       fo_subcategory: [null],
     });
 
-    this.transactionForm.get("fo_category")?.valueChanges.subscribe(newValue => {
-      const subcat = this.categories().find(c => c.id_category === newValue)?.subcategories ?? [];
-      this.subcategories.set(subcat);
+    // this.transactionForm.get("fo_category")?.valueChanges.subscribe(newValue => {
+    //   const subcat = this.categories().find(c => c.id_category === newValue)?.subcategories ?? [];
+    //   this.subcategories.set(subcat);
 
-    })
+    // })
 
   }
 

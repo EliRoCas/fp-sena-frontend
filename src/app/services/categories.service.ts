@@ -27,3 +27,7 @@ export const catById = (id: number) => createSelector(catAdapter.feature,
   categories => {
     return categories.find(cat => cat.id_category === id);
   })
+
+  
+
+

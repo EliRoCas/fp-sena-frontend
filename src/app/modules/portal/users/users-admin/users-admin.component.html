@@ -92,15 +92,15 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <div class="p-4">
-                    <p><strong>Documento:</strong> {{element.document_type_name}}</p>
+                    <!-- <p><strong>Documento:</strong> {{element.document_type_name}}</p> -->
                     <p><strong>No. Documento:</strong> {{element.document_number}}</p>
                     <p><strong>Nombre:</strong> {{element.user_name}}</p>
                     <p><strong>Apellidos:</strong> {{element.user_lastname}}</p>
-                    <p><strong>Roles:</strong> {{element.roles}}
+                    <!-- <p><strong>Roles:</strong> {{element.roles}}
                         <button (click)="deleteRol(element)" class="text-red-700 px-2">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
-                    </p>
+                    </p> -->
                     <p><strong>Correo:</strong> {{element.email}}</p>
                     <div class="flex space-x-2 mt-2">
                         <a [routerLink]="['/portal/edit-user', element.id_user]" routerLinkActive="router-link-active">

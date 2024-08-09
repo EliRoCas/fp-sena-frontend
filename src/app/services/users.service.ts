@@ -76,9 +76,9 @@ export const userRoleAssign = createSelector(
       const user_role_assign = user_roles_assignment
         .filter(ra => ra.fo_user === u.id_user);
 
-      const roleIds = user_role_assign.map(x => x.id_user_role);
+      const roleIds = user_role_assign.map(x => x.fo_user_role);
       const roleNames = user_role_assign.map(x => user_roles
-        .find(r => r.id_user_role === x.id_user_role)?.role_name);
+        .find(r => r.id_user_role === x.fo_user_role)?.role_name);
 
       return {
         ...u,

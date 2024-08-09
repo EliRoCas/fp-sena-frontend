@@ -11,7 +11,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { environment } from '../../../../../environment';
 
 @Component({
   selector: 'app-categories',
@@ -39,19 +38,14 @@ export class CategoriesComponent {
 
 
 
-  constructor(private store: Store,
+  constructor(
+    private store: Store,
     private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.store.dispatch(catAdapter.getAll());
     this.store.select(catAdapter.feature).subscribe(data => this.dataSource.data = data);
-
-    this.store.select(catAdapter.selectById("2")).subscribe(data => this.selected.set(data));
-
-    // this.store.select(catByName('')).subscribe(result => {
-    //   console.log('catByName', result)
-    // });
   };
 
   delete(category: CategoryModel) {

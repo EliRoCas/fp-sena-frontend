@@ -63,10 +63,10 @@ export class ProductComponent implements OnInit {
       fo_category: [null, [Validators.required]],
     });
 
-    this.productForm.get("fo_category")?.valueChanges.subscribe(newValue => {
-      const subcat = this.categories().find(c => c.id_category === newValue)?.subcategories ?? [];
-      this.subcategories.set(subcat);
-    })
+    // this.productForm.get("fo_category")?.valueChanges.subscribe(newValue => {
+    //   const subcat = this.categories().find(c => c.id_category === newValue)?.subcategories ?? [];
+    //   this.subcategories.set(subcat);
+    // })
 
   }
 
