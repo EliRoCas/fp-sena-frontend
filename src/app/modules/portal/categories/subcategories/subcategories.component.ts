@@ -17,6 +17,7 @@ import { environment } from '../../../../../../environment';
 
 @Component({
   selector: 'app-subcategories',
+  
   standalone: true,
   imports: [
     CommonModule,
