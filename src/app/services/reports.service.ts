@@ -110,7 +110,7 @@ export const getIncomeStatement = createSelector(transactionAdapter.feature, (tr
 
   const roseExpenses = transactionByYear
     .filter(t => t.transaction_type === 'expense')
-    .filter(t => Number(t.fo_category) === 3)
+    .filter(t => Number(t.fo_category) === 5)
     .map(t => Number(t.transaction_amount))
     .reduce((prev, curr) => prev + curr, 0);
 
@@ -118,28 +118,28 @@ export const getIncomeStatement = createSelector(transactionAdapter.feature, (tr
 
   const salaries = transactionByYear
     .filter(t => t.transaction_type === "expense")
-    .filter(t => Number(t.fo_category) === 12)
+    .filter(t => Number(t.fo_category) === 2)
     .map(t => Number(t.transaction_amount))
     .reduce((prev, curr) => prev + curr, 0)
 
   const rent = transactionByYear
     .filter(t => t.transaction_type === "expense")
-    .filter(t => Number(t.fo_category) === 13)
+    .filter(t => Number(t.fo_category) === 3)
     .map(t => Number(t.transaction_amount))
     .reduce((prev, curr) => prev + curr, 0)
 
   const advertising = transactionByYear
     .filter(t => t.transaction_type === "expense")
-    .filter(t => Number(t.fo_category) === 14)
+    .filter(t => Number(t.fo_category) === 4)
     .map(t => Number(t.transaction_amount))
     .reduce((prev, curr) => prev + curr, 0)
 
   const otherExpenses = transactionByYear
     .filter(t => t.transaction_type === "expense")
+    .filter(t => Number(t.fo_category) !== 5)
+    .filter(t => Number(t.fo_category) !== 2)
     .filter(t => Number(t.fo_category) !== 3)
-    .filter(t => Number(t.fo_category) !== 12)
-    .filter(t => Number(t.fo_category) !== 13)
-    .filter(t => Number(t.fo_category) !== 14)
+    .filter(t => Number(t.fo_category) !== 4)
     .map(t => Number(t.transaction_amount))
     .reduce((prev, curr) => prev + curr, 0)
 
