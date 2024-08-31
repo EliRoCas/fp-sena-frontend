@@ -1,6 +1,22 @@
 import { Component, effect, input, OnInit, signal } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { docTypeAdapter, DocTypeModel, roleAdapter, RoleModel, userAdapter, userByEmail, userById, UserModel } from '../../services/users.service';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  docTypeAdapter,
+  DocTypeModel,
+  roleAdapter,
+  RoleModel,
+  userAdapter,
+  userByEmail,
+  userById,
+  userDocuments,
+  UserModel,
+} from '../../services/users.service';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter } from 'rxjs';
@@ -13,7 +29,7 @@ import { Guid } from 'guid-typescript';
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './user-form.component.html',
-  styleUrl: './user-form.component.scss'
+  styleUrl: './user-form.component.scss',
 })
 export class UserFormComponent implements OnInit {
   title = input('Registrar Usuario');
@@ -31,23 +47,28 @@ export class UserFormComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {
-
-    this.userForm = this.fb.group({
-      id_user: [Guid.create().toString()],
-      user_name: ['', [Validators.required, Validators.minLength(3)]],
-      user_lastname: ['', [Validators.required, Validators.minLength(3)]],
-      fo_document_type: [null, [Validators.required]],
-      document_number: ['', [Validators.required]],
-      roles: null,
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$')
-      ]],
-      confirm_password: ['', [Validators.required]],
-    },
+    this.userForm = this.fb.group(
+      {
+        id_user: [Guid.create().toString()],
+        user_name: ['', [Validators.required, Validators.minLength(3)]],
+        user_lastname: ['', [Validators.required, Validators.minLength(3)]],
+        fo_document_type: [null, [Validators.required]],
+        document_number: ['', [Validators.required]],
+        roles: null,
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$'
+            ),
+          ],
+        ],
+        confirm_password: ['', [Validators.required]],
+      },
       { validators: this.passwordsMatchValidator }
     );
 
@@ -56,34 +77,34 @@ export class UserFormComponent implements OnInit {
     // })
 
     effect(() => {
-
       if (this.id()) {
-        this.store.select(userById(this.id()!))
-          .pipe(
-            filter(userData => !!userData)
-          )
-          .subscribe(userData => {
-
+        this.store
+          .select(userById(this.id()!))
+          .pipe(filter((userData) => !!userData))
+          .subscribe((userData) => {
             this.userForm.patchValue(userData as any);
-
-          })
+          });
       } else if (this.email()) {
-
-        this.store.select(userByEmail(this.authService.email)).subscribe(data => {
-          this.userForm.patchValue(data as any);
-        });
-
-
+        this.store
+          .select(userByEmail(this.authService.email))
+          .subscribe((data) => {
+            this.userForm.patchValue(data as any);
+          });
       }
     });
 
-  };
+  
+  }
 
   ngOnInit(): void {
-    this.store.select(docTypeAdapter.feature).subscribe(data => this.docTypes.set(data));
+    this.store
+      .select(docTypeAdapter.feature)
+      .subscribe((data) => this.docTypes.set(data));
 
     this.store.dispatch(roleAdapter.getAll());
-    this.store.select(roleAdapter.feature).subscribe(data => this.roles.set(data));
+    this.store
+      .select(roleAdapter.feature)
+      .subscribe((data) => this.roles.set(data));
 
     this.store.dispatch(docTypeAdapter.getAll());
 
@@ -92,37 +113,42 @@ export class UserFormComponent implements OnInit {
 
   add() {
     if (this.id()) {
-
-      this.store.dispatch(userAdapter.patchOne(this.userForm.value as unknown as UserModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-        },
-        (error) => {
-          this._snackBar.open("ERROR", "", { duration: 5000 })
-        }
-      ));
-
+      this.store.dispatch(
+        userAdapter.patchOne(
+          this.userForm.value as unknown as UserModel,
+          (data) => {
+            this._snackBar.open('Datos guardados con éxito', '', {
+              duration: 5000,
+            });
+          },
+          (error) => {
+            this._snackBar.open('ERROR', '', { duration: 5000 });
+          }
+        )
+      );
     } else {
-
-      this.store.dispatch(userAdapter.addOne(this.userForm.value as unknown as UserModel,
-        (data) => {
-          this._snackBar.open("Datos guardados con éxito", "", { duration: 5000 })
-          this.userForm.reset();
-        },
-        (error) => {
-          this._snackBar.open("ERROR", "", { duration: 5000 })
-        }
-      ));
+      this.store.dispatch(
+        userAdapter.addOne(
+          this.userForm.value as unknown as UserModel,
+          (data) => {
+            this._snackBar.open('Datos guardados con éxito', '', {
+              duration: 5000,
+            });
+            this.userForm.reset();
+          },
+          (error) => {
+            this._snackBar.open('ERROR', '', { duration: 5000 });
+          }
+        )
+      );
     }
   }
 
-
-
-  passwordsMatchValidator(form: FormGroup): null | { passwordsMismatch: boolean } {
+  passwordsMatchValidator(
+    form: FormGroup
+  ): null | { passwordsMismatch: boolean } {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirm_password')?.value;
     return password === confirmPassword ? null : { passwordsMismatch: true };
-  };
-
-
+  }
 }

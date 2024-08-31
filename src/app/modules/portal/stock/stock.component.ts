@@ -54,8 +54,7 @@ export class StockComponent {
     this.store.dispatch(catAdapter.getAll());
     this.store.select(selectProductsWithCategories).subscribe(data => this.dataSource.data = data);
 
-    this.store.select(productAdapter.selectById("2")).subscribe(data => this.selected.set(data));
-
+    // this.store.select(productAdapter.selectById("2")).subscribe(data => this.selected.set(data));
     // this.store.select(productByName('')).subscribe(data => this.dataSource.data = data);
 
     const customBreakpoint = '(max-width: 800px)';
