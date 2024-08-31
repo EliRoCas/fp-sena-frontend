@@ -85,30 +85,34 @@ export const userById = (id: number) =>
     return users.find((u) => u.id_user === id);
   });
 
-export type UserDocType = UserModel & { doc_Name: string };
+export type UserDocType = UserModel & {
+  doc_Name: string;
+  roleIds: number[];
+  roleNames: string;
+};
 
-export const userDocuments = createSelector(
-  userAdapter.feature,
-  docTypeAdapter.feature,
-  (users, documents) => {
-    return users.map((user) => {
-      const document = documents.find(
-        (doc) => doc.id_document_type === user.fo_document_type
-      );
-      return {
-        ...user,
-        doc_Name: document?.document_type_name,
-      } as UserDocType;
-    });
-  }
-);
-
+// export const userDocuments = createSelector(
+//   userAdapter.feature,
+//   docTypeAdapter.feature,
+//   (users, documents) => {
+//     return users.map((user) => {
+//       const document = documents.find(
+//         (doc) => doc.id_document_type === user.fo_document_type
+//       );
+//       return {
+//         ...user,
+//         doc_Name: document?.document_type_name,
+//       } as UserDocType;
+//     });
+//   }
+// );
 
 export const userRoleAssign = createSelector(
   userAdapter.feature,
   roleAdapter.feature,
   roleAssignAdapter.feature,
-  (users, user_roles, user_roles_assignment) => {
+  docTypeAdapter.feature,
+  (users, user_roles, user_roles_assignment, documents) => {
     return users.map((u) => {
       const user_role_assign = user_roles_assignment.filter(
         (ra) => ra.fo_user === u.id_user
@@ -120,12 +124,17 @@ export const userRoleAssign = createSelector(
           user_roles.find((r) => r.id_user_role === x.fo_user_role)?.role_name
       );
 
+      const document = documents.find(
+        (doc) => doc.id_document_type === u.fo_document_type
+      );
+
       return {
         ...u,
         roleIds: roleIds.length > 0 ? roleIds : [],
         roleNames:
           roleNames.length > 0 ? roleNames.join(', ') : 'Rol no asignado',
-      };
+          doc_Name: document?.document_type_name,
+      } as UserDocType;
     });
   }
 );

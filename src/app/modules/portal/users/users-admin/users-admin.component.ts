@@ -16,7 +16,7 @@ import {
   userAdapter,
   userByName,
   UserDocType,
-  userDocuments,
+
   UserModel,
   userRoleAssign,
 } from '../../../../services/users.service';
@@ -95,17 +95,12 @@ export class UsersAdminComponent {
       .select(userAdapter.selectById('2'))
       .subscribe((data) => this.selected.set(data));
 
-    // Se realiza la suscripción al selector "userByName" y se registra el resultado
-    // this.store.select(userByName('do')).subscribe(result => {
-    //   // console.log('userByName', result)
-    // })
+    this.store.select(userRoleAssign).subscribe((data) => {
+      console.log(data)
+      this.dataSource.data = data;
+    });
 
-    // this.store.select(userRoleAssign).subscribe((data) => {
-    //   // console.log(data)
-    //   this.dataSource.data = data;
-    // });
-
-    this.store.select(userDocuments).subscribe(data => this.dataSource.data = data)
+    // this.store.select(userDocuments).subscribe(data => this.dataSource.data = data)
 
     const customBreakpoint = '(max-width: 800px)';
     this.breakpointObserver
