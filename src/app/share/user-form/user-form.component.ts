@@ -35,8 +35,9 @@ import { Guid } from 'guid-typescript';
 })
 export class UserFormComponent implements OnInit {
   title = input('Registrar Usuario');
-  id = input<number | undefined>();
   email = input<string | undefined>();
+  readonly = input<boolean>(false);
+  id = input<number | undefined>();
   docTypes = signal<DocTypeModel[]>([]);
   selectedDoc = signal<DocTypeModel | undefined>(undefined);
   roles = signal<RoleModel[]>([]);
@@ -88,6 +89,10 @@ export class UserFormComponent implements OnInit {
             this.userForm.patchValue(data as any);
           });
       }
+    });
+
+    effect(() => {
+      this.readonly() ? this.userForm.disable() : this.userForm.enable();
     });
   }
 
