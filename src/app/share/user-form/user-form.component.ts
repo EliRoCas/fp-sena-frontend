@@ -10,11 +10,15 @@ import {
   docTypeAdapter,
   DocTypeModel,
   roleAdapter,
+  roleAssignAdapter,
+  RoleAssignModel,
   RoleModel,
   userAdapter,
   userByEmail,
   userById,
+  UserDocType,
   UserModel,
+  userRoleAssign,
 } from '../../services/users.service';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -37,7 +41,7 @@ export class UserFormComponent implements OnInit {
   docTypes = signal<DocTypeModel[]>([]);
   selectedDoc = signal<DocTypeModel | undefined>(undefined);
   roles = signal<RoleModel[]>([]);
-  selectedRol = signal<RoleModel | undefined>(undefined);
+  // selectedRol = signal<UserDocType | undefined>(undefined);
 
   userForm: FormGroup;
 
@@ -92,22 +96,24 @@ export class UserFormComponent implements OnInit {
       }
     });
 
-  
+    effect(() => {
+      console.log('this.roles', this.roles());
+    });
   }
 
   ngOnInit(): void {
+    this.store.dispatch(docTypeAdapter.getAll());
+    this.store.dispatch(userAdapter.getAll());
+    this.store.dispatch(roleAdapter.getAll());
+    // this.store.select(userRoleAssign).subscribe((data) => this.roles.set(data));
+
     this.store
       .select(docTypeAdapter.feature)
       .subscribe((data) => this.docTypes.set(data));
 
-    this.store.dispatch(roleAdapter.getAll());
     this.store
       .select(roleAdapter.feature)
       .subscribe((data) => this.roles.set(data));
-
-    this.store.dispatch(docTypeAdapter.getAll());
-
-    this.store.dispatch(userAdapter.getAll());
   }
 
   add() {
@@ -133,6 +139,14 @@ export class UserFormComponent implements OnInit {
             this._snackBar.open('Datos guardados con éxito', '', {
               duration: 5000,
             });
+
+            this.store.dispatch(
+              roleAssignAdapter.addOne({
+                fo_user: this.userForm.value.id_user,
+                fo_user_role: this.userForm.value.roles,
+              } as RoleAssignModel)
+            );
+
             this.userForm.reset();
           },
           (error) => {
