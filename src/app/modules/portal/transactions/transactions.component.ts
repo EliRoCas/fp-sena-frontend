@@ -93,6 +93,7 @@ export class TransactionsComponent implements OnInit {
             this._snackBar.open('Datos guardados con éxito', '', {
               duration: 5000,
             });
+            
           },
           (error) => {
             this._snackBar.open('ERROR', '', { duration: 5000 });
