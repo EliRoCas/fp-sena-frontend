@@ -16,7 +16,6 @@ import {
   userAdapter,
   userByName,
   UserDocType,
-
   UserModel,
   userRoleAssign,
 } from '../../../../services/users.service';
@@ -67,7 +66,7 @@ export class UsersAdminComponent {
   // La segunda maneja el usuario que se filtra, por lo que es 'undefined'.
   dataSource = new MatTableDataSource<UserDocType>();
   selected = signal<UserModel | undefined>(undefined);
-  selectedRole = signal<RoleAssignModel | undefined>(undefined);
+  selectedRole = signal<UserDocType | undefined>(undefined);
   selectedDocTypes = signal<DocTypeModel | undefined>(undefined);
 
   private destroy$ = new Subject<void>();
@@ -96,7 +95,7 @@ export class UsersAdminComponent {
       .subscribe((data) => this.selected.set(data));
 
     this.store.select(userRoleAssign).subscribe((data) => {
-      console.log(data)
+      console.log(data);
       this.dataSource.data = data;
     });
 

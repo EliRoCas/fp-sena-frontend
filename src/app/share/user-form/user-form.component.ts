@@ -14,7 +14,6 @@ import {
   userAdapter,
   userByEmail,
   userById,
-  userDocuments,
   UserModel,
 } from '../../services/users.service';
 import { Store } from '@ngrx/store';

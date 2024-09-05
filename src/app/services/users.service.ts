@@ -91,22 +91,6 @@ export type UserDocType = UserModel & {
   roleNames: string;
 };
 
-// export const userDocuments = createSelector(
-//   userAdapter.feature,
-//   docTypeAdapter.feature,
-//   (users, documents) => {
-//     return users.map((user) => {
-//       const document = documents.find(
-//         (doc) => doc.id_document_type === user.fo_document_type
-//       );
-//       return {
-//         ...user,
-//         doc_Name: document?.document_type_name,
-//       } as UserDocType;
-//     });
-//   }
-// );
-
 export const userRoleAssign = createSelector(
   userAdapter.feature,
   roleAdapter.feature,
@@ -121,7 +105,7 @@ export const userRoleAssign = createSelector(
       const roleIds = user_role_assign.map((x) => x.fo_user_role);
       const roleNames = user_role_assign.map(
         (x) =>
-          user_roles.find((r) => r.id_user_role === x.fo_user_role)?.role_name
+          user_roles?.find((r) => r.id_user_role === x.fo_user_role)?.role_name
       );
 
       const document = documents.find(
