@@ -41,7 +41,6 @@ export class UserFormComponent implements OnInit {
   docTypes = signal<DocTypeModel[]>([]);
   selectedDoc = signal<DocTypeModel | undefined>(undefined);
   roles = signal<RoleModel[]>([]);
-  // selectedRol = signal<UserDocType | undefined>(undefined);
 
   userForm: FormGroup;
 
@@ -75,10 +74,6 @@ export class UserFormComponent implements OnInit {
       { validators: this.passwordsMatchValidator }
     );
 
-    // this.userForm.valueChanges.subscribe(x => {
-    //   console.log(this.userForm);
-    // })
-
     effect(() => {
       if (this.id()) {
         this.store
@@ -95,17 +90,12 @@ export class UserFormComponent implements OnInit {
           });
       }
     });
-
-    effect(() => {
-      console.log('this.roles', this.roles());
-    });
   }
 
   ngOnInit(): void {
     this.store.dispatch(docTypeAdapter.getAll());
     this.store.dispatch(userAdapter.getAll());
     this.store.dispatch(roleAdapter.getAll());
-    // this.store.select(userRoleAssign).subscribe((data) => this.roles.set(data));
 
     this.store
       .select(docTypeAdapter.feature)
