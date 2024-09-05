@@ -122,9 +122,7 @@ export class UserFormComponent implements OnInit {
 
             this.store.dispatch(
               roleAssignAdapter.removeOne(
-                {
-                  fo_user: this.userForm.value.id_user,
-                } as RoleAssignModel,
+                { fo_user: this.userForm.value.id_user, fo_user_role: 0 },
                 (data) => {
                   this.store.dispatch(
                     roleAssignAdapter.addOne({
@@ -133,6 +131,9 @@ export class UserFormComponent implements OnInit {
                     } as RoleAssignModel)
                   );
                   this.router.navigate(['/portal/user-admin']);
+                },
+                (error) => {
+                  console.log(error);
                 }
               )
             );
@@ -152,10 +153,17 @@ export class UserFormComponent implements OnInit {
             });
 
             this.store.dispatch(
-              roleAssignAdapter.addOne({
-                fo_user: this.userForm.value.id_user,
-                fo_user_role: this.userForm.value.roles,
-              } as RoleAssignModel)
+              roleAssignAdapter.addOne(
+                {
+                  fo_user: this.userForm.value.id_user,
+                  fo_user_role: this.userForm.value.roles,
+                } as RoleAssignModel,
+                () => {},
+                (error) => {
+                  console.log(error);
+
+                }
+              )
             );
 
             this.userForm.reset();

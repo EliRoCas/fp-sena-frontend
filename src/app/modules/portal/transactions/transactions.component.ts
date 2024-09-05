@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, Input, input, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -28,7 +27,11 @@ import {
   TransactionModel,
 } from '../../../services/transactions.service';
 import { filter, take } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
 import { Guid } from 'guid-typescript';
+import { CategoryFormComponent } from '../categories/category-form/category-form.component';
+import { SubcategoryFormComponent } from '../categories/subcategories/subcategory-form/subcategory-form.component';
 
 @Component({
   selector: 'app-transactions',
@@ -38,6 +41,7 @@ import { Guid } from 'guid-typescript';
     CommonModule,
     ReactiveFormsModule,
     PortalContentComponent,
+    MatIconModule,
   ],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss',
@@ -58,7 +62,8 @@ export class TransactionsComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private store: Store,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private matDialog: MatDialog
   ) {
     this.transactionForm = this.fb.group({
       id_transaction: [Guid.create().toString()],
@@ -93,7 +98,6 @@ export class TransactionsComponent implements OnInit {
             this._snackBar.open('Datos guardados con éxito', '', {
               duration: 5000,
             });
-            
           },
           (error) => {
             this._snackBar.open('ERROR', '', { duration: 5000 });
@@ -143,5 +147,12 @@ export class TransactionsComponent implements OnInit {
           });
       }
     });
+  }
+
+  openNewCategory() {
+    this.matDialog.open(CategoryFormComponent);
+  }
+  openNewSubcategory() {
+    this.matDialog.open(SubcategoryFormComponent);
   }
 }

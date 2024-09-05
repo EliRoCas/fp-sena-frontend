@@ -4,7 +4,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { PortalContentComponent } from '@ea-controls/portal';
 import { FilterComponent } from '../../../share/filter/filter.component';
-import { catAdapter, catById, catByName, CategoryModel } from '../../../services/categories.service';
+import {
+  catAdapter,
+  catById,
+  catByName,
+  CategoryModel,
+} from '../../../services/categories.service';
 import { Store } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,41 +33,43 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss'
+  styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent {
   readonly panelOpenState = signal(false);
   isSmallScreen = false;
 
-  displayedColumns: string[] = ['id_category', 'category_name', 'catActions'];
+  displayedColumns: string[] = ['category_name', 'catActions'];
   dataSource = new MatTableDataSource<CategoryModel>();
   selected = signal<CategoryModel | undefined>(undefined);
   id = input<number | undefined>();
-  filterValue = "";
+  filterValue = '';
 
   private destroy$ = new Subject<void>();
 
   constructor(
     private store: Store,
-    private matDialog: MatDialog, 
+    private matDialog: MatDialog,
     private breakpointObserver: BreakpointObserver
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(catAdapter.getAll());
-    this.store.select(catAdapter.feature).subscribe(data => this.dataSource.data = data);
+    this.store
+      .select(catAdapter.feature)
+      .subscribe((data) => (this.dataSource.data = data));
 
     const customBreakpoint = '(max-width: 800px)';
     this.breakpointObserver
       .observe([customBreakpoint])
       .pipe(takeUntil(this.destroy$))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.isSmallScreen = result.matches;
       });
-  };
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
@@ -70,7 +77,7 @@ export class CategoriesComponent {
   }
 
   delete(category: CategoryModel) {
-    this.store.dispatch(catAdapter.removeOne(category))
+    this.store.dispatch(catAdapter.removeOne(category));
   }
 
   openNewCategory() {
@@ -79,7 +86,7 @@ export class CategoriesComponent {
 
   editCategory(id: number): void {
     this.matDialog.open(CategoryFormComponent, {
-      data: id
+      data: id,
     });
   }
 
@@ -89,10 +96,10 @@ export class CategoriesComponent {
   }
 
   apk(): boolean {
-    if (environment.isMobile){
-      return true; 
-    }else {
+    if (environment.isMobile) {
+      return true;
+    } else {
       return false;
     }
-  };
+  }
 }

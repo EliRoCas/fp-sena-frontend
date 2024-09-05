@@ -8,11 +8,18 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterLink } from '@angular/router';
 import { PortalContentComponent } from '@ea-controls/portal';
-import { transactionAdapter, transactionIncome, TransactionModel } from '../../../services/transactions.service';
+import {
+  transactionAdapter,
+  transactionIncome,
+  TransactionModel,
+} from '../../../services/transactions.service';
 import { Store } from '@ngrx/store';
-import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  LayoutModule,
+} from '@angular/cdk/layout';
 import { Subject, takeUntil } from 'rxjs';
-
 
 @Component({
   selector: 'app-incomes',
@@ -28,46 +35,47 @@ import { Subject, takeUntil } from 'rxjs';
     PortalContentComponent,
     MatExpansionModule,
     CommonModule,
-    LayoutModule
+    LayoutModule,
   ],
   templateUrl: './incomes.component.html',
-  styleUrl: './incomes.component.scss'
+  styleUrl: './incomes.component.scss',
 })
 export class IncomesComponent {
   readonly panelOpenState = signal(false);
   isSmallScreen = false;
 
   displayedColumns: string[] = [
-    'id_transaction',
+    // 'id_transaction',
     'transaction_name',
     'transaction_date',
     'transaction_amount',
     'fo_rose_type',
     'transaction_rose_export',
     'transaction_customer',
-    'incomeActions'];
+    'incomeActions',
+  ];
 
   dataSource = new MatTableDataSource<TransactionModel>();
   selected = signal<TransactionModel | undefined>(undefined);
-  
+
   private destroy$ = new Subject<void>();
 
   constructor(
     private store: Store,
     private breakpointObserver: BreakpointObserver
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(transactionAdapter.getAll());
-    this.store.select(transactionIncome).subscribe(data => {
-      this.dataSource.data = data
+    this.store.select(transactionIncome).subscribe((data) => {
+      this.dataSource.data = data;
     });
 
     const customBreakpoint = '(max-width: 800px)';
     this.breakpointObserver
       .observe([customBreakpoint])
       .pipe(takeUntil(this.destroy$))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.isSmallScreen = result.matches;
       });
   }
@@ -89,4 +97,3 @@ export class IncomesComponent {
     window.print();
   }
 }
-
