@@ -16,7 +16,6 @@ import {
   userAdapter,
   userByEmail,
   userById,
-  UserDocType,
   UserModel,
   userRoleAssign,
 } from '../../services/users.service';
@@ -128,6 +127,7 @@ export class UserFormComponent implements OnInit {
                       fo_user_role: this.userForm.value.roles,
                     } as RoleAssignModel)
                   );
+                  this.router.navigate(['/portal/user-admin']);
                 }
               )
             );
