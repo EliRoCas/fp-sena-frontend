@@ -5,163 +5,164 @@
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
 @font-face {
-    font-family: 'Cormorant';
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-Bold.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-BoldItalic.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-Italic.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-Light.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-LightItalic.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-Medium.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-MediumItalic.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-Regular.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-SemiBold.ttf');
-    src: url('/fonts/Cormorant_Infant/CormorantInfant-SemiBoldItalic.ttf');
+  font-family: "Cormorant";
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-Bold.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-BoldItalic.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-Italic.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-Light.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-LightItalic.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-Medium.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-MediumItalic.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-Regular.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-SemiBold.ttf");
+  src: url("/fonts/Cormorant_Infant/CormorantInfant-SemiBoldItalic.ttf");
 }
 
 @font-face {
-    font-family: 'Wittgenstein';
-    src: url('/fonts/Wittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf');
-    src: url('/fonts/Wittgenstein/Wittgenstein-VariableFont_wght.ttf');
+  font-family: "Wittgenstein";
+  src: url("/fonts/Wittgenstein/Wittgenstein-Italic-VariableFont_wght.ttf");
+  src: url("/fonts/Wittgenstein/Wittgenstein-VariableFont_wght.ttf");
 }
 
 body {
-    font-family: 'Wittgenstein', 'Times New Roman', Times, serif;
+  font-family: "Wittgenstein", "Times New Roman", Times, serif;
+  overflow-x: hidden;
 }
 
 main {
-    margin-top: -1rem;
+  margin-top: -1rem;
 }
 
 .primary-button {
-    @apply text-white bg-red-800 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded-xl text-sm font-['Cormorant'];
+  @apply text-white bg-red-800 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded-xl text-sm font-['Cormorant'];
 }
 
 .primary-button:disabled {
-    @apply bg-gray-400 cursor-not-allowed;
+  @apply bg-gray-400 cursor-not-allowed;
 }
 
 .secundary-button {
-    @apply text-black bg-white border-2 border-red-800 py-1 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2 font-['Wittgenstein'];
-
+  @apply text-black bg-white border-2 border-red-800 py-1 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2 font-['Wittgenstein'];
 }
 
 .secundary-button-main {
-    @apply text-white bg-red-800 border-2 border-0 py-1 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2 font-['Wittgenstein'];
+  @apply text-white bg-red-800 border-2 border-0 py-1 px-8 focus:outline-none hover:text-white hover:bg-red-700 rounded-2xl text-sm mb-2 font-['Wittgenstein'];
 }
 
 .secundary-button-main:disabled {
-    @apply bg-gray-400 cursor-not-allowed;
+  @apply bg-gray-400 cursor-not-allowed;
 }
 
 .footer-font {
-    @apply font-['Wittgenstein'] font-medium text-gray-500
+  @apply font-['Wittgenstein'] font-medium text-gray-500;
 }
 
 input.ng-invalid.ng-touched {
-    @apply bg-red-100 border-red-700
+  @apply bg-red-100 border-red-700;
 }
 
 .input-special {
-    @apply flex items-center mb-4 w-full;
+  @apply flex items-center mb-4 w-full;
 
-    >div {
-        @apply bg-white p-2 rounded border border-gray-300;
+  > div {
+    @apply bg-white p-2 rounded border border-gray-300;
 
-        >i {
-            @apply text-black w-full;
-        }
+    > i {
+      @apply text-black w-full;
     }
+  }
 
-    >input {
-        @apply w-full h-11 bg-white rounded border-t border-l border-b border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-sm outline-none text-gray-700 p-3 py-2 leading-8 transition-colors duration-200 ease-in-out;
-    }
+  > input {
+    @apply w-full h-11 bg-white rounded border-t border-l border-b border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-sm outline-none text-gray-700 p-3 py-2 leading-8 transition-colors duration-200 ease-in-out;
+  }
 }
 
 .input-form {
-    @apply w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-700 focus:bg-white focus:ring-2 focus:ring-red-500 text-sm outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out
+  @apply w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-700 focus:bg-white focus:ring-2 focus:ring-red-500 text-sm outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
 }
 
 .font-primary {
-    @apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 font-['Cormorant'] dark:text-white;
+  @apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 font-['Cormorant'] dark:text-white;
 }
 
 .font-primary-forms {
-    @apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 font-['Cormorant'] dark:text-black;
-
+  @apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 font-['Cormorant'] dark:text-black;
 }
 
 .font-secundary {
-    @apply sm:text-lg mb-2 font-['Wittgenstein'] dark:text-white;
+  @apply sm:text-lg mb-2 font-['Wittgenstein'] dark:text-white;
 }
 
 .label-style {
-    @apply leading-7 text-sm text-gray-950 dark:text-white
+  @apply leading-7 text-sm text-gray-950 dark:text-white;
 }
 
 .card-style {
-    @apply h-full bg-gradient-to-b from-red-300 to-red-600 px-6 py-6 rounded-lg overflow-hidden text-center relative
+  @apply h-full bg-gradient-to-b from-red-300 to-red-600 px-6 py-6 rounded-lg overflow-hidden text-center relative;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 html,
 body,
 app-root {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-router-outlet+* {
-    width: 100%;
-    height: 100%;
+router-outlet + * {
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
 }
-
 
 table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 2rem;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 table td,
 table th {
-    border: 1px solid #a72222;
-    padding: 8px;
+  border: 1px solid #a72222;
+  padding: 8px;
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 table tr:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 table td {
-    font-family: Wittgenstein;
+  font-family: Wittgenstein;
 }
 
 .mat-mdc-header-cell {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #570f0f !important;
-    color: white;
-    font-family: Cormorant;
-    font-size: 1.2rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #570f0f !important;
+  color: white;
+  font-family: Cormorant;
+  font-size: 1.2rem;
 }
 
 mat-expansion-panel {
- margin-bottom: 1rem;
-    padding: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
 }
