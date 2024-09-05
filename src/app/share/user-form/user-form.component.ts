@@ -115,6 +115,22 @@ export class UserFormComponent implements OnInit {
             this._snackBar.open('Datos guardados con éxito', '', {
               duration: 5000,
             });
+
+            this.store.dispatch(
+              roleAssignAdapter.removeOne(
+                {
+                  fo_user: this.userForm.value.id_user,
+                } as RoleAssignModel,
+                (data) => {
+                  this.store.dispatch(
+                    roleAssignAdapter.addOne({
+                      fo_user: this.userForm.value.id_user,
+                      fo_user_role: this.userForm.value.roles,
+                    } as RoleAssignModel)
+                  );
+                }
+              )
+            );
           },
           (error) => {
             this._snackBar.open('ERROR', '', { duration: 5000 });

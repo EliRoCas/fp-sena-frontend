@@ -85,52 +85,10 @@ export const userById = (id: number) =>
     return users.find((u) => u.id_user === id);
   });
 
-// export type UserDocType = UserModel & {
-//   doc_Name: string;
-//   roleIds: number[];
-//   roleNames: string;
-// };
-
-// export const userRoleAssign = createSelector(
-//   userAdapter.feature,
-//   roleAdapter.feature,
-//   roleAssignAdapter.feature,
-//   docTypeAdapter.feature,
-//   (users, user_roles, user_roles_assignment, documents) => {
-//     return users.map((u) => {
-//       const user_role_assign = user_roles_assignment.filter(
-//         (ra) => ra.fo_user === u.id_user
-//       );
-
-//       const roleIds = user_role_assign.map((x) => x.fo_user_role);
-//       const roleNames = user_role_assign.map(
-//         (x) =>
-//           user_roles?.find((r) => r.id_user_role === x.fo_user_role)?.role_name
-//       );
-
-//       const document = documents?.find(
-//         (doc) => doc.id_document_type === u.fo_document_type
-//       );
-
-//       return {
-//         ...u,
-//         roleIds: roleIds.length > 0 ? roleIds : [],
-//         roleNames:
-//           roleNames.length > 0
-//             ? roleNames.filter(Boolean).join(', ')
-//             : 'Rol no asignado',
-//         doc_Name: document?.document_type_name,
-//       } as UserDocType;
-//     });
-//   }
-// );
-
 export type UserDocType = UserModel & {
   doc_Name: string;
-  roleIds: string[];
+  roleIds: number[];
   roleNames: string;
-  existingRoles: { id: string; name: string }[];
-  existingRoleIds: string[]; // Nueva propiedad para los IDs de roles existentes
 };
 
 export const userRoleAssign = createSelector(
@@ -139,20 +97,12 @@ export const userRoleAssign = createSelector(
   roleAssignAdapter.feature,
   docTypeAdapter.feature,
   (users, user_roles, user_roles_assignment, documents) => {
-    const existingRoles =
-      user_roles?.map((role) => ({
-        id: role.id_user_role.toString(), // Convertir a string
-        name: role.role_name,
-      })) || [];
-
-    const existingRoleIds = existingRoles.map((role) => role.id); // Obtener los IDs de roles existentes
-
     return users.map((u) => {
       const user_role_assign = user_roles_assignment.filter(
         (ra) => ra.fo_user === u.id_user
       );
 
-      const roleIds = user_role_assign.map((x) => x.fo_user_role.toString()); // Convertir a string
+      const roleIds = user_role_assign.map((x) => x.fo_user_role);
       const roleNames = user_role_assign.map(
         (x) =>
           user_roles?.find((r) => r.id_user_role === x.fo_user_role)?.role_name
@@ -170,12 +120,12 @@ export const userRoleAssign = createSelector(
             ? roleNames.filter(Boolean).join(', ')
             : 'Rol no asignado',
         doc_Name: document?.document_type_name,
-        existingRoles, // Agregar la lista de roles existentes
-        existingRoleIds, // Agregar la lista de IDs de roles existentes
       } as UserDocType;
     });
   }
 );
+
+
 
 // -----------------------------------------------------------------------------------
 // CÓDIGO SUGERIDO POR EL DOCENTE
