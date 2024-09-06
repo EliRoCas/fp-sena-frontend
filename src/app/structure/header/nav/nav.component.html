@@ -1,73 +1,91 @@
 <ea-layout mode="vertical">
-    <section ea-left-sidebar class="left-bar-options">
-        <mat-icon routerLink="/portal" fontIcon="home" (click)="drawer().toggle()"></mat-icon>
-        <mat-icon routerLink="/portal/transactions" fontIcon="add" (click)="drawer().toggle()"></mat-icon>
-        <mat-icon routerLink="/portal/register-product" fontIcon="local_mall" (click)="drawer().toggle()"></mat-icon>
-    </section>
+  <section ea-left-sidebar class="left-bar-options">
+    <mat-icon
+      routerLink="/portal"
+      fontIcon="home"
+      (click)="drawer().toggle()"
+    ></mat-icon>
+    <mat-icon
+      routerLink="/portal/transactions"
+      fontIcon="add"
+      (click)="drawer().toggle()"
+    ></mat-icon>
+    <mat-icon
+      routerLink="/portal/register-product"
+      fontIcon="local_mall"
+      (click)="drawer().toggle()"
+    ></mat-icon>
+  </section>
 
-    <div style="padding: .5rem">
-        <mat-list>
-            @if(isLoggedIn()){
-            <mat-list-item routerLink="portal/user-admin" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>manage_accounts</mat-icon>
-                <div matListItemTitle>Administrar Usuarios</div>
-            </mat-list-item>
+  <div style="padding: 0.5rem">
+    <mat-list>
+      @if(isLoggedIn()){
+      <mat-list-item routerLink="portal/user-admin" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>manage_accounts</mat-icon>
+        <div matListItemTitle>Administrar Usuarios</div>
+      </mat-list-item>
 
-            <mat-list-item routerLink="portal/user-profile" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>account_circle</mat-icon>
-                <div matListItemTitle>Perfil</div>
-            </mat-list-item>
+      <mat-list-item
+        routerLink="portal/transactions"
+        (click)="drawer().toggle()"
+      >
+        <mat-icon matListItemIcon>receipt_long</mat-icon>
+        <div matListItemTitle>Transacciones</div>
+      </mat-list-item>
 
-            <mat-list-item routerLink="portal/transactions" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>receipt_long</mat-icon>
-                <div matListItemTitle>Transacciones</div>
-            </mat-list-item>
+      <mat-list-item routerLink="portal/incomes" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>price_check</mat-icon>
+        <div matListItemTitle>Ventas</div>
+      </mat-list-item>
+      <mat-list-item routerLink="portal/expenses" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>payments</mat-icon>
+        <div matListItemTitle>Gastos</div>
+      </mat-list-item>
 
-            <mat-list-item routerLink="portal/incomes" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>price_check</mat-icon>
-                <div matListItemTitle>Ventas</div>
-            </mat-list-item>
-            <mat-list-item routerLink="portal/expenses" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>payments</mat-icon>
-                <div matListItemTitle>Gastos</div>
-            </mat-list-item>
+      <mat-list-item routerLink="portal/stock" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>inventory_2</mat-icon>
+        <div matListItemTitle>Inventario</div>
+      </mat-list-item>
 
-            <mat-list-item routerLink="portal/stock" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>inventory_2</mat-icon>
-                <div matListItemTitle>Inventario</div>
-            </mat-list-item>
+      <mat-list-item routerLink="portal/report" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>inventory</mat-icon>
+        <div matListItemTitle>Reportes</div>
+      </mat-list-item>
 
-            <mat-list-item routerLink="portal/report" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>inventory</mat-icon>
-                <div matListItemTitle>Reportes</div>
-            </mat-list-item>
+      <mat-list-item routerLink="portal/categories" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>category</mat-icon>
+        <div matListItemTitle>Categorías</div>
+      </mat-list-item>
+      <mat-list-item
+        routerLink="portal/subcategories"
+        (click)="drawer().toggle()"
+      >
+        <mat-icon matListItemIcon>category</mat-icon>
+        <div matListItemTitle>Subcategorías</div>
+      </mat-list-item>
+      } @if (!navApk()){
+      <mat-list-item
+        routerLink="portal/user-profile"
+        (click)="drawer().toggle()"
+      >
+        <mat-icon matListItemIcon>account_circle</mat-icon>
+        <div matListItemTitle>Perfil</div>
+      </mat-list-item>
+      <mat-list-item routerLink="about-us" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>apartment</mat-icon>
+        <div matListItemTitle>Sobre Nosotros</div>
+      </mat-list-item>
 
-            <mat-list-item routerLink="portal/categories" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>category</mat-icon>
-                <div matListItemTitle>Categorías</div>
-            </mat-list-item>
-            <mat-list-item routerLink="portal/subcategories" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>category</mat-icon>
-                <div matListItemTitle>Subcategorías</div>
-            </mat-list-item>
-            }
+      <mat-list-item routerLink="support" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>perm_phone_msg</mat-icon>
+        <div matListItemTitle>Contáctenos</div>
+      </mat-list-item>
+      }
 
-            @if (!navApk()){
-            <mat-list-item routerLink="about-us" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>apartment</mat-icon>
-                <div matListItemTitle>Sobre Nosotros</div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="support" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>perm_phone_msg</mat-icon>
-                <div matListItemTitle>Contáctenos</div>
-            </mat-list-item>
-            }
-
-            <mat-list-item routerLink="faq" (click)="drawer().toggle()">
-                <mat-icon matListItemIcon>quiz</mat-icon>
-                <div matListItemTitle>FAQ</div>
-            </mat-list-item>
-        </mat-list>
-    </div>
+      <mat-list-item routerLink="faq" (click)="drawer().toggle()">
+        <mat-icon matListItemIcon>quiz</mat-icon>
+        <div matListItemTitle>FAQ</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
 </ea-layout>

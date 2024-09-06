@@ -1,53 +1,121 @@
-<form [formGroup]="userForm" (ngSubmit)="add()" class="flex flex-col justify-center">
-    <h2 class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary-forms"> {{title()}}</h2>
-    <div class="input-special flex flex-col mb-4">
-        <label for="name" class="text-sm font-semibold text-gray-700">Nombre</label>
-        <input type="text" id="name" name="name" placeholder="Nombre" aria-label="First Name"
-            formControlName="user_name">
-    </div>
-    <div class="input-special flex flex-col mb-4">
-        <label for="lastname" class="text-sm font-semibold text-gray-700">Apellidos</label>
-        <input type="text" id="lastname" name="lastname" placeholder="Apellidos" aria-label="Lastname"
-            formControlName="user_lastname">
-    </div>
-    <div class="input-special flex flex-row mb-4 select-id">
-        <label for="document_type" class="text-sm font-semibold text-gray-700">Tipo de Documento</label>
-        <select name="document_type" id="document_type" class="input-special py-3" formControlName="fo_document_type">
-            @for (docType of docTypes(); track docType) {
-            <option [value]="docType.id_document_type">{{docType.document_type_name}}</option>
-            }
-        </select>
-        <label for="document_number" class="text-sm font-semibold text-gray-700 pr-3">No. de Documento</label>
-        <input type="number" id="document_number" name="document_number" placeholder="Documento" aria-label="Documento"
-            formControlName="document_number">
-    </div>
-    <div class="input-special flex flex-col mb-4 select-id">
-        <label for="rol" class="text-sm font-semibold text-gray-700">Rol</label>
-        <select name="rol" id="rol" class="input-special py-3" formControlName="roles">
-            @for (role of roles(); track role) {
-            <option [value]="role.id_user_role">{{role.role_name}}</option>
-            }
-        </select>
-    </div>
-    <div class="input-special flex flex-col mb-4">
-        <label for="email" class="text-sm font-semibold text-gray-700">Correo</label>
-        <input type="email" id="email" name="email" placeholder="ejemplo@x.com" aria-label="Email"
-            formControlName="email">
-    </div>
-    <div class="input-special flex flex-col mb-4">
-        <label for="password" class="text-sm font-semibold text-gray-700">Contraseña</label>
-        <input type="password" id="password" name="password" placeholder="Contraseña" aria-label="password"
-            formControlName="password">
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="add()"
+  class="flex flex-col justify-center"
+>
+  <h2
+    class="text-center text-gray-900 text-xl font-medium title-font mb-5 font-primary-forms"
+  >
+    {{ title() }}
+  </h2>
+  <div class="input-special flex flex-col mb-4">
+    <label for="name" class="text-sm font-semibold text-gray-700">Nombre</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Nombre"
+      aria-label="First Name"
+      formControlName="user_name"
+    />
+  </div>
+  <div class="input-special flex flex-col mb-4">
+    <label for="lastname" class="text-sm font-semibold text-gray-700"
+      >Apellidos</label
+    >
+    <input
+      type="text"
+      id="lastname"
+      name="lastname"
+      placeholder="Apellidos"
+      aria-label="Lastname"
+      formControlName="user_lastname"
+    />
+  </div>
+  <div class="input-special flex flex-row mb-4 select-id">
+    <label for="document_type" class="text-sm font-semibold text-gray-700"
+      >Tipo de Documento</label
+    >
+    <select
+      name="document_type"
+      id="document_type"
+      class="input-special py-3"
+      formControlName="fo_document_type"
+    >
+      @for (docType of docTypes(); track docType) {
+      <option [value]="docType.id_document_type">
+        {{ docType.document_type_name }}
+      </option>
+      }
+    </select>
+    <label
+      for="document_number"
+      class="text-sm font-semibold text-gray-700 pr-3"
+      >No. de Documento</label
+    >
+    <input
+      type="number"
+      id="document_number"
+      name="document_number"
+      placeholder="Documento"
+      aria-label="Documento"
+      formControlName="document_number"
+    />
+  </div>
+  <div class="input-special flex flex-col mb-4 select-id">
+    <label for="rol" class="text-sm font-semibold text-gray-700">Rol</label>
+    <select
+      name="rol"
+      id="rol"
+      class="input-special py-3"
+      formControlName="roles"
+    >
+      @for (role of roles(); track role) {
+      <option [value]="role.id_user_role">{{ role.role_name }}</option>
+      }
+    </select>
+  </div>
+  <div class="input-special flex flex-col mb-4">
+    <label for="email" class="text-sm font-semibold text-gray-700"
+      >Correo</label
+    >
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="ejemplo@x.com"
+      aria-label="Email"
+      formControlName="email"
+    />
+  </div>
+  <div class="input-special flex flex-col mb-4">
+    <label for="password" class="text-sm font-semibold text-gray-700"
+      >Contraseña</label
+    >
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Contraseña"
+      aria-label="password"
+      formControlName="password"
+    />
+  </div>
+  <div class="input-special flex flex-col mb-4">
+    <label for="confirmPassword" class="text-sm font-semibold text-gray-700"
+      >Confirme la Contraseña</label
+    >
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      placeholder="Confirme contraseña"
+      aria-label="Comfirm password"
+      formControlName="confirm_password"
+    />
+  </div>
 
-    </div>
-    <div class="input-special flex flex-col mb-4">
-        <label for="confirmPassword" class="text-sm font-semibold text-gray-700">Confirme la Contraseña</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme contraseña"
-            aria-label="Comfirm password" formControlName="confirm_password">
-    </div>
-
-    <button class="primary-button" type="submit" [disabled]="!userForm.valid">
-        Guardar
-    </button>
-
+  <button class="primary-button" type="submit" [disabled]="!userForm.valid">
+    Guardar
+  </button>
 </form>

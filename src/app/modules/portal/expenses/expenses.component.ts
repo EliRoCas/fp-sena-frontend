@@ -7,9 +7,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { PortalContentComponent } from '@ea-controls/portal';
-import { transactionAdapter, transactionExpense, TransactionModel } from '../../../services/transactions.service';
+import {
+  transactionAdapter,
+  transactionExpense,
+  TransactionModel,
+} from '../../../services/transactions.service';
 import { Store } from '@ngrx/store';
-import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  LayoutModule,
+} from '@angular/cdk/layout';
 import { Subject, takeUntil } from 'rxjs';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -27,7 +35,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     PortalContentComponent,
     MatExpansionModule,
     CommonModule,
-    LayoutModule
+    LayoutModule,
   ],
   templateUrl: './expenses.component.html',
   styleUrl: './expenses.component.scss',
@@ -37,14 +45,14 @@ export class ExpensesComponent {
   isSmallScreen = false;
 
   displayedColumns: string[] = [
-    'id_transaction',
+    // 'id_transaction',
     'transaction_name',
     'transaction_date',
     'transaction_amount',
     'transaction_customer',
     'expenseActions',
   ];
-  dataSource = new MatTableDataSource<TransactionModel>()
+  dataSource = new MatTableDataSource<TransactionModel>();
   selected = signal<TransactionModel | undefined>(undefined);
 
   private destroy$ = new Subject<void>();
@@ -52,17 +60,19 @@ export class ExpensesComponent {
   constructor(
     private store: Store,
     private breakpointObserver: BreakpointObserver
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(transactionAdapter.getAll());
-    this.store.select(transactionExpense).subscribe(data => this.dataSource.data = data);
+    this.store
+      .select(transactionExpense)
+      .subscribe((data) => (this.dataSource.data = data));
 
     const customBreakpoint = '(max-width: 800px)';
     this.breakpointObserver
       .observe([customBreakpoint])
       .pipe(takeUntil(this.destroy$))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.isSmallScreen = result.matches;
       });
   }
@@ -77,10 +87,9 @@ export class ExpensesComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  };
+  }
 
   printTable() {
     window.print();
   }
-
 }

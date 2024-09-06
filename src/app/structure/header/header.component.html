@@ -1,33 +1,31 @@
 <section ea-header class="dark:dark:bg-gray-900 shadow flex justify-between">
-
-
-    <div class="flex gap-5">
-        <button mat-mini-fab (click)="drawer().toggle()" color="secondary">
-            <mat-icon>menu</mat-icon>
-        </button>
-        @if (isLoggedIn()) {
-        <a routerLink="/portal/report" routerLinkActive="router-link-active">
-            <div
-                class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl">
-                SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
-        </a>
-        }@else {
-        <a routerLink="/" routerLinkActive="router-link-active">
-            <div
-                class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl">
-                SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i></div>
-        </a>
-        }
-    </div>
-    <div ea-portal name="header-title" class="font-primary ">
-    </div>
-
-    @if(!isLoggedIn()){
-    <button routerLink="/login" class="primary-button">Login</button>
+  <div class="flex gap-5">
+    <button mat-mini-fab (click)="drawer().toggle()" color="secondary">
+      <mat-icon>menu</mat-icon>
+    </button>
+    @if (isLoggedIn()) {
+    <a routerLink="/portal/report" routerLinkActive="router-link-active">
+      <div
+        class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl"
+      >
+        SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i>
+      </div>
+    </a>
     }@else {
-    <button (click)="logout()" class="primary-button">Logout</button>
-
+    <a routerLink="/" routerLinkActive="router-link-active">
+      <div
+        class="text-logo text-red-800 align-middle font-['Cormorant'] text-logo text-red-800 align-middle text-2xl"
+      >
+        SiGef <i class="fa-solid fa-circle-dollar-to-slot"></i>
+      </div>
+    </a>
     }
+  </div>
+  <div ea-portal name="header-title" class="font-primary"></div>
+  @if (!navApk()) { @if(!isLoggedIn()){
+  <button routerLink="/login" class="primary-button">Login</button>
+  }@else {
+  <button (click)="logout()" class="primary-button">Logout</button>
 
-
+  } }
 </section>

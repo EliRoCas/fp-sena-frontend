@@ -1,10 +1,13 @@
-<section class="text-gray-600 body-font dark:bg-gray-900">
-  <div class="container px-5 py-3 mx-auto flex flex-wrap justify-center items-center">
-    <div class="hidden md:block lg:w-68 lg:h- md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2">
-      <img src="img/laptop.jpg" alt="Typing on laptop" class="grayscale dark:rounded-lg">
-    </div>
-    <div class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0">
-      <app-user-form [title]="title()" [id]="id"></app-user-form>
-    </div>
+<section
+  class="text-gray-600 body-font flex flex-row justify-center items-center"
+>
+  <img
+    src="img/laptop.jpg"
+    alt="Typing on laptop"
+    class="grayscale dark:rounded-lg hidden md:block lg:w-68 lg:h- md:w-52 md:pr-0 lg:pr-0 pr-0 text-center mb-2"
+  />
+
+  <div class="bg-gray-100 rounded-lg mx-3 px-3">
+    <app-user-form [title]="title()" [id]="id"></app-user-form>
   </div>
 </section>
