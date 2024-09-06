@@ -9,6 +9,7 @@ import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router'
 import { LayoutComponent } from '@ea-controls/layout';
 import { PortalComponent, PortalContentComponent } from '@ea-controls/portal';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../../environment';
 
 
 
@@ -48,4 +49,12 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/'])
   }
+
+  navApk(): boolean {
+    if (environment.isMobile){
+      return true; 
+    }else {
+      return false;
+    }
+  };
 }
