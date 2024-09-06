@@ -26,7 +26,6 @@
 
 body {
   font-family: "Wittgenstein", "Times New Roman", Times, serif;
-  overflow-x: hidden;
 }
 
 main {
@@ -98,12 +97,7 @@ input.ng-invalid.ng-touched {
 }
 
 .card-style {
-  @apply h-full bg-gradient-to-b from-red-300 to-red-600 px-6 py-6 rounded-lg overflow-hidden text-center relative;
-}
-
-html,
-body {
-  height: 100%;
+  @apply bg-gradient-to-b from-red-300 to-red-600 px-6 py-6 rounded-lg overflow-hidden text-center relative;
 }
 
 body {
@@ -117,15 +111,6 @@ app-root {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-router-outlet + * {
-  width: 100%;
-  max-height: 100vh;
-  overflow-y: auto;
 }
 
 table {

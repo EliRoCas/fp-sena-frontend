@@ -1,29 +1,21 @@
 .example-container {
-    height: 100%;
-    width: 100%;
-    padding-top: 2rem;
-    @apply dark:bg-gray-900;
-}
-
-@media (max-width: 780px){
-    .example-container {
-         padding-top: 6rem;
-    }
+  height: 100%;
+  width: 100%;
+  padding-top: 0.5rem;
+  @apply dark:bg-gray-900;
 }
 
 [ea-header],
 [ea-footer] {
-    padding: 0.2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-bottom: solid thin #ffffff;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-
 .text-logo {
-    font-family: 'Cormorant', italic, 'Times New Roman', Times, serif;
-    font-size: 2rem;
-    justify-content: center;
-    align-items: center;
+  font-family: "Cormorant", italic, "Times New Roman", Times, serif;
+  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
 }

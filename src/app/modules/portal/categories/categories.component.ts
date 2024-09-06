@@ -3,11 +3,9 @@ import { Component, input, signal, effect } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { PortalContentComponent } from '@ea-controls/portal';
-import { FilterComponent } from '../../../share/filter/filter.component';
+
 import {
   catAdapter,
-  catById,
-  catByName,
   CategoryModel,
 } from '../../../services/categories.service';
 import { Store } from '@ngrx/store';
@@ -29,7 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     PortalContentComponent,
     MatTableModule,
     RouterLink,
-    FilterComponent,
+
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

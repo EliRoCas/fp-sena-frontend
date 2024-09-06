@@ -1,14 +1,8 @@
-<div
-  class="flex flex-col md:flex-row md:gap-10 dark:bg-gray-900 justify-center items-center"
->
-  <div
-    class="lg:w-4/6 md:w-3/6 bg-gray-100 rounded-lg p-3 flex flex-col md:ml-20 w-full mt-1 md:mt-0"
-  >
-    <app-user-form
-      title="Mi Perfil"
-      [email]="email()"
-      [readonly]="true"
-    ></app-user-form>
-  </div>
-</div>
+<section class="bg-gray-100 rounded-lg mx-3 px-3">
+  <app-user-form
+    title="Mi Perfil"
+    [email]="email()"
+    [readonly]="true"
+  ></app-user-form>
+</section>
 ¡

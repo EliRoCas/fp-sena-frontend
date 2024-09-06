@@ -8,8 +8,8 @@ import {
   ProductModel,
   selectProductsWithCategories,
 } from '../../../services/products.service';
-import { provideStore, provideState, Store } from '@ngrx/store';
-import { FilterComponent } from '../../../share/filter/filter.component';
+import { Store } from '@ngrx/store';
+
 import { PortalContentComponent } from '@ea-controls/portal';
 import {
   catAdapter,
@@ -33,7 +33,6 @@ import { environment } from '../../../../../environment';
   imports: [
     MatTableModule,
     RouterLink,
-    FilterComponent,
     PortalContentComponent,
     MatFormFieldModule,
     MatInputModule,
