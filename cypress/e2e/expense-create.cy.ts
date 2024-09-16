@@ -4,7 +4,6 @@ describe('Caso de Prueba No. 01 - Módulo de Gastos', () => {
     cy.visit('http://localhost:4200/login');
     cy.get('input[name="email"]').type('dante@example.com');
     cy.get('input[name="password"]').type('Dante123!');
-    cy.screenshot('Botón habilitado para iniciar sesión');
     cy.get('button[type="submit"]').click();
 
     // Navegar al módulo de Gastos

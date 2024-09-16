@@ -113,6 +113,11 @@ export class UsersAdminComponent {
     );
   }
 
+  deleteUserAndRol(user: UserModel) {
+    this.delete(user);
+    this.deleteRol(user);
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
