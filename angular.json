@@ -73,7 +73,8 @@
               "buildTarget": "sigef-final-proyect:build:production"
             },
             "development": {
-              "buildTarget": "sigef-final-proyect:build:development"
+              "buildTarget": "sigef-final-proyect:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
