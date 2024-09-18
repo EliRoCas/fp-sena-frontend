@@ -12,6 +12,8 @@ import {
   transactionAdapter,
   transactionIncome,
   TransactionModel,
+  RoseModel,
+  roseTypeAdapter,
 } from '../../../services/transactions.service';
 import { Store } from '@ngrx/store';
 import {
@@ -49,7 +51,7 @@ export class IncomesComponent {
     'transaction_name',
     'transaction_date',
     'transaction_amount',
-    'fo_rose_type',
+    'rose_type_name',
     'transaction_rose_export',
     'transaction_customer',
     'incomeActions',
@@ -67,6 +69,7 @@ export class IncomesComponent {
 
   ngOnInit(): void {
     this.store.dispatch(transactionAdapter.getAll());
+    this.store.dispatch(roseTypeAdapter.getAll());
     this.store.select(transactionIncome).subscribe((data) => {
       this.dataSource.data = data;
     });
@@ -93,7 +96,7 @@ export class IncomesComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  printTable() {
+  printTable() {  
     window.print();
   }
 }

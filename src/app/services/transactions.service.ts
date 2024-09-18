@@ -4,11 +4,10 @@ import { EntityAdapter } from '@ea-controls/ngrx-repository'; // Manejador de op
 import { createSelector } from '@ngrx/store'; // Función de la biblioteca NGRX para crar selectores de estado memorizados
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransactionsService {
-
-  constructor() { }
+  constructor() {}
 }
 
 export interface TransactionModel {
@@ -30,32 +29,84 @@ export interface RoseModel {
   rose_type_name: string;
 }
 
-export const transactionAdapter = new EntityAdapter<TransactionModel>("transactions", { getId: (input) => input.id_transaction.toString(), additionalData: { id: "id_transaction" } });
+export const transactionAdapter = new EntityAdapter<TransactionModel>(
+  'transactions',
+  {
+    getId: (input) => input.id_transaction.toString(),
+    additionalData: { id: 'id_transaction' },
+  }
+);
 
-export const roseTypeAdapter = new EntityAdapter<RoseModel>("rose_types", { getId: (input) => input.id_rose_type.toString(), additionalData: { id: "id_rose_type" } });
+export const roseTypeAdapter = new EntityAdapter<RoseModel>('rose_types', {
+  getId: (input) => input.id_rose_type.toString(),
+  additionalData: { id: 'id_rose_type' },
+});
 
-export const transactionByName = (name: string) => createSelector(transactionAdapter.feature,
-  transactions => {
-    return transactions.filter(trans => trans.transaction_name.toLowerCase().indexOf(name.toLocaleLowerCase()) > -1);
-  })
+export const transactionByName = (name: string) =>
+  createSelector(transactionAdapter.feature, (transactions) => {
+    return transactions.filter(
+      (trans) =>
+        trans.transaction_name.toLowerCase().indexOf(name.toLocaleLowerCase()) >
+        -1
+    );
+  });
 
-export const transactionById = (id: number) => createSelector(transactionAdapter.feature,
-  transactions => {
-    return transactions.find(trans => trans.id_transaction === id);
-  })
+export const transactionById = (id: number) =>
+  createSelector(transactionAdapter.feature, (transactions) => {
+    return transactions.find((trans) => trans.id_transaction === id);
+  });
 
-export const transactionByType = (transaction_type: string) => createSelector(transactionAdapter.feature,
-  transactions => {
-    return transactions.filter(trans => trans.transaction_type === transaction_type);
-  })
+export const transactionByType = (transaction_type: string) =>
+  createSelector(transactionAdapter.feature, (transactions) => {
+    return transactions.filter(
+      (trans) => trans.transaction_type === transaction_type
+    );
+  });
 
-export const transactionIncome = createSelector(transactionAdapter.feature,
-  transactions => {
-    return transactions.filter(trans => trans.transaction_type === 'income');
-  })
+export const transactionIncome = createSelector(
+  transactionAdapter.feature,
+  roseTypeAdapter.feature,
+  (transactions: TransactionModel[], roseTypes: RoseModel[]) => {
+    return transactions
+      .filter((transaction) => transaction.transaction_type === 'income')
+      .map((transaction) => {
+        const roseType = roseTypes.find(
+          (r) =>
+            r.id_rose_type.toString() === transaction.fo_rose_type.toString()
+        );
+        return {
+          ...transaction,
+          rose_type_name: roseType
+            ? roseType.rose_type_name
+            : transaction.fo_rose_type,
+        } as TransactionModel;
+      });
+  }
+);
 
-export const transactionExpense = createSelector(transactionAdapter.feature,
-  transactions => {
-    return transactions.filter(trans => trans.transaction_type === 'expense');
-  })
+export const transactionExpense = createSelector(
+  transactionAdapter.feature,
+  (transactions) => {
+    return transactions.filter((trans) => trans.transaction_type === 'expense');
+  }
+);
 
+// export const roseTypeByName = createSelector(
+//   roseTypeAdapter.feature,
+//   transactionAdapter.feature,
+//   (roseTypes, transactions) => {
+//     return transactions
+//       .filter((transaction) => transaction.transaction_type === 'income')
+//       .map((transaction) => {
+//         const roseType = roseTypes.find(
+//           (r) =>
+//             r.id_rose_type.toString() === transaction.fo_rose_type.toString()
+//         );
+//         const roseTypeName = roseType ? roseType.rose_type_name : '';
+//         return {
+//           ...transaction,
+//           rose_type_name: roseTypeName,
+//         } as TransactionModel;
+//       });
+//   }
+// );
