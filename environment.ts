@@ -1,4 +1,4 @@
 export const environment = {
   isMobile: false,
-  urlBase: '/api/',
+  urlBase: 'http://www.sigef.com.mialias.net/controller',
 };
